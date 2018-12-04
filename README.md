@@ -20,7 +20,7 @@ ref_viroids_rep_genomes_v5	Assembly Entrez	Entrez query: “latest_refseq[Prop] 
 NCBI_VIV_protein_sequences_v5	nr	Sergey Resenchuk supplied GI list	
 NCBI_VIV_nucleotide_sequences_v5	nt	Sergey Resenchuk supplied GI list	
 
-#### Virus specific BLAST dbs
+
 
 #### CONTIGS!
 
