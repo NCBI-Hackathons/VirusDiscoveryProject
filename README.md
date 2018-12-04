@@ -5,6 +5,8 @@ Software, architecture, and data index design for the 2018/2019 Virus Discovery 
 
 # Look at the cool new sh*& NCBI built for us!
 
+## NCBI Blast Docker:
+
 ### https://github.com/ncbi/docker/blob/blast2.8.1/blast/README.md
 
 ### GS Blast dbs
