@@ -29,6 +29,6 @@ NCBI_VIV_nucleotide_sequences_v5	nt	Sergey Resenchuk supplied GI list
 
 #### CONTIGS!
 
-##### Available from <>
+##### XXXnumber are available from <>
 
 ##### Accessible using SRA toolkit
