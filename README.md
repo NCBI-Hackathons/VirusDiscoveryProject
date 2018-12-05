@@ -19,6 +19,12 @@ Software, architecture, and data index design for the 2018/2019 Virus Discovery 
 
 ### https://github.com/ncbi/docker/blob/blast2.8.1/blast/README.md
 
+## BLAST workbench docker (+magicBLAST, +EDirect) -- beta
+
+### https://hub.docker.com/r/christiam/blast-workbench/
+
+## NCBI_Powertools (+ sra toolkit)
+
 ##### Theres also a nice cookbook here, with thanks to @christiam!
 
 ### GS Blast dbs
