@@ -5,13 +5,13 @@ Software, architecture, and data index design for the 2018/2019 Virus Discovery 
 
 # Teams and Objectives (See Project Kanban Boards):
 
-“Known Virus Index” Matching contigs to known viruses
+### “Known Virus Index” Matching contigs to known viruses
      Determining a heuristic for what is a “known” virus
-Detecting recombination and variation from/in known viruses
-Determination of phylogenetic position of viruses similar to knowns
-Detection of novel contigs and novel viruses
-Containerization, distribution, and contribution mechanism + Scaling
-User interface (likely Jupyter notebooks)
+### Detecting recombination and variation from/in known viruses
+### Determination of phylogenetic position of viruses similar to knowns
+### Detection of novel contigs and novel viruses
+### Containerization, distribution, and contribution mechanism + Scaling
+### User interface (likely Jupyter notebooks)
 
 # Look at the cool new sh*& NCBI built for us!
 
