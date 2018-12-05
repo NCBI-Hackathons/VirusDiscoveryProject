@@ -41,6 +41,8 @@ Software, architecture, and data index design for the 2018/2019 Virus Discovery 
 
 ###### gsutil -m ls gs://ncbi_sra_realign/*.realign -- about 300K datasets with contigs so far -- will be public soon!
 
-##### Accessible using SRA toolkit
+##### Accessible using SRA toolkit with remote-fuser/fusera <Documentation Needed>
+ 
+
 
 
