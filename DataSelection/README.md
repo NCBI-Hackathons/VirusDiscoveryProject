@@ -11,7 +11,7 @@ The [size selection](size_selection.txt) file has 999 metagenome IDs chosen as s
 The [phage selection](phage_size_selection.txt) file has 999 metagenome IDs chosen as small, medium, or large data sets but that have the most number of phage fragments.
 
 
-We should use the data sets listed in the [phage selection](phage_size_selection.txt) file.
+The data sets listed in the [phage selection](phage_size_selection.txt) file should have abundant true positives.  
 
 
 We should add metagenomes that have 0% hits to phages to be able to calculate accuracy metrics like false positives, negatives, etc.
