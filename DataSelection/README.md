@@ -13,3 +13,5 @@ The [phage selection](phage_size_selection.txt) file has 999 metagenome IDs chos
 
 We should use the data sets listed in the [phage selection](phage_size_selection.txt) file.
 
+
+We should add metagenomes that have 0% hits to phages to be able to calculate accuracy metrics like false positives, negatives, etc.
