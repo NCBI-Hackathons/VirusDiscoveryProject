@@ -27,11 +27,11 @@ Software, architecture, and data index design for the 2018/2019 Virus Discovery 
 
 ##### Theres also a nice cookbook here, with thanks to @christiam!
 
-### GS Blast dbs
+### BLAST databases
 
-#### BLAST Databases currently being updated to the NIH STRDES GCP bucket (gs://blast-db/)
-
-##### nr, nt, etc.  
+BLAST Databases currently being updated to the NIH STRIDES GCP bucket
+and can be obtained via [`update_blastdb.pl`][getting-blastdbs-documentation] or
+obtained pre-configured via the BLAST GCP VM.
 
 ##### Virus specific ones!
 
@@ -61,4 +61,4 @@ Software, architecture, and data index design for the 2018/2019 Virus Discovery 
  
 
 
-
+[getting-blastdbs-documetation]: https://www.ncbi.nlm.nih.gov/books/NBK532645/
