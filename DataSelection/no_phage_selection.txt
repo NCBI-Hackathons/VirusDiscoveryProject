@@ -1,11 +1,11 @@
 # gzcat wgs_datasets.tsv.gz | awk '{if ($2 == "AGREE") print $0;}' | awk '{if ($3 == "WGS") print $0;}' | awk '{if ($4 == "WGS") print $0;}' | awk '{if ($7 == "0") print $0;}' | sort -R | head -n 10 | awk '{print $1}'
-ERR2603093
-SRR533318
-ERR2603045
-ERR2227558
-SRR7468284
-SRR060382
-ERR210051
-ERR1913917
-ERR1874157
-SRR197987
+ERR2749428
+SRR5260890
+ERR1913430
+SRR2244294
+DRR019508
+ERR748063
+ERR1659111
+ERR1916115
+ERR2757406
+ERR996621
