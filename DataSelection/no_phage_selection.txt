@@ -1,3 +1,4 @@
+# gzcat wgs_datasets.tsv.gz | awk '{if ($2 == "AGREE") print $0;}' | awk '{if ($3 == "WGS") print $0;}' | awk '{if ($4 == "WGS") print $0;}' | awk '{if ($7 == "0") print $0;}' | sort -R | head -n 10 | awk '{print $1}'
 ERR2603093
 SRR533318
 ERR2603045
