@@ -3,15 +3,27 @@ Software, architecture, and data index design for the 2018/2019 Virus Discovery 
 
 ## Here we present a compromise pipeline for extracting virological information from publicly available metagenomic datasets, in order to present a usable index to the virological research community.  
 
-# Teams and Objectives (See Project Kanban Boards):
+# Objectives (See Project Kanban Boards):
 
-### “Known Virus Index” Matching contigs to known viruses
-     Determining a heuristic for what is a “known” virus
+## “Known Virus Index” 
+
+content here
+    
+## Detection of novel contigs and novel viruses
+
+content here
+
+## Scaling: Containerization, distribution, and user interface + contribution mechanism?
+
+content here
+
+## Test Data Selection
+
+### <links to content>
+
 ### Detecting recombination and variation from/in known viruses
 ### Determination of phylogenetic position of viruses similar to knowns
-### Detection of novel contigs and novel viruses
-### Containerization, distribution, and contribution mechanism + Scaling
-### User interface (likely Jupyter notebooks)
+
 
 # Look at the cool new sh*& NCBI built for us!
 
