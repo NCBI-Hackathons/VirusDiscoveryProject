@@ -8,6 +8,8 @@ Software, architecture, and data index design for the 2018/2019 Virus Discovery 
 ## “Known Virus Index” 
 
 content here
+
+Presentation here - https://docs.google.com/presentation/d/1NGXwqCb5mgfOGq4jqpiK5cjHoW48sMGTLPX0IglHIOE/edit?usp=sharing
     
 ## Detection of novel contigs and novel viruses
 
