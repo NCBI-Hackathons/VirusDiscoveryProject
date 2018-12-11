@@ -1,0 +1,12 @@
+The columns:
+accession - SRA run accession, corresponding realign is available as gs://ncbi_sra_realign/<accession>.realign
+human_reads - number of reads that align onto human grc38
+viral_reads - number of reads that align onto viral contigs (guided asssembly)
+denovo_reads - number of reads that align onto denovo contigs
+unmapped_reads - number of reads that did not align anywhere
+genome_size - an estimate of total genome size as reported by skesa
+adapters - estiamte number of adapters detected
+reads_before
+sequences_before
+reads_after
+sequences_after
