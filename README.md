@@ -61,4 +61,4 @@ obtained pre-configured via the BLAST GCP VM.
  
 
 
-[getting-blastdbs-documetation]: https://www.ncbi.nlm.nih.gov/books/NBK532645/
+[getting-blastdbs-documentation]: https://www.ncbi.nlm.nih.gov/books/NBK532645/
