@@ -8,11 +8,13 @@ steps are implemented to reduce the number of contigs for the downstream
 analysis.
 
 ## Prefilter steps
-Currently, a contig needs to meet the following requiremnts before
-being analyzed further:
+Currently, a contig needs to meet the following requirements before
+being analyzed further: (key = reduce clutter + runs fast)
 
 - length >= 1kb
-
+- discussed during meeting:
+    - removal contigs w/ rRNA (Silva?)
+    - list of 'basal Pro/Eu genes
 
 ## Structure
 
@@ -33,7 +35,8 @@ novel
 - Clustering
     - mmseq2
     - HMM
-    - Other....
+    - RPStblastn
+    - pVOG
 
 ### MMseq2
 
@@ -46,6 +49,9 @@ novel
  - Test if clustering of  target database, e.g. NCBI_VIV_protein_sequences_v5
    improves time.
  - Why is contig-filter.py not reading sys.stdout when reading Docker stdout?
+ - Walltime for pVOGs
+ - Walltime for RPStblastn
+
 ## Notes
 
 - Docker and piping using STDIN and STDOUT is really awful.
