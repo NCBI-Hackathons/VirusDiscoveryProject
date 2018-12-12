@@ -5,7 +5,7 @@ Software, architecture, and data index design for the 2018/2019 Virus Discovery 
 
 # Objectives (See Project Kanban Boards):
 
-## “Known Virus Index” 
+## Known Virus Index
 
 content here
 
