@@ -25,7 +25,7 @@ Index for 'Known' viral contigs:
 We assume that the contigs db will remain as part of the VirusDiscoveryProject Index ('VDPI') and that indices to that db will be adequate for access rather than having to store individual contigs with the VDPI. This contig db is assumed to include metagenome accession IDs. From those IDs, search can make available access to other desirable data features, as provided in the NCBI Virus DB, such as species, source material, country of origin, etc. so we need not provide such information.
 
 The Knowns pipeline generates a possible taxonomic level based on ANI level and perhaps other criteria and provides that in the index. We propose that there also be entries allowing for expert curation when and if any occurs.
-Some information can be generated dynamically at search time and we propose 
+Initial thinking for auto-generated taxonomic level: 
 
 Possible taxonomic levels e.g.
 >99% identical
