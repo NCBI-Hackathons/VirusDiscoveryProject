@@ -24,8 +24,8 @@ class FastaReader:
 
     def get_shannon(self):
       for i in self.charfreqs:
-        self.shannon += self.charfreqs[i]/len(self.seq) * math.log2(self.charfreqs[i]/len(self.seq))
-      return abs(self.shannon)/len(self.seq)
+        self.shannon += self.charfreqs[i] * math.log2(self.charfreqs[i])
+      return abs(self.shannon)
 
     def add_seq(self, seq):
       for i in seq:
@@ -39,7 +39,7 @@ class FastaReader:
 
   def __init__(self):
     self.min_seqlen = 1000
-    self.max_shannon_metric = 0.7
+    self.min_shannon_metric = 0.7
 
   def read(self):
     s = None
@@ -53,8 +53,7 @@ class FastaReader:
           s = FastaReader.Sequence(i[1:].rstrip())
       else:
         s.add_seq(i.strip())
-    #if (len(s.seq) >= self.min_seqlen) and (s.get_shannon() <= self.max_shannon_metric):
-    if (len(s.seq) >= self.min_seqlen):
+    if (len(s.seq) >= self.min_seqlen) and (s.get_shannon() >= self.min_shannon_metric):
       print(s.dump_fasta())
 
 def main():
