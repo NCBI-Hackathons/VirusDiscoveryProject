@@ -8,10 +8,10 @@ steps are implemented to reduce the number of contigs for the downstream
 analysis.
 
 ## Prefilter steps
-Contigs provided should be prefiltered at >= 1kb
-Further reduction of clutter?
-    - removal contigs w/ rRNA (Silva?)
-    - list of 'basal Pro/Eu genes
+-   Contigs provided should be prefiltered at >= 1kb
+-   Further reduction of clutter?  
+        -   removal contigs w/ rRNA (Silva?)  
+        -   list of 'basal Pro/Eu genes  
 
 ## Output
 
