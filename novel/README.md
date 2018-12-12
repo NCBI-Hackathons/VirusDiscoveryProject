@@ -16,6 +16,17 @@ being analyzed further: (key = reduce clutter + runs fast)
     - removal contigs w/ rRNA (Silva?)
     - list of 'basal Pro/Eu genes
 
+## Input
+
+```bash
+
+sed -i s/>// SRR918250.realign.local.unknowns.txt
+
+seqtk subseq/home/michael.tisza/mt_contigs1/SRR918250.realign.local.1000bp.fa SRR918250.realign.local.unknowns.txt > unk_test.fasta
+
+```
+
+
 ## Output
 
 What and how should we report?
