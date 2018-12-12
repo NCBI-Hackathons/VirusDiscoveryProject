@@ -44,13 +44,18 @@ novel
  (513,755 sequences) in ERR210051 contigs (146 contigs, 5 are human chromosomes)
  using 32 cpus.
 
+### rpstblastn
+
+ - Walltime 2 hrs, ERR1913430 contigs (filtered for length >= 1kb), 560 sequences done
+against entire CDD, but on 1 thread
+
 ### ToDo
 
  - Test if clustering of  target database, e.g. NCBI_VIV_protein_sequences_v5
    improves time.
  - Why is contig-filter.py not reading sys.stdout when reading Docker stdout?
  - Walltime for pVOGs
- - Walltime for RPStblastn
+ - Walltime for RPStblastn --> multithreading?
 
 ## Notes
 
