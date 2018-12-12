@@ -34,7 +34,6 @@ Possible taxonomic levels e.g.
 CDS (translate from nt sequence/length)
 Contigs that have an ANI lower than the cutoff are sorted and their indices are provided to the Novel Virus processing pipeline.
     
-The 'Knowns' portion of the VirusDiscovery pipeline processes data from the guided assembly database to sort for virus-like contigs. Specifically, contigs are processed with BLASTN, sorting for an average nucleotide identity ('ANI') of greater than 80% or other defined cutoff. For contigs identified as viral, an index entry is generated as below.
 
 
 ## Detection of novel contigs and novel viruses
