@@ -8,11 +8,8 @@ steps are implemented to reduce the number of contigs for the downstream
 analysis.
 
 ## Prefilter steps
-Currently, a contig needs to meet the following requirements before
-being analyzed further: (key = reduce clutter + runs fast)
-
-- length >= 1kb
-- discussed during meeting:
+Contigs provided should be prefiltered at >= 1kb
+Further reduction of clutter?
     - removal contigs w/ rRNA (Silva?)
     - list of 'basal Pro/Eu genes
 
