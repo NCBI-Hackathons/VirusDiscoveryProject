@@ -28,13 +28,12 @@ The Knowns pipeline generates a possible taxonomic level based on ANI level and 
 Initial thinking for auto-generated taxonomic level: 
 
 Possible taxonomic levels e.g.
->99% identical
->95% identical (new strain?)
->80% identical (new species?)
-CDS (translate from nt sequence/length)
+- 99% identical
+- 95% identical (new strain?)
+- 80% identical (new species?)
+
 Contigs that have an ANI lower than the cutoff are sorted and their indices are provided to the Novel Virus processing pipeline.
     
-
 
 ## Detection of novel contigs and novel viruses
 
