@@ -16,6 +16,31 @@ being analyzed further: (key = reduce clutter + runs fast)
     - removal contigs w/ rRNA (Silva?)
     - list of 'basal Pro/Eu genes
 
+## Output
+
+What and how should we report?
+#### JSON ?
+```
+{
+  Contig : SRRXX.contig.N,
+  methods :
+  {
+    mmseq2 :
+    {
+      parameters : {....},
+      total_hits : int,
+      hits : [ {accession: AC12345.1, simil:80% ....}   ]
+    }
+    rpstblastn :
+    {
+      parameters : {....},
+      total_hits : int,
+      hits : [ {accession: AC12345.1, simil:80% ....}   ]
+    }
+  }
+}
+```
+
 ## Structure
 
 ```
