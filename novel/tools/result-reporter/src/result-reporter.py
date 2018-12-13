@@ -48,7 +48,12 @@ class CddExplainer:
       a = w.run(pl)
       print('\t'.join(x for x in header[1:]))
       for i in a.result.summaries:
-        print('\t'.join(a.result.summaries[i][x] for x in header[1:]))
+        for j in header[1:]:
+          entry = a.result.summaries[i].get(j)
+          if not entry:
+            entry = "NA"
+          print(entry, end='\t')
+        print()
 
 def main():
   ap = argparse.ArgumentParser(description='Novel result summarizer')
