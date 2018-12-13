@@ -5,12 +5,36 @@ Software, architecture, and data index design for the 2018/2019 Virus Discovery 
 
 # Objectives (See Project Kanban Boards):
 
-## “Known Virus Index” 
-
-content here
+## Known Virus Index
 
 Presentation here - https://docs.google.com/presentation/d/1NGXwqCb5mgfOGq4jqpiK5cjHoW48sMGTLPX0IglHIOE/edit?usp=sharing
+
+The 'Knowns' portion of the VirusDiscovery pipeline processes data from the guided assembly database to sort for virus-like contigs. Specifically, contigs are processed with BLASTN, sorting for an average nucleotide identity ('ANI') of greater than 80% or other defined cutoff. For contigs identified as viral, an index entry is generated as below.
+
+Index for 'Known' viral contigs:
+- Metagenome accession [SRR ID]
+- NCBI virus accession [string] 
+           (relation to above?)
+- Nucleotide sequence [index to contig DB]
+- Length [int32]
+- Coverage [int32]
+- ANI [int32]
+- Curated taxonomic levels [string x 3]
+- Possible taxonomic level [string x 3]
+
+We assume that the contigs db will remain as part of the VirusDiscoveryProject Index ('VDPI') and that indices to that db will be adequate for access rather than having to store individual contigs with the VDPI. This contig db is assumed to include metagenome accession IDs. From those IDs, search can make available access to other desirable data features, as provided in the NCBI Virus DB, such as species, source material, country of origin, etc. so we need not provide such information.
+
+The Knowns pipeline generates a possible taxonomic level based on ANI level and perhaps other criteria and provides that in the index. We propose that there also be entries allowing for expert curation when and if any occurs.
+Initial thinking for auto-generated taxonomic level: 
+
+Possible taxonomic levels e.g.
+- 99% identical
+- 95% identical (new strain?)
+- 80% identical (new species?)
+
+Contigs that have an ANI lower than the cutoff are sorted and their indices are provided to the Novel Virus processing pipeline.
     
+
 ## Detection of novel contigs and novel viruses
 
 Presentation  here - https://docs.google.com/presentation/d/1U9_ryV0uzO0VXC77vzhur2lJmBunA4F5aNSmhQXrgJU/edit#slide=id.g4a4e9be9b9_41_11
