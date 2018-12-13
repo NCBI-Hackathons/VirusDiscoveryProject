@@ -1,0 +1,3 @@
+[submodule "novel/tools/include/entrezpy"]
+	path = novel/tools/include/entrezpy
+	url = https://gitlab.com/ncbipy/entrezpy.git
