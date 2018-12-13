@@ -65,7 +65,7 @@ novel
 ## Steps
 
 - Clustering
-    - mmseq2
+    - ~~mmseq2~~
     - HMM
     - RPStblastn
     - pVOG
@@ -76,6 +76,7 @@ novel
  - Walltime approx 1 hrs to search  NCBI_VIV_protein_sequences_v5
  (513,755 sequences) in ERR210051 contigs (146 contigs, 5 are human chromosomes)
  using 32 cpus.
+ - Reject, rpstblastn is better suited so far
 
 ### rpstblastn
 
@@ -84,12 +85,12 @@ against entire CDD, but on 1 thread
 
 ### ToDo
 
- - Test if clustering of  target database, e.g. NCBI_VIV_protein_sequences_v5
-   improves time.
- - Why is contig-filter.py not reading sys.stdout when reading Docker stdout?
  - Walltime for pVOGs
  - Walltime for RVDBs
  - Walltime for RPStblastn --> multithreading?
+ - Better cross-referencing to gather metadata of hits
+    - `tools/result-reporter` can query Entrez but   
+       needs refinment.
 
 ## HMMER3 vs RVDB v Oct 2018
 
