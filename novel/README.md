@@ -19,7 +19,7 @@ analysis.
 
 sed -i s/>// SRR918250.realign.local.unknowns.txt
 
-seqtk subseq/home/michael.tisza/mt_contigs1/SRR918250.realign.local.1000bp.fa SRR918250.realign.local.unknowns.txt > unk_test.fasta
+seqtk subseq/home/michael.tisza/mt_contigs1/SRR918250.realign.local.1000bp.fa SRR918250.realign.local.unknowns.txt > SRR918250.realign.local.unknowns.fasta
 
 ```
 
