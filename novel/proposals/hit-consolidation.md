@@ -19,8 +19,8 @@ without writing a tool for each possible combination.
 
 ## Approach
 
-We already use several tools, e.g. rpstblastn HMMER, mmseq2, which screen
-several databases, e.g. NCBI_VIV_proteins, nr, nt, pVOG.
+We already use several tools, e.g. `rpstblastn`,  `HMMER`, `mmseq2`, which screen
+several databases, e.g. `NCBI_VIV_proteins`, `nr`, `nt`, `pVOG`, `RVDB`.
 
 These methods use different approaches,and in conjunction with different
 databases, which we can incorporate in a simple scoring system, i.e. how often a
@@ -82,9 +82,9 @@ I wrote a simple tool (`VirusDiscoveryProject/novel/tools/result-reporter`) to
 query the CDD database with *@Warddeb*'s test results
 (`35.245.219.49:/home/jan.buchmann/work/warddeb-cdd-results.tbl`)[^1].
 
-This can be extended to query all Entrez metadata. We can store fetched metadata 
-in one or several local SQLite databases to minimize lookups. 
+This can be extended to query all Entrez metadata. We can store fetched metadata
+in one or several local SQLite databases to minimize look ups.
 
 
-[^1]: The problem is, I need to figure out why the google cloud kills my requests 
-but which are working on my local machine.
+[^1]: The problem is, I need to figure out why the google cloud kills my requests
+but are working on my local machine.
