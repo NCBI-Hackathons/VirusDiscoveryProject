@@ -24,7 +24,7 @@ class FastaReader:
 
     def get_shannon(self):
       for i in self.charfreqs:
-        self.shannon += self.charfreqs[i] * math.log2(self.charfreqs[i])
+        self.shannon += (self.charfreqs[i]/len(self.seq)) * math.log2((self.charfreqs[i]/len(self.seq)))
       return abs(self.shannon)
 
     def add_seq(self, seq):
