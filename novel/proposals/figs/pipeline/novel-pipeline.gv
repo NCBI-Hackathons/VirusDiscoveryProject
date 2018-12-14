@@ -1,0 +1,92 @@
+#dot  -Tpdf novel-pipeline.gv > novel-pipeline.pdf
+# thanks to Team Belgium(@Joan, @Warddem, @BertV) for their sketches
+digraph novelpl
+{
+  "novel_input"
+  [
+   label = "SRRXXXX.unknown.text |{ Contig_17_51.0162:1.54541| Contig_151_57.2412:1.6338 | ..}"
+   shape = "record"
+  ]
+  "contig_fasta"
+  [
+    shape = "record"
+    label = "SRRXXXX.fa |{\>Contig_17_51.0162:1.54541\l|ATACGCTAGA...\l|\>Contig_151_57.2412:1.6338\l|ATGCCTG...\l|..}"
+  ]
+
+  "intervals"
+  [
+    shape = "record"
+    label = "Interval tree\n(JSON)|{\{\"srr\":\"SRRXXXX\":\l \
+                                      \[\{\"hit_id\":1,\l\
+                                      \"method\":\"rpstblastn\",\l\
+                                      \"parameters\":\"this is some parameters\",\l\
+                                      \"accession\":\"AC12345.1\",\l\
+                                      \"simil\":0.8\l\},\l\
+                                      \{\"hit_id\":2,\l\
+                                      \"method\":\"mmseq2\",\l\
+                                      \"parameters\":\"this is some parameters\",\l\
+                                      \"accession\":\"AC54321.2\",\l\
+                                      \"simil\":0.4\}\]\l}"
+  ]
+
+  "putative_virus"
+  [
+    shape = "record"
+    label = "virus\n(JSON)|{\[\{\l\"hit_id\":2,\l\
+                                  \"Contig\":\"SRR123.contig.1\",\l\
+                                  \"method\":\"rpstblastn\",\l\
+                                  \"parameters\":\"this is some parameters\",\l\
+                                  \"accession\":\"AC12345.1\",\l\
+                                  \"simil\":0.8\l\}\]\l}"
+  ]
+
+
+  node [shape = "cylinder"] "CDD" "refseq_VIV" "pVOG" "RVDB"
+  node [shape = "diamond"] "rpstblastn" "mmseq2" "HMMER" "seqtk"
+  node [shape = "Msquare"] "interval_analyzer"
+  node [shape = "circle"] "known" "scaling"
+
+
+//{
+
+
+//},
+  intervals, interval_analyzer, putative_virus [group = 1];
+
+  subgraph cluster_initial
+  {
+    color=red
+    label = "initial";
+    refseq_VIV -> mmseq2
+    CDD -> rpstblastn
+  }
+
+  subgraph cluster_refine
+  {
+    color=blue
+    label = "refine";
+    {pVOG, RVDB} -> HMMER [samehead=true];
+  }
+  subgraph cluster_scoring
+  {
+    color=green
+    label = "scoring";
+    intervals -> interval_analyzer
+    interval_analyzer -> putative_virus [label = "high score"];
+  }
+  subgraph cluster_dataprep
+  {
+    color=black
+    label = "dataprep";
+    novel_input -> seqtk -> contig_fasta;
+  }
+
+
+  known -> novel_input
+  {rpstblastn, HMMER, mmseq2} -> intervals  [samehead = true]
+  contig_fasta -> {rpstblastn mmseq2, HMMER} [sametail = true];
+  interval_analyzer -> HMMER [label = "low score"];
+  putative_virus-> scaling
+  intervals -> scaling [label = "store raw as well?"]
+
+}
