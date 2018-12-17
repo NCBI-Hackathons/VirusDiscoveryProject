@@ -14,3 +14,6 @@ class Node:
     self.med = med
     self.left = []
     self.right = []
+
+  def dump(self):
+    return {'med':self.med, 'left':self.left, 'right': self.right}

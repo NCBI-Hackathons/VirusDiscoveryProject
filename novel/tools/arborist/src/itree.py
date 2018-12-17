@@ -21,6 +21,9 @@ class IntervalTree:
       self.left = []
       self.right = []
 
+    def dump(self):
+      return {'median':self.median, 'left':self.left, 'right': self.right}
+
   def __init__(self):
     self.ivals = []
     self.end_coords = set()
@@ -34,7 +37,14 @@ class IntervalTree:
     sorted_ivals = sorted(self.end_coords)
     median_idx = math.floor(len(sorted_ivals)/2) - 1
     print(sorted_ivals[median_idx])
-    self.add_node(self.ivals)
+    n = self.add_node(self.ivals)
+    nd = n
+    while nd.left:
+      print(nd.median)
+      for i in nd.right:
+        print(i.dump())
+      nd = i
+
 
   def calc_median(self, ivals):
     prev_val = 0
@@ -49,6 +59,7 @@ class IntervalTree:
     if not ivals:
       return None
     n = self.Node(self.calc_median(ivals))
+    print("22222222", n.median)
     for i in ivals:
       if i.beg <= n.median and i.end >= n.median:
         n.intervals.append(i)
@@ -58,13 +69,18 @@ class IntervalTree:
         n.right.append(i)
       else:
         sys.exit("Should never happen")
+    #self.add_node(n.left)
+    self.add_node(n.right)
+    return n
 
-    print("left")
-    for i in n.left:
-      print(i.dump())
-    print("center")
-    for i in n.intervals:
-      print(i.dump())
-    print("right")
-    for i in n.right:
-      print(i.dump())
+    #print(n.median)
+    #print("left")
+    #for i in n.left:
+      #print(i.dump())
+    #print("center")
+    #for i in n.intervals:
+      #print(i.dump())
+    #print("right")
+    #for i in n.right:
+      #print(i.dump())
+    #return n
