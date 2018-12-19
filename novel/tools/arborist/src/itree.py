@@ -10,13 +10,19 @@ import io
 import os
 import sys
 import math
+import uuid
 
 class IntervalTree:
 
   class Node:
 
-    def __init__(self, median):
+    def __init__(self, median, root):
+      self.id = None
+      self.uuid = str(uuid.uuid4())
+      self.root = root
       self.median = median
+      self.beg = median
+      self.end = 0
       self.intervals = []
       self.left = []
       self.right = []
@@ -27,6 +33,8 @@ class IntervalTree:
   def __init__(self):
     self.ivals = []
     self.end_coords = set()
+    self.node_count = 0
+    self.nodes = []
 
   def collect_interval(self, interval):
     self.ivals.append(interval)
@@ -34,16 +42,16 @@ class IntervalTree:
 
   def build(self):
     self.ivals.sort(key=lambda x:x.end)
-    sorted_ivals = sorted(self.end_coords)
-    median_idx = math.floor(len(sorted_ivals)/2) - 1
-    print(sorted_ivals[median_idx])
     n = self.add_node(self.ivals)
-    nd = n
-    while nd.left:
-      print(nd.median)
-      for i in nd.right:
-        print(i.dump())
-      nd = i
+    if not n:
+      print("Done")
+    else:
+      print(n, n.median)
+    #while root:
+      #print(nd.median)
+      #for i in nd.right:
+        #print(i.dump())
+      #root =
 
 
   def calc_median(self, ivals):
@@ -55,13 +63,17 @@ class IntervalTree:
       prev_val = i.end
     return uniq[math.floor(len(uniq)/2)-1].end
 
-  def add_node(self, ivals):
+  def add_node(self, ivals, root=None):
     if not ivals:
       return None
-    n = self.Node(self.calc_median(ivals))
-    print("22222222", n.median)
+    n = self.Node(self.calc_median(ivals), root)
+    n.id = self.node_count
     for i in ivals:
       if i.beg <= n.median and i.end >= n.median:
+        if i.beg < n.beg:
+          n.beg = i.beg
+        if i.end > n.end:
+          n.end = i.end
         n.intervals.append(i)
       elif i.end < n.median:
         n.left.append(i)
@@ -69,8 +81,11 @@ class IntervalTree:
         n.right.append(i)
       else:
         sys.exit("Should never happen")
-    #self.add_node(n.left)
-    self.add_node(n.right)
+    print("Node", n, n.id, n.median, n.root, n.beg, n.end, len(n.intervals))
+    self.nodes.append(n)
+    self.node_count += 1
+    self.add_node(n.left, n)
+    self.add_node(n.right, n)
     return n
 
     #print(n.median)
