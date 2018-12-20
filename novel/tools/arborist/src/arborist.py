@@ -115,11 +115,11 @@ def make_dot(contigs, srr):
     print("{")
     print("label=\"{}\"".format(ctg))
     for j in i.itree.nodes:
-      print("{0}{1} [label=\"id: {1}\lival: {2}-{3}\lmedian: {4}\lroot: {5}\l\"] ;".format(ctg_count, i.itree.nodes[j].id, i.itree.nodes[j].beg,i.itree.nodes[j].end, i.itree.nodes[j].median, i.itree.nodes[j].root.id))
+      print("{0}{1} [label=\"id: {1}\lival: {2}-{3}\lmedian: {4}\lroot: {5}\l\"] ;".format(ctg, i.itree.nodes[j].id, i.itree.nodes[j].beg,i.itree.nodes[j].end, i.itree.nodes[j].median, i.itree.nodes[j].root.id))
       if i.itree.nodes[j].left:
-        print("{0}{1} -- {0}{2}".format(ctg_count, i.itree.nodes[j].id, i.itree.nodes[j].left.id))
+        print("{0}{1} -- {0}{2}".format(ctg, i.itree.nodes[j].id, i.itree.nodes[j].left.id))
       if i.itree.nodes[j].right:
-        print("{0}{1} -- {0}{2}".format(ctg_count, i.itree.nodes[j].id, i.itree.nodes[j].right.id))
+        print("{0}{1} -- {0}{2}".format(ctg, i.itree.nodes[j].id, i.itree.nodes[j].right.id))
     print("}")
     ctg_count += 1
   print("}")
@@ -146,6 +146,9 @@ def main():
                   type=str,
                   required=True,
                   help='Blast type: {t}blast{n,x}, rpstblastn')
+  ap.add_argument('--plot',
+                  action='store_true',
+                  help='Plot interval trees in dot to stdout')
   args = ap.parse_args()
 
   s = set_splitter(args.blast)
@@ -159,7 +162,9 @@ def main():
       contigs.append(Contig(cols.query, args.srr))
     contigs[-1].add_interval(interval.Interval(cols))
   contigs[-1].build_itree()
-  #make_dot(contigs, args.srr) SRR918250
+  if args.plot:
+    make_dot(contigs, args.srr) #SRR918250
+    return 0
   for i in contigs:
     i.score()
   return 0
