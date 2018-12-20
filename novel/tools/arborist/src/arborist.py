@@ -1,23 +1,26 @@
 #!/usr/bin/env python3
-#  -------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #  \author Jan P Buchmann <jan.buchmann@sydney.edu.au>
 #  \copyright 2018 The University of Sydney
-#  \description
-#  -------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
-
-import io
-import os
 import sys
 import argparse
 
 import itree
 import interval
 
+"""
+Base class to handle different Blast results and types.
+split() needs to be implemented to create an uniform approach for Intervals
+"""
 class LineSplitter:
 
-  class Columns:
 
+  class Columns:
+    """
+    Store the columns/fields ina flat file blast result as struct
+    """
     def __init__(self, query, db, subject, pident, length, mismatch, gapopen, qstart, qend, sstart, send, evalue, bitscore):
       self.query = query
       self.db = db
@@ -36,15 +39,26 @@ class LineSplitter:
   def __init__(self, sep):
     self.sep = sep
 
+  """
+  Virual method to accomodate quirks and weird formatting issues encountered in
+  Blast results.
+  :param: result line
+  :return: Column()
+  """
   def split(self, line):
     raise NotImplementedError("Help! Need implementation")
 
-
 class RpstblastnSplitter(LineSplitter):
-
+  """
+  Class to handle rpstblastn -outfmt 6 result files
+  :param sep: field separator
+  """
   def __init__(self, sep='\t'):
     super().__init__(sep)
 
+  """
+  Implemented virtual split method to extratc CDD accession form blast results.
+  """
   def split(self, line):
     cols = line.split(self.sep)
     db, subject = cols[1].split(':')
@@ -53,22 +67,44 @@ class RpstblastnSplitter(LineSplitter):
                         cols[11])
 
 class Contig:
-
+  """
+  Class to handle individual contings from a SRR.contigs file and corresponding
+  interval tree.
+  :param name: contig name
+  :srr: SRR accession
+  """
   def __init__(self, name, srr):
     self.name = name
     self.srr = srr
     self.itree = itree.IntervalTree()
 
+  """
+  Add interval to interval tree
+  :param interval: Interval()
+  """
   def add_interval(self, interval):
     self.itree.collect_interval(interval)
 
+  """
+  Build interval tree after parsing all hits for one contig
+  """
   def build_itree(self):
     self.itree.build()
 
+  """
+  Scoring function for contig. Currently more proof of concept.
+  """
   def score(self):
     for i in self.itree.nodes:
       print(self.srr, self.name, self.itree.nodes[i].id, self.itree.nodes[i].beg, self.itree.nodes[i].end, len(self.itree.nodes[i].intervals))
 
+"""
+Quikc and dirty function to dump intervals in dot to pot with graphviz, e.g.
+dot -Tpdf.
+It makes sens eot limit the number of contigs since this will blow up if a whole
+SRR is plotted.
+head -n 100 unk_test_rpstbln_fullCD_eval3.tab | arborist/src/arborist.py -b rpstblastn --srr SRR918250 | dot -Tpdf > SRR918250.itree.pdf
+"""
 def make_dot(contigs, srr):
   print("graph \"\"\n{")
   print("label=\"{}\"".format(srr))
@@ -88,6 +124,9 @@ def make_dot(contigs, srr):
     ctg_count += 1
   print("}")
 
+"""
+Set splitter. Only rpstblastn so far.
+"""
 def set_splitter(blast_typ):
   if blast_typ == 'rpstblastn':
     return RpstblastnSplitter()
@@ -124,7 +163,6 @@ def main():
   for i in contigs:
     i.score()
   return 0
-
 
 if __name__ == '__main__':
   main()

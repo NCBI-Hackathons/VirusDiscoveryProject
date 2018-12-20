@@ -1,9 +1,12 @@
 #  -------------------------------------------------------------------------------
 #  \author Jan P Buchmann <jan.buchmann@sydney.edu.au>
 #  \copyright 2018 The University of Sydney
-#  \description
 #  -------------------------------------------------------------------------------
 
+"""
+Interval class to store values from blast results. They can be accessed later
+from nodes and scored based on their attributes.
+"""
 class Interval:
 
   def __init__(self, cols):
