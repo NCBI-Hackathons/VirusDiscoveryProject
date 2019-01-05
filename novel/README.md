@@ -81,13 +81,12 @@ novel
 ### rpstblastn
 
  - Walltime 2 hrs, ERR1913430 contigs (filtered for length >= 1kb), 560 sequences done
-against entire CDD, but on 1 thread
+against entire CDD, but on 1 thread.
+ - Split DB (in 32, per CPU) couple of minutes per dataset. This is workable
 
 ### ToDo
 
  - Walltime for pVOGs
- - Walltime for RVDBs
- - Walltime for RPStblastn --> multithreading?
  - Better cross-referencing to gather metadata of hits
     - `tools/result-reporter` can query Entrez but   
        needs refinment.
