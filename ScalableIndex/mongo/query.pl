@@ -23,6 +23,10 @@ sub main {
         });
     }; 
 
+    my $db = $args{'db'} || 'hackathon';
+
+    say "Connecting to database '$db'";
+
     my $mongo = MongoDB::MongoClient->new(
         host     => 'localhost',
         port     => 27017,
@@ -30,7 +34,7 @@ sub main {
         password => 'ilikecake',
     );
 
-    my $mdb   = $mongo->get_database('hackathon');
+    my $mdb   = $mongo->get_database($db);
     my $query = $mdb->get_collection('query');
 
     my %cmp_op = (
@@ -80,11 +84,12 @@ sub get_args {
     my %args;
     GetOptions(
         \%args,
+        'db|d=s',
         'bench|b=i',
         'length|l=s',
         'meta__center|c=s',
         'sample__sacc|a=s',
-        'dump|d',
+        'dump',
         'help',
         'man',
     ) or pod2usage(2);

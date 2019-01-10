@@ -1,7 +1,7 @@
 # Clustering and Phylogeny
 This part of the ViralDiscoveryProject aims to answer the question: **How are these new contigs related to known viruses and each other**?
 
-## 'Simple' Clustering
+## 'Simple' Clustering using MMSeq2
 The goal of this section is to provide the simplest answer to users who are searching through the database, find a putative virus they're interested in, and wonder: "Are there any similar contigs?" 
 
 Each contig will be assigned to a single cluster, and each cluster will be represented by one "representative contig".  Often times a contig will be the "representative contig" in its own cluster. We colloquially refer to these as 'lonely contigs'.
@@ -26,6 +26,10 @@ Each contig will be assigned to a single cluster, and each cluster will be repre
 | NC_024768_Chicken_picornavirus_4 | NC_021201_Turkey_hepatitis_virus_2993D |
 
 
-## Full Clustering
-Here we aim to cluster all contigs and all refseq viruses (again) but extract actual edge weights between the nodes in the cluster. This will be done using blastn and extracting the SECOND top hit (the top hit will be the virus matching to itself). If a virus has no second hits, it's 'lonely' and wont show up to the graph.
+## Full Clustering using BLASTN
+Here we aim to cluster all contigs and all refseq viruses (again) but extract actual edge weights between the nodes in the cluster. This will be done using blastn and extracting the top non-self hit. If a virus has no non-self hits, it's 'lonely' and wont show up to the graph.
 
+The graph will be generated with Gephi. Two nodes will have an edge if a blast result was obtained (with the e-value established below). The weight of the graph will be equal to be bit score for the alignment.
+
+### Command used:
+`blastn -query known_knowns.fasta -db known_knowns.fasta -out known_knowns.blastn -num_threads 96 -outfmt 7 -evalue 1e-10 -max_hsps 1`
