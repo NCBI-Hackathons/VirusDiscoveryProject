@@ -57,7 +57,7 @@ sub main {
         password => 'ilikecake',
     );
 
-    my $mdb  = $mongo->get_database('hackathon');
+    my $mdb  = $mongo->get_database($db);
     my $coll = $mdb->get_collection($collection);
     $coll->drop();
 

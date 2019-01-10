@@ -1,0 +1,2 @@
+db.known_sample.createIndex({'contig': -1})
+db.metadata.createIndex({'contig': -1})
