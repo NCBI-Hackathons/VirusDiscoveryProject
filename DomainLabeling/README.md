@@ -16,7 +16,7 @@ Using full CDD database:
  - Positive:
     - REFSEQ viral genomes
     - Selected SRA from data selection
-    - crassphage DB
+    - crassphage DB (249 contigs)
 
 ## Metrics:
  - Evalue
