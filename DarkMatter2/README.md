@@ -7,7 +7,7 @@
 
 
 
-In accession SRR5260890, which is putatively a freshwater metagenome sample from Crystal Bog Wisconsin, there were five large contigs named with RefSeq.
+In accession SRR5260890, which is putatively a freshwater metagenome sample from Crystal Bog Wisconsin, there were five large contigs named with RefSeq identifiers.
 
   - NC_001479.1 – Encephalomyocarditis virus
   - NC_001352.1 – Human papillomavirus 2 
@@ -15,7 +15,7 @@ In accession SRR5260890, which is putatively a freshwater metagenome sample from
   - NC_001716.2 – Human herpesvirus 7
   - NC_001664.3 – Human herpesvirus 6A
 
-They had been assembled in their entirety.  We learned that they are reference sequences and not actual contigs.  Why they are exported in the nominal de novo fasta is not clear.  A hypothesis is that there were telomeric-like sequences or other low-complexity sequence repeats that trip the k-mer wire for these human herpesviruses.  For ECMV, it has a classic poly-C tract that might be given k-mer hits.  The code that NCBI screened the reads with then took the reads and performed a directed alignment to these reference genomes.  It then exported the reference genome in the contig set.
+They had been assembled in their entirety.  They aligned with >99.9% identity with 100% coverage to their respective virus in NT.  They came from fresh-water metagenomic samples.  We think they are reference sequences and not actual contigs.  Why they are exported in the nominal de novo fasta is not clear.  A hypothesis is that there were telomeric-like sequences or other low-complexity sequence repeats that trip the k-mer wire for these human herpesviruses.  For ECMV, it has a classic poly-C tract that might be given k-mer hits.  The code that NCBI screened the reads with then took the reads and performed a directed alignment to these reference genomes.  It then exported the reference genome in the contig set.
 
 These are present in many assemblies. A hallmark of these issues is full-length sequence, low coverage (1X), and NC_ header.  If you just look through the 406 SRR5*.fa.gz files, there are 5,128 "contigs" with NC_0 names...so maybe expecting ~10 of these per contig file.  That could be a lot of meatballs.  Some of them could be legit assemblies, but there's a lot of fishiness.  Here are just the full-length HHV-6A ones from SRR5*.fa.gz files with 1X coverage and full-length sequence.
 
