@@ -43,7 +43,7 @@ Using full CDD database:
  - Test dataset:
  	- dataselection - (10 samples)
 	- dataselection + (10 samples)
-	- Crassphage dataset (140 contigs, Done)
+	- Crassphage dataset (249 contigs, Done)
 	- REFSEQ viral genomes (ongoing)
 	- Cellular organisms (ongoing) --> CHOP contigs
 	- Prokaryotic organisms (ongoing) --> CHOP contigs
