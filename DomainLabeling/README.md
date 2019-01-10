@@ -1,7 +1,7 @@
 # Domain Labeling using rpstblastn
 Using full CDD database:
  - rpstblastn with e-value cut-off of 1e-3
-                   bitscore cut-off >50
+ - bitscore cut-off >50
  - output in JSON
  - split CDD database in :
     - Viral CDD --> Provided by Rodney 
