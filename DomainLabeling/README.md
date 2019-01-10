@@ -34,3 +34,10 @@ Using full CDD database:
  - drop cellular
  - ambigious / unkown to Genes / darkmatter?
 
+
+##TODO:
+ - run RPSTBLN
+ - Chop positive control samples from REFSEQ
+ - set up jupyter notebook for analysis
+ - generate control samples
+ - combine JSON formats
