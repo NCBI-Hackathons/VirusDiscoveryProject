@@ -1,7 +1,9 @@
-# QC: Understanding the realign.local.fa files
+# Dark Matter 2
+
+### QC: Understanding the realign.local.fa files
 
 
-### They are not all contigs.
+#### They are not all contigs.
 
 
 
@@ -46,14 +48,19 @@ These are present in hundreds of assemblies. A hallmark of these issues is full-
   - SRR5940707.realign.local.fa.gz:>NC_001664.3:1.159321
   - SRR5983464.realign.local.fa.gz:>NC_001664.3:1.159321
   
-  # Prioritizing true Dark Matter
+  ### Prioritizing true Dark Matter
   
-  ### We don't have true Dark Matter yet, but many of the realign.local.fa files have dark matter.  
+  #### We don't have true Dark Matter yet, but many of the realign.local.fa files have dark matter.  
   
   Assuming the upstream classification steps work, existing reference databases -- NT, NR, PFAM, CDD -- will not help us annotate these contigs much.  So, let's assume that we have one of the world's greatest datasets of Dark Matter and so we will use our own unannotated contigs as reference.  We have set up All x All self-tblastx to look for relationships among different datasets.  This will allow us to 
   - 1) check potential annotations (are we using the correct genetic codes for translation?  Do starts and stops jive?)
   - 2) prioritize Dark Matter for characterization in the future (pull sample metadata, screen SRA for it, etc.)
   
   
+  ### Rule-out trivial reasons for Dark Matter
   
+  #### Chimeras
+    see ReadMe in chimera folder
+  #### Low complexity
+    Unclear how much of a problem if we only look at contigs > 1 kb
   
