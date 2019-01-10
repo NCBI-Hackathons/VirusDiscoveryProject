@@ -6,10 +6,33 @@ _Jan Buchmann, Cody Glickman, Laura Milena, Forero Junco, Lindsay Rutter, Ryan S
 ### Objective
 Collating output of multiple teams to identify novel viral contigs in metagenomic datasets
 
+### Overview
+```
+/intact/
+ |
+ +-- input  \\ From genes
+ |
+ +-- output \\ To DarkMatter2
+```
+
+### Internal JSON data
+```
+{
+  domains: [
+            {start: int, end: int,name: char},
+            {start: int, end: int,name: char}
+            ],
+  orfs: [
+          {start: int, end: int,name: char},
+          {start: int, end: int,name: char}
+        ]
+}
+```
 ### Required Tools
 
 
 ### Expected Input
+
 
 ### Projected Output
 
