@@ -1,3 +1,12 @@
+# Dark Matter 2
+
+### QC: Understanding the realign.local.fa files
+
+
+#### They are not all contigs.
+
+
+
 In accession SRR5260890, which is putatively a freshwater metagenome sample from Crystal Bog Wisconsin, there were five large contigs named with RefSeq.
 
   - NC_001479.1 – Encephalomyocarditis virus
@@ -8,7 +17,7 @@ In accession SRR5260890, which is putatively a freshwater metagenome sample from
 
 They had been assembled in their entirety.  We learned that they are reference sequences and not actual contigs.  Why they are exported in the nominal de novo fasta is not clear.  A hypothesis is that there were telomeric-like sequences or other low-complexity sequence repeats that trip the k-mer wire for these human herpesviruses.  For ECMV, it has a classic poly-C tract that might be given k-mer hits.  The code that NCBI screened the reads with then took the reads and performed a directed alignment to these reference genomes.  It then exported the reference genome in the contig set.
 
-These are present in hundreds of assemblies. A hallmark of these issues is full-length sequence, low coverage (1X), and NC_ header.
+These are present in many assemblies. A hallmark of these issues is full-length sequence, low coverage (1X), and NC_ header.  If you just look through the 406 SRR5*.fa.gz files, there are 5,128 "contigs" with NC_0 names...so maybe expecting ~10 of these per contig file.  That could be a lot of meatballs.  Some of them could be legit assemblies, but there's a lot of fishiness.  Here are just the full-length HHV-6A ones from SRR5*.fa.gz files with 1X coverage and full-length sequence.
 
   - SRR5131927.realign.local.fa.gz:>NC_001664.3:1.159321
   - SRR514227.realign.local.fa.gz:>NC_001664.3:1.159321
@@ -38,3 +47,21 @@ These are present in hundreds of assemblies. A hallmark of these issues is full-
   - SRR5940705.realign.local.fa.gz:>NC_001664.3:1.159321
   - SRR5940707.realign.local.fa.gz:>NC_001664.3:1.159321
   - SRR5983464.realign.local.fa.gz:>NC_001664.3:1.159321
+  
+  ### Prioritizing true Dark Matter
+  
+  #### We don't have true Dark Matter yet, but many of the realign.local.fa files have dark matter.  
+  
+  Assuming the upstream classification steps work, existing reference databases -- NT, NR, PFAM, CDD -- will not help us annotate these contigs much.  So, let's assume that we have one of the world's greatest datasets of Dark Matter and so we will use our own unannotated contigs as reference.  We have set up All x All self-tblastx to look for relationships among different datasets.  This will allow us to 
+  - 1) check potential annotations (are we using the correct genetic codes for translation?  Do starts and stops jive?)
+  - 2) prioritize Dark Matter for characterization in the future (pull sample metadata, screen SRA for it, etc.)
+  
+  We have "validated" the All x All tblastx on a select dataset that identified non-Dark Matter from multiple datasets.  Basically it found all the human gut/feces metagenomes.  Though this was not performed on Dark Matter, it was tblastx based and so could see pretty distant stuff in this space.
+  
+  ### Rule-out trivial reasons for Dark Matter
+  
+  #### Chimeras
+    see ReadMe in chimera folder
+  #### Low complexity
+    Unclear how much of a problem if we only look at contigs > 1 kb
+  
