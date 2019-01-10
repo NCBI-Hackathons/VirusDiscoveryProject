@@ -13,7 +13,7 @@ Using full CDD database:
  - Negative:
     - No phage sel from data selection (10 datasets)
     - REFSEQ bacterial sequences (random 100 sequences, chopped in smaller pieces; cut-off: from 1kbp to 1Mbp)
-    - REFSEQ cellular sequences (random 31 sequences belonging to fungi, invertebrate and protozoa)
+    - REFSEQ cellular sequences (random 31 sequences belonging to fungi, invertebrate and protozoa, chopped in smaller pieces; cut-off: from 1kbp to 1Mbp)
     - optional: minimal Bacillus (deletion strains) WGS
  - Positive:
     - REFSEQ viral genomes
