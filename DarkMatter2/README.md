@@ -48,9 +48,9 @@ These are present in hundreds of assemblies. A hallmark of these issues is full-
   - SRR5940707.realign.local.fa.gz:>NC_001664.3:1.159321
   - SRR5983464.realign.local.fa.gz:>NC_001664.3:1.159321
   
-  # Prioritizing true Dark Matter
+  ### Prioritizing true Dark Matter
   
-  ### We don't have true Dark Matter yet, but many of the realign.local.fa files have dark matter.  
+  #### We don't have true Dark Matter yet, but many of the realign.local.fa files have dark matter.  
   
   Assuming the upstream classification steps work, existing reference databases -- NT, NR, PFAM, CDD -- will not help us annotate these contigs much.  So, let's assume that we have one of the world's greatest datasets of Dark Matter and so we will use our own unannotated contigs as reference.  We have set up All x All self-tblastx to look for relationships among different datasets.  This will allow us to 
   - 1) check potential annotations (are we using the correct genetic codes for translation?  Do starts and stops jive?)
