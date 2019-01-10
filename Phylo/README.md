@@ -4,7 +4,7 @@ This part of the ViralDiscoveryProject aims to answer the question: **How are th
 ## 'Simple' Clustering
 The goal of this section is to provide the simplest answer to users who are searching through the database, find a putative virus they're interested in, and wonder: "Are there any similar contigs?" 
 
-Each contig will be assigned to a single cluster, and each cluster will be represented by one "representative contig".  Often times a contig will be the "representative contig" in its own cluster. We colloquallly reffer to these as 'lonely contigs'.
+Each contig will be assigned to a single cluster, and each cluster will be represented by one "representative contig".  Often times a contig will be the "representative contig" in its own cluster. We colloquially refer to these as 'lonely contigs'.
 
 | Cluster Representative Sequence | Sequence in Cluster |
 |----------------------------------------|--------------------------------------------------------|
@@ -27,5 +27,5 @@ Each contig will be assigned to a single cluster, and each cluster will be repre
 
 
 ## Full Clustering
-Here we aim to cluster all contigs and all refseq viruses
+Here we aim to cluster all contigs and all refseq viruses (again) but extract actual edge weights between the nodes in the cluster. This will be done using blastn and extracting the SECOND top hit (the top hit will be the virus matching to itself). If a virus has no second hits, it's 'lonely' and wont show up to the graph.
 
