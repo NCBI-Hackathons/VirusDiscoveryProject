@@ -28,19 +28,31 @@ Collating output of multiple teams to identify novel viral contigs in metagenomi
         ]
 }
 ```
-### Required Tools
+### Required Tools and Databases
+HMMer
+VIGA
 
+RVDB
+Viral RefSeq 
+pVOGs
 
 ### Expected Input
-
+Assembled fasta files and associated metadata
 
 ### Projected Output
-JSON file of our decorations to team scaling
+JSON file of ORFs with names, annotation, and possibly a scoring methodology? 
 
-### Methods
-Take output from #genes group and count number of open reading frames and number of domains. If we have at least two domains with hits we keep the contig and if not we pass to group 7. 
+### Methods 
+We are currrently exploring two options and comparing the overlap: 
 
-We will use jackhmmer to find putative annotations for all open reading frames. 
+1. Our predicted ORFs from unknown contigs are subjected to an iterative HMM search against proteins regarded as viral upstream (Team 3, known knowns and known unknowns). We will create a scoring metric that combines features such as contig length, domain abundances, and others?
+
+
+2. 
+
+
+We will use jackhmmer to assign putatitive names to contigs that Team 5 passed to us. We will parse jackhmmer output and generate a JSON in the outlined format to team scaling. 
+
 ### Scripts and Parameters
 
 
