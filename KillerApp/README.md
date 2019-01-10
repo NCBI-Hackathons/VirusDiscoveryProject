@@ -4,7 +4,9 @@
 * Requires database consisting of BLAST formatted RefSeq Virus, DIAMOND formatted RefSeq Virus, INFERNAL compressed Rfam, and PVOG HMMs
 * Database can be provided by #testing group
 
-```./run-viga --input ERR2538396.known_knowns1.fasta --diamonddb /data/databases/RefSeq_Viral_DIAMOND/refseq_viral_proteins.dmnd --blastdb /data/databases/RefSeq_Viral_BLAST/refseq_viral_proteins.faa --rfamdb /data/databases/rfam/Rfam.cm --hmmerdb /data/databases/pvogs/pvogs.hmm --modifiers modifiers.txt```
+```
+./run-viga --input ERR2538396.known_knowns1.fasta --diamonddb /data/databases/RefSeq_Viral_DIAMOND/refseq_viral_proteins.dmnd --blastdb /data/databases/RefSeq_Viral_BLAST/refseq_viral_proteins.faa --rfamdb /data/databases/rfam/Rfam.cm --hmmerdb /data/databases/pvogs/pvogs.hmm --modifiers modifiers.txt
+```
 
 ### Shortcomings
 * Explicit locations are required for all databases, even those you do not want to use OR that current VIGA version does not use
