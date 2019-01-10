@@ -29,5 +29,7 @@ Each contig will be assigned to a single cluster, and each cluster will be repre
 ## Full Clustering using BLASTN
 Here we aim to cluster all contigs and all refseq viruses (again) but extract actual edge weights between the nodes in the cluster. This will be done using blastn and extracting the SECOND top hit (the top hit will be the virus matching to itself). If a virus has no second hits, it's 'lonely' and wont show up to the graph.
 
+The graph will be generated with Gephi. Two nodes will have an edge if a blast result was obtained (with the e-value established below). The weight of the graph will be equal to be bit score for the alignment.
+
 ### Command used:
-`blastn -query known_knowns.fasta -db known_knowns.fasta -out known_knowns.blastn -num_threads 96 -max_target_seqs 10 -outfmt 7 -evalue 1e-10`
+`blastn -query known_knowns.fasta -db known_knowns.fasta -out known_knowns.blastn -num_threads 96 -max_target_seqs 10 -outfmt 7 -evalue 1e-10 max_hsps 1`
