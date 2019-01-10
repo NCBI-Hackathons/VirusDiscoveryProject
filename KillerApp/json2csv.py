@@ -5,10 +5,10 @@
 #JSON schema: [({"hit_id":<int>, "contig":<str>, "method":<str>,
 #"parameters":<str>, "accession":<str>, "simil":<float>},]
 
-import json
+import sys,json
 
-with open("testfile.json", "r") as infile:
-    with open("output.csv", "w") as outfile:
+with open(sys.argv[1], "r") as infile:
+    with open(sys.argv[2], "w") as outfile:
 
         data = json.load(infile)
 
