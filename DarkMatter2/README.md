@@ -18,23 +18,23 @@ These are present in hundreds of assemblies. A hallmark of these issues is full-
   - SRR5271510.realign.local.fa.gz:>NC_001664.3:1.159321
   - SRR5382269.realign.local.fa.gz:>NC_001664.3:1.159321
   - SRR5382285.realign.local.fa.gz:>NC_001664.3:1.159321
-  SRR5383919.realign.local.fa.gz:>NC_001664.3:1.159321
-  SRR5429532.realign.local.fa.gz:>NC_001664.3:1.159321
-  SRR5567687.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5601447.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5601453.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5675744.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5675746.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5675761.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5675777.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5678966.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5720301.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5720324.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5788318.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5855497.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5865004.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5865037.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5912597.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5940705.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5940707.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5983464.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5383919.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5429532.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5567687.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5601447.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5601453.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5675744.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5675746.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5675761.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5675777.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5678966.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5720301.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5720324.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5788318.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5855497.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5865004.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5865037.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5912597.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5940705.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5940707.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5983464.realign.local.fa.gz:>NC_001664.3:1.159321
