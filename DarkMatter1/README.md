@@ -37,10 +37,6 @@ Collating output of multiple teams to identify novel viral contigs in metagenomi
 ### Projected Output
 JSON file of ORFS with names. 
 
-
-### Slides
-[Slides can be found HERE](https://docs.google.com/presentation/d/1eFzNYwwj6k5Wsn6cbxgObS9PiKS7d93hLxV40KVlwTo/edit#slide=id.g4d4d6c7cd0_0_15)
-
 ### Methods 
 We will use jackhmmer to assign putatitive names to contigs that Team 5 passed to us. We will parse jackhmmer output and generate a JSON in the outlined format to team scaling. 
 
