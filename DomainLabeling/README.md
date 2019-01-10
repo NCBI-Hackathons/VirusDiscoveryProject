@@ -36,6 +36,7 @@ Using full CDD database:
  - drop PRO
  - drop cellular
  - ambigious / unkown to Genes / darkmatter?
+ - Darkmatter wants a list of 'definitive viral'
 
 
 ##TODO:
