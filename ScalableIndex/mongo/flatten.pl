@@ -31,6 +31,7 @@ sub main {
         password => 'ilikecake',
     );
 
+    say "Connecting to database '$db'";
     my $mdb         = $mongo->get_database($db);
     my $contig_coll = $mdb->get_collection('contig');
     my $meta_coll   = $mdb->get_collection('metadata');
