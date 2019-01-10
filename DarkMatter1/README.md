@@ -41,7 +41,8 @@ JSON file of ORFs with names, annotation, and possibly a scoring methodology?
 ### Methods
 We are currrently exploring two options and comparing the overlap: 
 
-1. Our predicted ORFs from unknown contigs are subjected to an iterative HMM search against proteins regarded as viral upstream (Team 3, known knowns and known unknowns). We will use Jackhmmer for this approach. We will create a scoring metric that combines features such as contig length, domain hit abundances, ORF abundances, strand, e-value, and others?
+1. Our predicted ORFs from unknown contigs (OrfM) are subjected to an iterative HMM search against proteins regarded as viral upstream (Definitive viral + proteins predicted by Team 3). We will use Jackhmmer for this approach. We will create a scoring metric that combines features such as contig length, domain hit abundances, ORF abundances, strand, e-value, and others. 
+   * *Negative Control*: Bacterial contigs discovered by the domains team will be run to calculate the number of false positives
 
 
 2. Utilizing the viral annotation pipeline (VIGA), we are developing a scoring method to split contigs for additional processing. VIGA uses blastx annotation and pVOG databases to annotate prodigal predicted genes. The resulting tabular output contains features including strand, amino acid size, location start, annotations, and pVOG hits. The scoring system will determine which contigs to port downstream to team 7 or retain for expanded processing. The high scoring contigs will be additionally processed using the approach defined in method 1 to expand the search space for domains. 
