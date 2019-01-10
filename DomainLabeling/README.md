@@ -39,9 +39,18 @@ Using full CDD database:
 
 
 ##TODO:
- - run RPSTBLN + (done for some negatives and positives, currently 1330 datasets from knowns are in run)
- - Chop positive control samples from REFSEQ
- - set up jupyter notebook for analysis + 
- - generate control samples + 
- - combine JSON formats
- - 
+#Running RPSTBLN
+ - Test dataset:
+ 	- dataselection - (10 samples)
+	- dataselection + (10 samples)
+	- Crassphage dataset (140 contigs, Done)
+	- REFSEQ viral genomes (ongoing)
+	- Cellular organisms (ongoing) --> CHOP contigs
+	- Prokaryotic organisms (ongoing) --> CHOP contigs
+ - Scale up to multiple instances
+ - run RPSTBLN for known knowns (RUNNING)
+ - run RPSTBLN for known unknown / unknown unknown (ON HOLD)
+#Parsing results
+ - combine JSON files / sample
+ - Parse JSON files + run basic statistic metrics for cutoff
+ - Divide contigs in parts
