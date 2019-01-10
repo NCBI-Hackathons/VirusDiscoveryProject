@@ -11,9 +11,9 @@
 - Method: Network Smoothing
 
 ## Problem 2 : Predicting the amount of "Dark Matter"
-- Feature set : the SRR metadata (library preparation....)
+- Feature set : GloVE parsing of the SRR metadata (library preparation....) 
 - label : %Dark Matter
-- Method : GloVE
+- Learning: ataboost, random forest, generalized linear regression
 
 ## File Structure
 ```
