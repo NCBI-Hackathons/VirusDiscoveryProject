@@ -15,23 +15,37 @@ The program filters for queries with multiple subject matches below the `nonover
 
 Set **nonoverlap** coefficient to `0.25`:
 ```
-$ perl blast_overlaps.pl sample.bast.txt -N 0.25
-NONOVERLAP THRESHOLD: 0.25
-OVERLAP THRESHOLD: 0
+$ cat sample.blast.txt 
+NC_038357.1	NC_014093.1	85.777	914	100	14	2279	3168	2339	3246	0.0	941
+NC_038357.1	NC_009225.1	85.652	920	98	21	2279	3169	2325	3239	0.0	937
+NC_038357.1	NC_038350.1	86.183	427	55	2	20	444	1	425	5.30e-127	459
+NC_038357.1	NC_038351.1	82.201	427	65	9	20	442	1	420	1.99e-96	357
+NC_038357.1	NC_007014.1	94.608	204	8	3	18	221	1	201	4.37e-83	313
+NC_038357.1	NC_007013.1	96.203	158	4	1	64	221	1	156	2.08e-66	257
+NC_038357.1	NC_025726.1	85.455	55	5	3	2900	2952	5	58	2.92e-05	54.7
+$
+$ perl blast_overlaps.pl sample.blast.txt 
+NONOVERLAP THRESHOLD	(i < thresh)	1
+OVERLAP THRESHOLD	(i >= thresh)	1
 Q_id	S1_id	S2_id	Overlap_coeff	S1_start	S1_end	Bitscore1	S2_start	S2_end	Bitscore2
-NC_038357.1	NC_007013.1	NC_038352.1	0.1438	64	2250	2682	2085	3238	1037
-NC_038357.1	NC_007013.1	NC_038353.1	0.1331	64	2250	2682	2099	3240	1171
-NC_038357.1	NC_007013.1	NC_038354.1	0.1891	64	2250	2682	2019	3245	1109
-NC_038357.1	NC_007013.1	NC_038355.1	0.2333	64	2250	2682	1950	3239	1164
-NC_038357.1	NC_007013.1	NC_038356.1	0.2091	64	2250	2682	1988	3245	976
-NC_038357.1	NC_007013.1	NC_038361.1	0.1938	64	2250	2682	2013	3240	1208
+NC_038357.1	NC_007014.1	NC_014093.1	0.0000	18	221	313	2279	3168	941
+NC_038357.1	NC_007014.1	NC_038350.1	0.9902	18	221	313	20	444	459
+NC_038357.1	NC_014093.1	NC_038350.1	0.0000	2279	3168	941	20	444	459
+$
+$ perl blast_overlaps.pl sample.blast.txt  -N 0.25
+NONOVERLAP THRESHOLD	(i < thresh)	0.25
+OVERLAP THRESHOLD	(i >= thresh)	1
+Q_id	S1_id	S2_id	Overlap_coeff	S1_start	S1_end	Bitscore1	S2_start	S2_end	Bitscore2
+NC_038357.1	NC_007014.1	NC_014093.1	0.0000	18	221	313	2279	3168	941
+NC_038357.1	NC_014093.1	NC_038350.1	0.0000	2279	3168	941	20	444	459
 ```
 
-Now move up the **overlap** threshold (`0.21`) to merge redundant subject loci:
+Now ease the **overlap** threshold definition down (`0.75`) to merge redundant subject loci:
 ```
-$ perl blast_overlaps.pl sample.bast.txt -N 0.25 -O 0.21
-NONOVERLAP THRESHOLD: 0.25
-OVERLAP THRESHOLD: 0.21
+$ perl blast_overlaps.pl sample.blast.txt  -N 0.25 -O 0.75
+NONOVERLAP THRESHOLD	(i < thresh)	0.25
+OVERLAP THRESHOLD	(i >= thresh)	0.75
 Q_id	S1_id	S2_id	Overlap_coeff	S1_start	S1_end	Bitscore1	S2_start	S2_end	Bitscore2
-NC_038357.1	NC_007013.1	NC_038355.1	0.2333	64	2250	2682	1950	3239	1164
+NC_038357.1	NC_014093.1	NC_038350.1	0.0000	2279	3168	941	20	444	459
 ```
+In this case,`NC_007014` was removed because it overlaps to query with `NC_038350` but in an inferior way. Thus, ` NC_014093` does not overlap with `NC_038350` the best with respect to matches to ` NC_014093`. 
