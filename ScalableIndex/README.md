@@ -1,6 +1,8 @@
 
 # Scaling 
 
+To generate indexes, we are first benchnmarking to decide on which database. 
+We are currently testing SOLR, MongoDB and Postgres with the test tables. 
 
 ## Presentation ##
 
