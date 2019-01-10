@@ -19,7 +19,7 @@ Using full CDD database:
     - REFSEQ viral genomes
     - Selected SRA from data selection
     - crassphage DB (the 249 crAss-like phage contigs from Guerin et al., 2018)
-    - known-known contigs (1330 datasets)
+    - known-known contigs (1330 datasets from the test dataset)
 
 ## Metrics:
  - Evalue
