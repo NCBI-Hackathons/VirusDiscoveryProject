@@ -1,3 +1,7 @@
+# Understanding the realign.local.fa files
+
+## They are not all contigs.
+
 In accession SRR5260890, which is putatively a freshwater metagenome sample from Crystal Bog Wisconsin, there were five large contigs named with RefSeq.
 
   - NC_001479.1 – Encephalomyocarditis virus
