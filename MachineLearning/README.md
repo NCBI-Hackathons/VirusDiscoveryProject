@@ -15,6 +15,9 @@
 - label : %Dark Matter
 - Learning: ataboost, random forest, generalized linear regression
 
+## Shortcomings
+There are none, the computers are sentient so we can relax.
+
 ## File Structure
 ```
 MachineLearning/
