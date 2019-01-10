@@ -1,4 +1,16 @@
 
+**Input data from NCBI SRR**
+
+
+***De novo* and reference-guided assembly**
+
+
+**Taxonomic assignment by kmer match**
+
+
+**Taxonomic assignment blastn hit**
+
+
 **Features from the blastn hits**
 
 Index for 'Known' viral contigs:
