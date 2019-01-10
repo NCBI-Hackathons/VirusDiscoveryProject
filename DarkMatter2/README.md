@@ -56,7 +56,7 @@ These are present in many assemblies. A hallmark of these issues is full-length 
   - 1) check potential annotations (are we using the correct genetic codes for translation?  Do starts and stops jive?)
   - 2) prioritize Dark Matter for characterization in the future (pull sample metadata, screen SRA for it, etc.)
   
-  We have "validated" the All x All tblastx on a select dataset that identified non-Dark Matter from multiple datasets.  Basically it found all the human gut/feces metagenomes.  Though this was not performed on Dark Matter, it was tblastx based and so could see pretty distant stuff in this space.
+  We have "validated" the All x All tblastx on a select dataset that identified non-Dark Matter from multiple datasets.  Basically it found all the human gut/feces metagenomes.  Though this was not performed on Dark Matter, it was tblastx based and so could see pretty distant stuff in this space.  This would be rad to work with the machine learning team on.
   
   ### Rule-out trivial reasons for Dark Matter
   
