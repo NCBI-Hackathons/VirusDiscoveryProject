@@ -12,27 +12,31 @@ Presentation here - https://docs.google.com/presentation/d/1NGXwqCb5mgfOGq4jqpiK
 The 'Knowns' portion of the VirusDiscovery pipeline processes data from the guided assembly database to sort for virus-like contigs. Specifically, contigs are processed with BLASTN, sorting for an average nucleotide identity ('ANI') of greater than 80% or other defined cutoff. For contigs identified as viral, an index entry is generated as below.
 
 Index for 'Known' viral contigs:
-- Metagenome accession [SRR ID]
-- NCBI virus accession [string] 
-           (relation to above?)
-- Nucleotide sequence [index to contig DB]
-- Length [int32]
-- Coverage [int32]
-- ANI [int32]
-- Curated taxonomic levels [string x 3]
-- Possible taxonomic level [string x 3]
+- Metagenome SRR accession [string]
+- Contig name [string]
+- Assembly type [denovo, reference guided]
+- Median depth of coverage by reads of contig [int]
+- Length [int]
+- Covered length from hit [int]
+- Compressed size of realigned object in bytes [int]
+- Original size in bytes [int]
+- Ratio of compressed size / original size [float]
+- NCBI taxonomy id by kmer [int]
+- NCBI taxonomic species by kmer [string]
+- Unique kmer hits [int]
+- Species for reference-guided assembly [string]
+- Accession for subject in blastn [string]
+- NCBI taxonomy id for subject in blastn [string]
+- Percent idendity of blastn hit [float]
+- Evalue of blastn hit [float]
+- Bit score of blastn hit [float]
+- Length of blastn hit [int]
 
-We assume that the contigs db will remain as part of the VirusDiscoveryProject Index ('VDPI') and that indices to that db will be adequate for access rather than having to store individual contigs with the VDPI. This contig db is assumed to include metagenome accession IDs. From those IDs, search can make available access to other desirable data features, as provided in the NCBI Virus DB, such as species, source material, country of origin, etc. so we need not provide such information.
+We assume that the contigs db will remain as part of the VirusDiscoveryProject Index ('VDPI') and that indices to that db will be adequate for access rather than having to store individual contigs with the VDPI. This contig db is assumed to include metagenome accession IDs. From those IDs search can make available access to other desirable data features, as provided in the NCBI Virus DB, such as species, source material, country of origin, etc. so we need not provide such information.
 
-The Knowns pipeline generates a possible taxonomic level based on ANI level and perhaps other criteria and provides that in the index. We propose that there also be entries allowing for expert curation when and if any occurs.
-Initial thinking for auto-generated taxonomic level: 
+The Knowns pipeline generates a possible taxonomic level based on more 85% ANI and more than 80% of coverage by blastn hit and provides that in the index. We propose that there also be entries allowing for expert curation when and if any occurs. The auto-generated taxonomic identity id simply derived from the best blastn hit.
 
-Possible taxonomic levels e.g.
-- 99% identical
-- 95% identical (new strain?)
-- 80% identical (new species?)
-
-Contigs that have an ANI lower than the cutoff are sorted and their indices are provided to the Novel Virus processing pipeline.
+Contigs that have an ANI and coverage lower than the cutoff are sorted and their indices are provided to the Novel Virus processing pipeline.
     
 
 ## Detection of novel contigs and novel viruses

@@ -14,4 +14,6 @@ The [phage selection](phage_size_selection.txt) file has 999 metagenome IDs chos
 The data sets listed in the [phage selection](phage_size_selection.txt) file should have abundant true positives.  
 
 
-We should add metagenomes that have 0% hits to phages to be able to calculate accuracy metrics like false positives, negatives, etc.
+The [no phage](no_phage_selection.txt) dataset have list of 10 metagenomes that do not have any phages.
+
+Metagenomes that have [0% hits to phages](no_phage_selection.txt) to be able to calculate accuracy metrics like false positives, negatives, etc.
