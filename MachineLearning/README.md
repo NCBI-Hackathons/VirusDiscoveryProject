@@ -1,9 +1,22 @@
-# Machine Learning Team
+# Machine Learning Team: Data-based Metadata Interpolation
 
-## Objectives
-- Assemble contig feature set: GC content, codon bias, information content, kmer frequency (GLOVE)
-- Prediction of Virus Groups
-- Prediction of % Dark Matter
+## Problem 1: Unsupervised clustering of datasets using viral MASH (Ondov et al 2016) contig features and extraction of highly associated metadata terms
+- Feature set: Using MASH to construct kmer composition of contigs
+- Label set: SRAdb to extract SRR metadata
+- Learning: Pricipal Coordinate Analysis (PCoA)
+
+## Problem 1_b: Network Smoothing for interpolation of continuous variables in kmer-space
+- Network/Matrix: MASH kmer composition
+- Label: % Dark Matter, % Herpes...whatever
+- Method: Network Smoothing
+
+## Problem 2 : Predicting the amount of "Dark Matter"
+- Feature set : GloVE parsing of the SRR metadata (library preparation....) 
+- label : %Dark Matter
+- Learning: ataboost, random forest, generalized linear regression
+
+## Shortcomings
+There are none, the computers are sentient so we can relax.
 
 ## File Structure
 ```
