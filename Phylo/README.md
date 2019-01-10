@@ -32,4 +32,4 @@ Here we aim to cluster all contigs and all refseq viruses (again) but extract ac
 The graph will be generated with Gephi. Two nodes will have an edge if a blast result was obtained (with the e-value established below). The weight of the graph will be equal to be bit score for the alignment.
 
 ### Command used:
-`blastn -query known_knowns.fasta -db known_knowns.fasta -out known_knowns.blastn -num_threads 96 -max_target_seqs 10 -outfmt 7 -evalue 1e-10 max_hsps 1`
+`blastn -query known_knowns.fasta -db known_knowns.fasta -out known_knowns.blastn -num_threads 96 -max_target_seqs 10 -outfmt 7 -evalue 1e-10 -max_hsps 1`
