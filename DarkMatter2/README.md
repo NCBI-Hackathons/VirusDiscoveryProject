@@ -1,6 +1,9 @@
-# Understanding the realign.local.fa files
+# QC: Understanding the realign.local.fa files
+
 
 ## They are not all contigs.
+
+
 
 In accession SRR5260890, which is putatively a freshwater metagenome sample from Crystal Bog Wisconsin, there were five large contigs named with RefSeq.
 
@@ -42,3 +45,7 @@ These are present in hundreds of assemblies. A hallmark of these issues is full-
   - SRR5940705.realign.local.fa.gz:>NC_001664.3:1.159321
   - SRR5940707.realign.local.fa.gz:>NC_001664.3:1.159321
   - SRR5983464.realign.local.fa.gz:>NC_001664.3:1.159321
+  
+  # Prioritizing true Dark Matter
+  
+  ## We don't have true Dark Matter yet, but many of the realign.local.fa files have dark matter.
