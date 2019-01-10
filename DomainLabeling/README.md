@@ -39,7 +39,7 @@ Using full CDD database:
 
 
 ##TODO:
- - run RPSTBLN
+ - run RPSTBLN + (done for some negatives and positives, currently 1330 datasets from knowns are in run)
  - Chop positive control samples from REFSEQ
  - set up jupyter notebook for analysis + 
  - generate control samples + 
