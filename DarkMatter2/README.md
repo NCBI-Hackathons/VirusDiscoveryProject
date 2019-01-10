@@ -57,5 +57,10 @@ These are present in hundreds of assemblies. A hallmark of these issues is full-
   - 2) prioritize Dark Matter for characterization in the future (pull sample metadata, screen SRA for it, etc.)
   
   
+  ### Rule-out trivial reasons for Dark Matter
   
+  #### Chimeras
+    see ReadMe in chimera folder
+  #### Low complexity
+    Unclear how much of a problem if we only look at contigs > 1 kb
   
