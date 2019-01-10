@@ -29,11 +29,11 @@ MachineLearning/
 |       +-- run_model.viral_groups.py ## take contig and generate prediction
 ```
 ## To do list
-[ ] get "known" contig set from #known team 
-[ ] choose the taxanomic groups # taxID.py
-[ ] generate contig_features.GLOVE.json
-[ ] generate contig_features.prodical.json
-[ ] generate contig_features.TE_informatoin.json
-[ ] aggregate contig_features to .all
-[ ] training.viral_groups.py 
-[ ] run_model.viral_groups.py
+- [ ] get "known" contig set from #known team 
+- [ ] choose the taxanomic groups # taxID.py
+- [ ] generate contig_features.GLOVE.json
+- [ ] generate contig_features.prodical.json
+- [ ] generate contig_features.TE_informatoin.json
+- [ ] aggregate contig_features to .all
+- [ ] training.viral_groups.py 
+- [ ] run_model.viral_groups.py
