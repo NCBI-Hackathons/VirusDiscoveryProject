@@ -1,0 +1,8 @@
+use big_hack
+db.createUser(
+   {
+     user: "loader",
+     pwd: "ilikecake",
+     roles: [ "readWrite" ]
+   }
+)
