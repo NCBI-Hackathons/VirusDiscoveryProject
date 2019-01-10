@@ -1,4 +1,4 @@
-Phylogenetics# Clustering and Phylogeny
+# Clustering and Phylogeny
 This part of the ViralDiscoveryProject aims to answer the question: **How are these new contigs related to known viruses and each other**?
 
 ## 'Simple' Clustering
