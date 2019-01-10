@@ -7,6 +7,10 @@
 
 import sys,json
 
+if len(sys.argv) < 3:
+    print("Usage: python3 " + sys.argv[0] + " <json input file> <csv output file>")
+    sys.exit()
+
 with open(sys.argv[1], "r") as infile:
     with open(sys.argv[2], "w") as outfile:
 
