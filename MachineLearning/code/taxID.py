@@ -22,6 +22,8 @@ def main():
     taxids_filename=args.imp
     my_out=args.out
  
+    f= open(my_out,"w+")
+
     with open(taxids_filename) as f:
         tax_ids = f.read().split('\n')
 
@@ -35,8 +37,11 @@ def main():
             print(sci_name, ' > '.join(lineage_taxa))
             order=lineage_taxa[2]
             print(order)
+            family=lineage_taxa[3]
 
+            #f.write("")
 
+    f.close()
 if __name__ == '__main__':
     main()
 
