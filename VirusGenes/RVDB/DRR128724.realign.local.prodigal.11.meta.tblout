@@ -1,0 +1,21 @@
+#                                                                     --- full sequence ---- --- best 1 domain ---- --- domain number estimation ----
+# target name        accession  query name                 accession    E-value  score  bias   E-value  score  bias   exp reg clu  ov env dom rep inc description of target
+#------------------- ----------       -------------------- ---------- --------- ------ ----- --------- ------ -----   --- --- --- --- --- --- --- --- ---------------------
+FAM002446            -          Contig_223_4.11567:1.288_1 -            8.4e-05   21.4   0.4   9.2e-05   21.3   0.4   1.0   1   0   0   1   1   1   1 -
+FAM012117            -          Contig_223_4.11567:1.288_1 -             0.0015   17.0   0.5    0.0022   16.4   0.3   1.4   1   1   0   1   1   1   1 -
+FAM017140            -          Contig_151_2.61721:1.357_1 -               0.02   13.9   0.1     0.033   13.2   0.1   1.3   1   0   0   1   1   1   0 -
+FAM002358            -          Contig_31_3.03361:1.377_1 -              0.053   11.6   0.0     0.065   11.3   0.0   1.1   1   0   0   1   1   1   0 -
+FAM010379            -          Contig_77_3.53008:1.286_1 -              0.014   14.5   0.1     0.017   14.2   0.1   1.3   1   0   0   1   1   1   0 -
+FAM007517            -          Contig_189_3.00836:1.379_1 -               0.13   10.1   0.0      0.13   10.1   0.0   1.0   1   0   0   1   1   1   0 -
+FAM011617            -          Contig_201_3.21862:1.267_1 -              0.039   12.4   1.8     0.042   12.3   1.8   1.0   1   0   0   1   1   1   0 -
+FAM010198            -          Contig_201_3.21862:1.267_1 -               0.04   12.9   1.2     0.049   12.6   1.2   1.2   1   0   0   1   1   1   0 -
+#
+# Program:         hmmscan
+# Version:         3.1b2 (February 2015)
+# Pipeline mode:   SCAN
+# Query file:      prodigal/DRR128724.realign.local.prodigal.11.meta.faa
+# Target file:     /novel/databases/RVDB/U-RVDBv14.0-prot-new.hmm
+# Option settings: hmmscan -o RVDB/DRR128724.realign.local.prodigal.11.meta.out --tblout RVDB/DRR128724.realign.local.prodigal.11.meta.tblout --cpu 32 /novel/databases/RVDB/U-RVDBv14.0-prot-new.hmm prodigal/DRR128724.realign.local.prodigal.11.meta.faa 
+# Current dir:     /home/joan.marti.carreras
+# Date:            Thu Jan 10 06:38:37 2019
+# [ok]
