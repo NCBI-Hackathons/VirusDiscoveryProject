@@ -35,12 +35,12 @@ Collating output of multiple teams to identify novel viral contigs in metagenomi
 
 
 ### Projected Output
-JSON file of our decorations to team scaling
+JSON file of ORFS with names. 
 
 ### Methods
-Take output from #genes group and count number of open reading frames and number of domains. If we have at least two domains with hits we keep the contig and if not we pass to group 7. 
+Contigs passed to us from team 5 will have contigs assigned a putative name from jackhmmer. We will parse jackhmmer output and generate a JSON in the outlined format to team scaling. 
+We will send 
 
-We will use jackhmmer to find putative annotations for all open reading frames. 
 ### Scripts and Parameters
 
 
