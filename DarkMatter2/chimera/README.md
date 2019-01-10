@@ -48,4 +48,4 @@ OVERLAP THRESHOLD	(i >= thresh)	0.75
 Q_id	S1_id	S2_id	Overlap_coeff	S1_start	S1_end	Bitscore1	S2_start	S2_end	Bitscore2
 NC_038357.1	NC_014093.1	NC_038350.1	0.0000	2279	3168	941	20	444	459
 ```
-In this case,`NC_007014` was removed because it overlaps to query with `NC_038350` but in an inferior way. Thus, ` NC_014093` does not overlap with `NC_038350` the best with respect to matches to ` NC_014093`. 
+In this case, subject match `NC_007014` was removed because it overlaps to query with subject match `NC_038350` but in an inferior way. Thus, only subject match ` NC_014093` is non-overlapping with subject match `NC_038350` with respect to query ` NC_038357`. 
