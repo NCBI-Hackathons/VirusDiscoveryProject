@@ -3,9 +3,11 @@
 ## Testing Use Cases:
 
 ### Filter queries categorically
-- Example categories to search by: Environment, Dataset size, Host organisms, any other SRA filter
-- Example question - Datasets sourced from human gut, what virus types of present, broken down by known taxonomy, related families, and novel viruses?
-- Example application - Integration of a particular known or all novel viruses from metagenomes from a certain geographical region.
+Users want to filter which results are returned based on relevant metadata associated with an SRA dataset. For example:
+- Search by: Environment, Dataset size, Host organisms, Location of sample, and basically any other SRA metadata field
+- Example question #1 - Datasets sourced from 'human gut', what virus types of present, broken down by known taxonomy, related families, and novel viruses?
+- Example question #2 - Select a subset of datasets all sourced from 'Africa', what virus types of present, broken down by known taxonomy, related families, and novel viruses?
+- Example application - Integration of a particular known or all novel viruses from metagenomes from a specified geographical region.
 
 ### Querying a virus type and identify all datasets that contain it
 - Select taxon (e.g., Human betaherpesviruses) and identify all samples that contain that taxon
