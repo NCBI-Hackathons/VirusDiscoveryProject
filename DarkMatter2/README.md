@@ -61,7 +61,7 @@ These are present in many assemblies. A hallmark of these issues is full-length 
   ### Rule-out trivial reasons for Dark Matter
   
   #### Chimeras
-    see [ReadMe](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/tree/master/DarkMatter2/chimera) in chimera folder
+    see ReadMe in chimera folder
   #### Low complexity
     Unclear how much of a problem if we only look at contigs > 1 kb
   
