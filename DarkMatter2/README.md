@@ -6,21 +6,21 @@ In accession SRR5260890, which is putatively a freshwater metagenome sample from
   - NC_001716.2 – Human herpesvirus 7
   - NC_001664.3 – Human herpesvirus 6A
 
-They had been assembled in their entirety.  We learned that they are reference sequences and not actual contigs.  Why they are exported in the nominal de novo fasta, is not clear.
+They had been assembled in their entirety.  We learned that they are reference sequences and not actual contigs.  Why they are exported in the nominal de novo fasta is not clear.  A hypothesis is that there were telomeric-like sequences or other low-complexity sequence repeats that trip the k-mer wire for these human herpesviruses.  For ECMV, it has a classic poly-C tract that might be given k-mer hits.  The code that NCBI screened the reads with then took the reads and performed a directed alignment to these reference genomes.  It then exported the reference genome in the contig set.
 
 These are present in hundreds of assemblies. A hallmark of these issues is full-length sequence, low coverage (1X), and NC_ header.
 
-SRR5131927.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR514227.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5209941.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5260890.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5261043.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5271510.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5382269.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5382285.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5383919.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5429532.realign.local.fa.gz:>NC_001664.3:1.159321
-SRR5567687.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5131927.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR514227.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5209941.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5260890.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5261043.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5271510.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5382269.realign.local.fa.gz:>NC_001664.3:1.159321
+  - SRR5382285.realign.local.fa.gz:>NC_001664.3:1.159321
+  SRR5383919.realign.local.fa.gz:>NC_001664.3:1.159321
+  SRR5429532.realign.local.fa.gz:>NC_001664.3:1.159321
+  SRR5567687.realign.local.fa.gz:>NC_001664.3:1.159321
 SRR5601447.realign.local.fa.gz:>NC_001664.3:1.159321
 SRR5601453.realign.local.fa.gz:>NC_001664.3:1.159321
 SRR5675744.realign.local.fa.gz:>NC_001664.3:1.159321
