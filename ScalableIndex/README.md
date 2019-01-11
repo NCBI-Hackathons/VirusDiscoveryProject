@@ -41,3 +41,8 @@ Query we tested - All the contigs that are more than 100 bp and that were by Uni
 ## Presentation ##
 
 https://docs.google.com/presentation/d/1qhToiEkrQo4-_BW6xScAQ0pzMXW-MufQ6dtQuhw9wVI/edit#slide=id.g4c3ef27744_0_127
+
+
+<p align="center">
+  <img src="logo.png?raw=true" alt="Cookbook logo"/>
+</p>
