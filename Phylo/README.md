@@ -60,6 +60,7 @@ The customs scripts for the pipeline are described below in order of usage:
 
 #### blastnToGraph.sh
 General script for the pipeline. Carries out all of the processes. Syntax is as follows:
+
 `bash blastToGraph.sh <input_file.fasta> <e-value> <minimum_identity>`
 
 Where e-value and minimum identity correspond to the options -evalue and -perc_identity in blastn. The resulting files (blast dabatase, blastn results, and distance matrix) will be located in the results directory. Other parameters of blast can be tweaked inside the script.
@@ -69,6 +70,7 @@ As described above.
 
 #### toMatrix.py
 Generates the distance matrix from the csv file. Syntax is:
+
 `python3 toMatrix.py blast_pairs.tsv`
 
 Where `blast_pairs.tsv` is the output of the blast_pairs.py command (name can be changed inside `blastnToGraph.sh`). Generates a csv file, `disMat.csv` with the bitscore between all contigs. Contigs with no hits reported in the blastn have their distance set to 0.
