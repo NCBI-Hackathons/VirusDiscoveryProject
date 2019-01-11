@@ -30,14 +30,14 @@ De novo VIral Genome Annotator or [VIGA](https://www.biorxiv.org/content/early/2
 
 Uses multiple databases (i.e. RefSeq, pVOG, RVDB, etc).
 
-All programs can be used through a [Docker image]https://hub.docker.com/r/vimalkvn/viga/)
+All programs can be used through a [Docker image](https://hub.docker.com/r/vimalkvn/viga/)
 
 ```bash
 
 docker pull vimalkvn/viga # All programs pre-install
 
 ```
-Databases need to be manually downloaded and formatted:
+Databases need to be manually downloaded and formatted. Additionally, BLAST, Diamond, Infernal and Hmmer should be install for formatting the databases.
 
 ```bash
 # Create all databases
@@ -49,6 +49,7 @@ mkdir rfam
 cd rfam
 curl -O ftp://ftp.ebi.ac.uk/pub/databases/Rfam/CURRENT/Rfam.cm.gz &> /dev/null
 gunzip Rfam.cm.gz
+# Before formatting the database, delete all but the first 2 instances, as we don't needed it in our pipeline, but VIGA requires it to launch as mandatory.
 cmpress Rfam.cm &> /dev/null
 cd ..
 
@@ -100,9 +101,9 @@ cd ../..
 
 VIGA has some specificities to be met:
 
-- `run-viga` wrapper and target `.fasta` should be both in the current working directory
+- `run-viga` wrapper, `modifiers.txt` target `.fasta` or any other input file should be both in the current working directory.
 
-- VIGA output has to be generated in the same working directory
+- VIGA output has to be generated in the same working directory.
 
 - Blast and Diamond perform correctly when multithreaded (option `--cpu` in VIGA), but Hmmer does not. Hmmer perfomes better with a high-memory single node.
  
