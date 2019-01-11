@@ -27,18 +27,18 @@ app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 app.get('/query', function (req, res) {
   var client = new MongoClient(mongo_url);
-	client.connect(function(err) {
-		assert.equal(null, err);
+  client.connect(function(err) {
+    assert.equal(null, err);
 
-		const db = client.db(mongo_db);
-		console.log("Connected successfully to db", mongo_db);
+    const db = client.db(mongo_db);
+    console.log("Connected successfully to db", mongo_db);
 
     // length=>100&sample__sacc=NC_005856
     // { length: { '$gt': 100 }, sample__sacc: 'NC_005856' }
     var qry = q2m(req.query);
     console.log(qry.criteria);
-	  db.collection('query').find(qry.criteria, qry.options).toArray(
-			function(err, docs) {
+    db.collection('query').find(qry.criteria, qry.options).toArray(
+      function(err, docs) {
         if (err) {
           console.log(err)
           res.send(err) 
@@ -47,6 +47,6 @@ app.get('/query', function (req, res) {
           res.send(docs)
         }
       }
-	  );
-	});
+    );
+  });
 })
