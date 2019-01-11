@@ -26,9 +26,21 @@ for( g in groupID){
 		list(words=names(s),cummulative_frequency=s)
 	})
 	names(most_freq_words[[g]]) = sort(unique(data[[g]]))
-	#most_freq_words[[g]] = c(srr=group$X[groups[[g]]
 }
 
 
 #### write out
 write(toJSON(most_freq_words),file='MachineLearning/learning/wordFreq2MASHgroups.json')
+
+# look for word ~ group associations
+names = names[names%in%colnames(data)]
+most_freq_words2 = list()
+for( g in groupID){
+	most_freq_words2[[g]] = lapply( sort(unique(data[[g]])) , function(gi){
+		s=colSums( data[ data[[g]]==gi,names] )
+		data.frame(words=names(s),cummulative_frequency=s,grouping=g,group=gi)
+	})
+}
+#tmp = do.call(rbind,most_freq_words2)
+tmp = do.call(rbind,lapply( most_freq_words2,function(x) do.call(rbind,x)))
+write.csv(tmp,file='MachineLearning/learning/wordFreq2MASHgroups.csv')
