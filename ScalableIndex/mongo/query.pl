@@ -5,6 +5,7 @@ use autodie;
 use feature 'say';
 use Benchmark 'timethis';
 use Data::Dump 'dump';
+use JSON 'to_json';
 use Getopt::Long;
 use MongoDB;
 use Pod::Usage;
@@ -46,18 +47,19 @@ sub main {
     );
 
     my %params;
-    for my $fld (qw[length meta__center sample__sacc]) {
-        my $val = $args{ $fld };
+
+    my %flds = @{ $args{'f'} };
+    while (my ($key, $val) = each %flds) {
         next unless defined $val && $val ne '';
 
-        if ($val =~ /^(\=|>|>=|<|<=)?(\d+)$/) {
+        if ($val =~ /^(\=|>|>=|<|<=)(\d+)$/) {
             my $cmp = $1 || '=';
             my $num = $2;
             my $op  = $cmp_op{ $cmp };
-            $params{ $fld } = { $op => $num };
+            $params{ $key } = { $op => $num };
         }
         else {
-            $params{ $fld } = $val;
+            $params{ $key } = "$val";
         }
     }
 
@@ -68,13 +70,13 @@ sub main {
         timethis($bench, sub { $query->find(\%params) });
     }
     else {
-        my @data = $query->find(\%params)->all;
+        my @data = map { delete $_->{'_id'}; $_ } 
+                   $query->find(\%params)->all;
 
-        printf "Found %s contigs\n", scalar(@data);
-        say join "\n", map { " " . $_->{'contig'} } @data;
+        printf STDERR "Found %s contigs\n", scalar(@data);
 
-        if ($args{'dump'}) {
-            say dump(\@data);
+        if ($args{'json'}) {
+            say to_json(\@data, { pretty => 1 });
         }
     }
 }
@@ -86,13 +88,15 @@ sub get_args {
         \%args,
         'db|d=s',
         'bench|b=i',
-        'length|l=s',
-        'meta__center|c=s',
-        'sample__sacc|a=s',
-        'dump',
+        'f=s@{0,}',
+        'json|j',
         'help',
         'man',
     ) or pod2usage(2);
+
+    #'length|l=s',
+    #'meta__center|c=s',
+    #'sample__sacc|a=s',
 
     return %args;
 }
@@ -109,14 +113,16 @@ query.pl - query mongodb
 
 =head1 SYNOPSIS
 
-  query.pl -l '>=100' -c 'UNIVERSITY OF OXFORD' -s 'NC_005856'
+  ./query.pl -f contig__length '>=100' \
+    -f meta__center 'UNIVERSITY OF OXFORD' \
+    -f sample__sacc 'NC_005856' 
 
 Options:
 
   --length|-l         contig.length (e.g., 100, <100, >=100)
   --meta__center|-c   contig.meta__center
   --sample__sacc|-s   contig.sample__sacc
-  --dump|-d           Show data dump
+  --json|-j           Show JSON
 
   --help              Show brief help and exit
   --man               Show full documentation
