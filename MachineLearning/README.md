@@ -37,7 +37,7 @@ SRA data was cleaned and tabulated for word frequency using
 ```
 source('/MachineLearning/feature_computed/SRA_meta_matrix.r')
 ```
-This produced SRA_meta_matrix.csv
+This produced feature_computed/SRA_meta_matrix.word_count.csv and feature_computed/SRA_meta_matrix.word_frequency.csv
 
 ## File Structure
 ```
