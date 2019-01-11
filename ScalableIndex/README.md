@@ -11,7 +11,10 @@ The teams will be generating JSON files with metadata for each contig with its f
 - Lookup all runs related to these models from samples in germany with the words "pig silage" somewhere 
 
 ## Suggested JSON files realtionships
-![The possible table realtionships with the tables we will be working with ](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/ScalableIndex/hack.png)
+<p align="center">
+< img src="https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/ScalableIndex/hack.png?raw=true" alt="Table relationships" /)
+</p>
+  
 ## Benchmarking databases 
 
 In order to make a conscious, educated decision about the schema, technology, and layout used for the organization of the data, several different solutions were proposed and tested on different size of data to see which would work best at scale. The solutions tested included  - relational rigid hierarchical database - PostgreSQL, 
