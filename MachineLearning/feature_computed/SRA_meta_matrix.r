@@ -14,4 +14,7 @@ word_melt$value = str_replace_all(as.character(word_melt$value), "[[:punct:]]", 
 
 # out 
 tab = table(word_melt)
-write.csv(tab,file='MachineLearning/feature_computed/SRA_meta_matrix.csv')
+tab_f = t(t(tab)/colSums(tab))
+
+write.csv(tab,file='MachineLearning/feature_computed/SRA_meta_matrix.word_count.csv')
+write.csv(tab_f,file='MachineLearning/feature_computed/SRA_meta_matrix.word_frequency.csv')
