@@ -73,9 +73,14 @@ http://localhost:8983/solr/known_contigs/select?fq={!join%20from=accession%20to=
 - Hackathon - https://docs.google.com/presentation/d/1qhToiEkrQo4-_BW6xScAQ0pzMXW-MufQ6dtQuhw9wVI/edit#slide=id.g4c3ef27744_0_127
 - Pre-hackathon - https://docs.google.com/presentation/d/1ESJwy6Wkh6VH0SD-vVEA4gjVYbkh0R1ynuQ8E_ZoO_s/edit#slide=id.g4a4fdc18f9_25_40
 
+
 ## How we plan to scale all the data using MondoDB
 <p align="center">
   <img src="logo2.png?raw=true" alt="Cookbook logo"/>
 </p>
 
-
+### Getting JSON files from all the teams 
+- SRA metadata - SRA 
+- contigs table - BigQuery 
+- known contigs table from Team 2
+- 
