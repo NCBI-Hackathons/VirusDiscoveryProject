@@ -3,7 +3,7 @@ INPUT_DIR=""
 WORK_DIR=""
 STEP=2
 KMER=6
-while getopts :i:k:s:h:w OPT; do
+while getopts :i:k:s:h:w: OPT; do
   case $OPT in
     h)
       ADVANCED_USAGE
@@ -35,20 +35,26 @@ echo "WORK_DIR = '$WORK_DIR'"
 echo "KMER = '$KMER'"
 echo "STEP = '$STEP'"
 
-if [[ "$WORK_DIR" = "" ]]; then
+if [ 1 -eq 1 ]; then
+    echo "hello"
+else
+    echo "bye"
+fi
+
+if [ "$WORK_DIR" = "" ]; then
     echo "WORK_DIR is required"
     exit 1
 fi
 
-if [[ "$INPUT_DIR" = "" ]]; then
+if [ "$INPUT_DIR" = "" ]; then
     echo "INPUT_DIR is required"
     exit 1
 fi
 
 INPUT_FILES=$(mktemp)
-if [[ -f "$INPUT_DIR" ]]; then
+if [ -f "$INPUT_DIR" ]; then
     echo "$INPUT_DIR" > "$INPUT_FILES"
-elif [[ -d "$INPUT_DIR" ]]; then
+elif [ -d "$INPUT_DIR" ]; then
     find "$INPUT_DIR" -type f > "$INPUT_FILES"
 else
     echo "-i \"$INPUT_DIR\" is neither file nor directory"
@@ -56,14 +62,13 @@ else
 fi
 
 NUM_INPUT=$(wc -l "$INPUT_FILES" | awk '{print $1}')
-if [[ $NUM_INPUT -lt 1 ]]; then
+if [ $NUM_INPUT -lt 1 ]; then
     echo "There are no files to process."
     exit 1
 fi
 
 echo "I will process NUM_INPUT \"$NUM_INPUT\" files"
 cat -n "$INPUT_FILES"
-
 while read -r FILE; do
     sh change_bad_chars_to_ns.sh $FILE $WORK_DIR
     NEW_FILE="${WORK_DIR}/$(basename $FILE).no_bad_chars"
