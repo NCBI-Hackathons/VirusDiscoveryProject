@@ -4,7 +4,7 @@ const port = 8000
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const mongo_url = 'mongodb://localhost:27017';
-//const mongo_db = 'hackathon';
+//const mongo_db = 'hackathon'; // smaller db
 const mongo_db = 'big_hack';
 const q2m = require('query-to-mongo')
 
@@ -44,13 +44,9 @@ app.get('/query', function (req, res) {
           res.send(err) 
         }
         else {
-          //console.log('Found', docs.length, 'docs');
           res.send(docs)
         }
       }
 	  );
-
-  	//res.send('You rang?')
-		//client.close();
 	});
 })
