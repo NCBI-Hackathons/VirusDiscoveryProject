@@ -42,6 +42,27 @@ Although both SOLR and MongoDB performed relatively well, we selected **MongoDB*
 
 We also tested MongoDB to run a query serach "lookup all contigs that have a certain length and retrieve all the contigs taxa information". This query was done to test if looking up multiple entries in the taxa field from the results will decrease the performance, also the taxa table had a different index compared to the other tables (shown below). MongoDB continued to performed really well (~1s) for these lookups. 
 
+### PostgreSQL 
+To setup PostgreSQL, here were the steps taken 
+- Downloading and setting up PostsreSQL on VM 
+
+- To import the JSON files to PostgreSQL databse, we used the script "JSON_to_Postgres.pl"
+
+
+### MongoDb 
+To setup MongoDB, the steps taken are written up under "mondodb" directory. Look at the readme here 
+
+### SOLR 
+- SOLR was setup on the VM from a docker image already, but this is a great resource to downlaod and get started with SOLR http://www.solrtutorial.com/solr-in-5-minutes.html
+SOLR UI starts simultaenouly and most of the uploading and search was done using the interface. 
+
+To run the query for benchmarking, here are the fileter we used from the known contigs table
+- fq ={!join%20from=accession%20to=accession%20fromIndex=contigs}length:[100 TO * ]
+  fq={!join%20from=accession%20to=accession%20fromIndex=metadata}center:UNIVERSITY OF OXFORD
+- q=sacc:NC_019915
+http://localhost:8983/solr/known_contigs/select?fq={!join%20from=accession%20to=accession%20fromIndex=contigs}length:[100%20TO%20*]&fq={!join%20from=accession%20to=accession%20fromIndex=metadata}center:UNIVERSITY%20OF%20OXFORD&q=sacc:NC_019915
+
+
 ## Presentation put toegther in hackathon and pre-hackathon##
 - Hackathon - https://docs.google.com/presentation/d/1qhToiEkrQo4-_BW6xScAQ0pzMXW-MufQ6dtQuhw9wVI/edit#slide=id.g4c3ef27744_0_127
 - Pre-hackathon - https://docs.google.com/presentation/d/1ESJwy6Wkh6VH0SD-vVEA4gjVYbkh0R1ynuQ8E_ZoO_s/edit#slide=id.g4a4fdc18f9_25_40
