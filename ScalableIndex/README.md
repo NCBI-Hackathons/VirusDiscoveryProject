@@ -65,6 +65,7 @@ To run the query for benchmarking, here are the fileter we used from the known c
 - fq ={!join%20from=accession%20to=accession%20fromIndex=contigs}length:[100 TO * ]
   fq={!join%20from=accession%20to=accession%20fromIndex=metadata}center:UNIVERSITY OF OXFORD
 - q=sacc:NC_019915
+
 http://localhost:8983/solr/known_contigs/select?fq={!join%20from=accession%20to=accession%20fromIndex=contigs}length:[100%20TO%20*]&fq={!join%20from=accession%20to=accession%20fromIndex=metadata}center:UNIVERSITY%20OF%20OXFORD&q=sacc:NC_019915
 
 
