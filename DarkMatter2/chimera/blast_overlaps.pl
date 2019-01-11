@@ -6,14 +6,19 @@
 use strict;
 use warnings;
 
-my ($nonoverlap_threshold,$overlap_threshold,$allow_self);
+my ($nonoverlap_threshold,$overlap_threshold,$allow_self,$allow_multiple,$no_redundant);
+use Data::Dumper qw(Dumper);
 use Getopt::Long;
 GetOptions( 	'nonoverlap-threshold|N=f' => \$nonoverlap_threshold,
 		'overlap-threshold|O=f' => \$overlap_threshold,
-		'allow-self|S' => \$allow_self
+		'allow-self|S' => \$allow_self,
+		'allow-multiples|M' => \$allow_multiple,
+		'no-redundant|R' => \$no_redundant
 	);
 use constant {QID => 0, SID => 1, PID => 3, LEN => 3, MM => 4, GO => 5, QS => 6, QE => 7, SS => 8, SE => 9, EVALUE => 10, BITSCORE => 11};
 
+$no_redundant = defined($no_redundant) ? 1 : 0;
+$allow_multiple = defined($allow_multiple) ? 1 : 0;
 my $not_self = defined($allow_self) ? 0 : 1;
 if ( !defined($nonoverlap_threshold) ) { $nonoverlap_threshold = 1; }
 if ( !defined($overlap_threshold) ) { $overlap_threshold = 1; }
@@ -73,85 +78,75 @@ sub overlap_coefficient($$$$) {
 	return ($intersection / $Lmin);
 }
 
-# assumes ordered query
-my ($previousQ,$currentQ) = ('','');
-my %coords = ();
-my %intersections = ();
-my $isect = 0;
-my %subjects_to_remove = ();
-while(my $line=<>) {
-	chomp($line);
-	my @f = split("\t",$line);
-	$currentQ = $f[QID];
-
-	if ( $previousQ ne $currentQ ) {
-		# DO overlap tests
-		my @subjects = keys(%coords);
-		my %intersections = ();
-		if ( scalar(@subjects) > 1 ) {
-			foreach my $i ( 0 .. $#subjects ) {
-				foreach my $j ( ($i+1) .. $#subjects ) {
-					my ($s1,$s2) = ($subjects[$i],$subjects[$j]);
-
-					$isect = overlap_coefficient(	$coords{$s1}->[0],$coords{$s1}->[1],
-									$coords{$s2}->[0],$coords{$s2}->[1] );
-
-					$intersections{$s1}{$s2} = $isect; $intersections{$s2}{$s1} = $isect;		
-					if ( $isect >= $overlap_threshold ) {
-						$subjects_to_remove{inferior_overlapping(\%coords,$s1,$s2)} = 1;
-					}
-				}
-			}
-
-			@subjects = sort(grep { ! defined($subjects_to_remove{$_}) } @subjects);
-			if ( scalar(@subjects) > 1 ) {
-				foreach my $i ( 0 .. $#subjects ) {
-					foreach my $j ( ($i+1) .. $#subjects ) {
-						my ($s1,$s2) = ($subjects[$i],$subjects[$j]);
-						if ( $intersections{$s1}{$s2} < $nonoverlap_threshold ) {
-							if ( $not_self && ($s1 eq $currentQ || $s2 eq $currentQ) ) { next; } 
-							print STDOUT $currentQ,"\t",$s1,"\t",$s2,"\t",
-								sprintf("%1.4f",$intersections{$s1}{$s2}),
-								"\t",join("\t",@{$coords{$s1}}),"\t",join("\t",@{$coords{$s2}}),"\n";
-						}
-					}
-				}
-			}
-		}
-		$previousQ = $currentQ;
-		%coords = ();
-	}
-
-	$coords{$f[SID]} = [ ($f[QS], $f[QE], $f[BITSCORE]) ];
-}
-
-if ( scalar(keys(%coords)) > 1 ) {
-	my @subjects = keys(%coords);
-	foreach my $i ( 0 .. $#subjects ) {
-		foreach my $j ( ($i+1) .. $#subjects ) {
-			my ($s1,$s2) = ($subjects[$i],$subjects[$j]);
-			$isect = overlap_coefficient(	$coords{$s1}->[0],$coords{$s1}->[1],
-							$coords{$s2}->[0],$coords{$s2}->[1] );
-			
-			$intersections{$s1}{$s2} = $isect; $intersections{$s2}{$s1} = $isect;		
-			if ( $isect >= $overlap_threshold ) {
-				$subjects_to_remove{inferior_overlapping(\%coords,$s1,$s2)} = 1;
-			}
-		}
-	}
-
-	@subjects = sort( grep { ! defined($subjects_to_remove{$_}) } @subjects );
+sub calculate_query_group($$) {
+	my $coords = $_[0];
+	my $currentQ = $_[1];
+	my @subjects = keys(%{$coords});
+	my $isect = '';
+	my %intersections = ();
+	my %subjects_to_remove = ();
 	if ( scalar(@subjects) > 1 ) {
 		foreach my $i ( 0 .. $#subjects ) {
 			foreach my $j ( ($i+1) .. $#subjects ) {
 				my ($s1,$s2) = ($subjects[$i],$subjects[$j]);
-				if ( $intersections{$s1}{$s2} < $nonoverlap_threshold ) {
-					if ( $not_self && ($s1 eq $currentQ || $s2 eq $currentQ) ) { next; }
-					print STDOUT $currentQ,"\t",$s1,"\t",$s2,"\t",
-						sprintf("%1.4f",$intersections{$s1}{$s2}),
-						"\t",join("\t",@{$coords{$s1}}),"\t",join("\t",@{$coords{$s2}}),"\n";
+
+				$isect = overlap_coefficient(	$coords->{$s1}->[0],$coords->{$s1}->[1],
+								$coords->{$s2}->[0],$coords->{$s2}->[1] );
+				$intersections{$s1}{$s2} = $isect; $intersections{$s2}{$s1} = $isect;		
+				if ( $isect >= $overlap_threshold ) {
+					$subjects_to_remove{inferior_overlapping($coords,$s1,$s2)} = 1;
+				}
+			}
+		}
+
+		@subjects = sort(grep { ! defined($subjects_to_remove{$_}) } @subjects);
+		my %redundant = ();
+		if ( scalar(@subjects) > 1 ) {
+			foreach my $i ( 0 .. $#subjects ) {
+				foreach my $j ( ($i+1) .. $#subjects ) {
+					my ($s1,$s2) = ($subjects[$i],$subjects[$j]);
+					my ($ps1,$ps2) = ($s1,$s2);
+					if ( $allow_multiple ) {
+						$ps1 =~ s/\/.+?$//;
+						$ps2 =~ s/\/.+?$//;
+						if ( $ps1 eq $ps2 ) {
+							if ( $no_redundant && defined($redundant{$s1}) ) {
+								next;
+							} else {
+								$redundant{$s1} = 1;
+							}
+						}
+					}
+					if ( $intersections{$s1}{$s2} < $nonoverlap_threshold ) {
+						if ( $not_self && ($ps1 eq $currentQ || $ps2 eq $currentQ ) ) { next; } 
+						print STDOUT $currentQ,"\t",$ps1,"\t",$ps2,"\t",
+							sprintf("%1.4f",$intersections{$s1}{$s2}),
+							"\t",join("\t",@{$coords->{$s1}}),"\t",join("\t",@{$coords->{$s2}}),"\n";
+					}
 				}
 			}
 		}
 	}
 }
+
+# assumes ordered query
+my ($previousQ,$currentQ) = ('','');
+my %coords = ();
+my $sid = '';
+while(my $line=<>) {
+	chomp($line);
+	my @f = split("\t",$line);
+	$currentQ = $f[QID];
+	if ( $previousQ ne $currentQ ) {
+		# DO overlap tests
+		if ( $previousQ ne '' ) { 
+			calculate_query_group(\%coords,$previousQ);
+		}
+		$previousQ = $currentQ;
+		%coords = ();
+	}
+	$sid = $allow_multiple ? $f[SID].'/'.$f[QS].'-'.$f[QE] : $f[SID];
+	$coords{$sid} = [ ($f[QS], $f[QE], $f[BITSCORE]) ];
+
+}
+calculate_query_group(\%coords,$currentQ);
