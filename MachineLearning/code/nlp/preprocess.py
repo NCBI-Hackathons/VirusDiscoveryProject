@@ -7,7 +7,11 @@ from sklearn.manifold import TSNE
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from sklearn import preprocessing
+import matplotlib.cm as cm
 
+
+#input_file = "../../../../data/total_metadata.csv"
 input_file = "../../../../data/results-20190110-153559.csv"
 sentences = []
 labels = []
@@ -17,10 +21,14 @@ with open(input_file, 'r') as f:
             continue
         l = l[:-1]
         larr = l.split(",")
-        labels.append(larr[0])
-        sentences.append(' '.join(larr[1:]))
+        labels.append(larr[17])
+        sentences.append(' '.join(larr[0:17] + larr[18:]))
 labels.pop(0)
 sentences.pop(0)
+le = preprocessing.LabelEncoder()
+le.fit(labels)
+labels = list(le.transform(labels))
+print(labels)
 
 tagged_data = [TaggedDocument(words=word_tokenize(_d.lower()), tags=[labels[i]]) for i, _d in enumerate(sentences)]
 
@@ -53,15 +61,20 @@ y = []
 for value in new_values:
     x.append(value[0])
     y.append(value[1])
+
+#colors = cm.hsv(np.linspace(0, 1, len(np.unique(labels))))
+#print(colors)
     
 plt.figure(figsize=(16, 16)) 
-for i in range(len(x)):
-    plt.scatter(x[i],y[i])
+#for i in range(len(x)):
+plt.scatter(x,y, c = labels, cmap = cm.get_cmap('hsv'))
+"""
     plt.annotate(labels[i],
                  xy=(x[i], y[i]),
                  xytext=(5, 2),
                  textcoords='offset points',
                  ha='right',
                  va='bottom')
+"""
 plt.show()
 plt.savefig('./fig.png')
