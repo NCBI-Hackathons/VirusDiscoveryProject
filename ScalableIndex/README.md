@@ -81,6 +81,8 @@ http://localhost:8983/solr/known_contigs/select?fq={!join%20from=accession%20to=
 
 ### Getting JSON files from all the teams 
 - SRA metadata - SRA 
-- contigs table - BigQuery 
+- contigs table - already assembled and table available from bigquery 
+- Taxonomy table - 
+- Annotation table - 
 - known contigs table from Team 2
 - 
