@@ -56,6 +56,11 @@ To setup MongoDB, the steps taken are written up under "mondodb" directory. Look
 - SOLR was setup on the VM from a docker image already, but this is a great resource to downlaod and get started with SOLR http://www.solrtutorial.com/solr-in-5-minutes.html
 SOLR UI starts simultaenouly and most of the uploading and search was done using the interface. 
 
+- Creating a core/collection on SOLR 
+./solr create -c blastdb #creating a core 
+- Posting the JSON data to the core/collection  
+./post -c blastdb ../../testdata/blastp.out.xml #indexing the xml or input JSON file 
+
 To run the query for benchmarking, here are the fileter we used from the known contigs table
 - fq ={!join%20from=accession%20to=accession%20fromIndex=contigs}length:[100 TO * ]
   fq={!join%20from=accession%20to=accession%20fromIndex=metadata}center:UNIVERSITY OF OXFORD
@@ -67,7 +72,7 @@ http://localhost:8983/solr/known_contigs/select?fq={!join%20from=accession%20to=
 - Hackathon - https://docs.google.com/presentation/d/1qhToiEkrQo4-_BW6xScAQ0pzMXW-MufQ6dtQuhw9wVI/edit#slide=id.g4c3ef27744_0_127
 - Pre-hackathon - https://docs.google.com/presentation/d/1ESJwy6Wkh6VH0SD-vVEA4gjVYbkh0R1ynuQ8E_ZoO_s/edit#slide=id.g4a4fdc18f9_25_40
 
-## How we did this
+## How we plan to scale all the data using MondoDB
 <p align="center">
   <img src="logo2.png?raw=true" alt="Cookbook logo"/>
 </p>
