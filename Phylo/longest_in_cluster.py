@@ -1,6 +1,7 @@
 """
-USAGE: python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.fasta -o example_files/newclusters.tsv
+USAGE: python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv
 
+ python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv -e
 contact: kylemlevi@gmail.com
 """
 
@@ -11,9 +12,9 @@ import argparse
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('-f', '--fasta', help='Input File', required=True)
-    parser.add_argument('-c', '--clusters', help='Input File', required=True)
+    parser.add_argument('-c', '--cluster', help='Input File', required=True)
     parser.add_argument('-o', '--output', help='Input File', required=True)
-    parser.add_argument('-e', '--extractlongest', help='instead of remaking the clusters around the longest, extract the longest fasta to a new file')
+    parser.add_argument('-e', '--extractlongest', help='instead of remaking the clusters around the longest, extract the longest fasta to a new file', action='store_true')
 
 
     try:
