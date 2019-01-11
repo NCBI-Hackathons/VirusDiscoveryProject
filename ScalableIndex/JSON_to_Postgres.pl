@@ -4,14 +4,17 @@ use DBI;
 use DBD::Pg;
 use Getopt::Long;
 use Data::Dumper qw(Dumper);
+use Benchmark 'timethis';
 
 my $output = "test.out";
 my $input = "knowns.json";
-GetOptions("i=s" => \$input) or die ("No dice with options: $!");
+my $tablename = "sample_knowns";
+
+GetOptions("i=s" => \$input, "t=s" => \$tablename) or die ("No dice with options: $!");
 
 print "opening $input\n";
 
-my $dbname = 'benchmarks';
+my $dbname = 'benchmarks_mil';
 my $host = 'localhost';
 my $port = 5433;
 my $username = 'postgrr';
@@ -26,54 +29,40 @@ my $dbh = DBI -> connect("dbi:Pg:dbname=$dbname;host=$host;port=$port",
 open (my $fh, '<', $input) or die "Error, cannot open file $input: $!";
 #open (my $out, '>', $output) or print "Could not open file $output: $!";
 
-my %hash;
 my $keys = "";
 my $vals = "";
-
+my $count = 0;
 while (<$fh>){
     my $line = $_; #chomp();
     if ($line =~ m/^\s*{\s*$/){
-	print "found opening $line\n";
-	undef %hash;
+	#print "found opening $line\n";
 	$keys = "";
 	$vals = "";
-
     }
     elsif( $line =~ m/^\s*"([^"]+)"\s*:\s*"([^"]+)",?\s*$/){
-	print "found $1 : $2 \n";
-	$hash{$1} = $2;
-	$keys .= "$1, ";
-	$vals .= "'$2', ";
+	my $key = $1;
+	my $val = $2;
+	if ($val =~ m/'/){
+	    print "found a quote mark\n";
+	    $val =~ s/'/''/g;
+	    print "$val\n";
+	}
+	#print "found $1 : $2 \n";
+	$keys .= "$key, ";
+	$vals .= "'$val', ";
     }
-    elsif ($line =~ m/^\s*},\s*$/){
-	print "found closing $line\n";
-	#print Dumper %hash;
+    elsif ($line =~ m/^\s*}[,\]]?\s*$/){
+	#print "found closing $line\n";
+	$count++;
 	$keys =~ s/, $//;
 	$vals =~ s/, $//;
-	my $sql = "INSERT INTO sample_knowns ($keys) values ($vals);";
-	print "command: $sql\n";
-	#my $sth = $dbh->prepare( $sql );
-	#my $result = $sth->execute() or die $DBI::errstr;
+	my $sql = "INSERT INTO $tablename ($keys) values ($vals);";
+	#print "command: $sql\n";
 	my $result = $dbh->do($sql) or die $DBI::errstr;
-	print "result: $result\n";
-
-	last;
+	#print "result: $result\n";
     }
 }
-
-
-my $stmt = qq(SELECT * from sample_knowns;);
-my $sth = $dbh->prepare( $stmt );
-my $rv = $sth->execute() or die $DBI::errstr;
-if($rv < 0) {
-    print $DBI::errstr;
-}
-while(my @rows = $sth->fetchrow_array()) {
-    foreach my $row (@rows){
-	print "$row \n";
-    }
-}
-
+print "Count is $count\n";
 $dbh->commit();
 $dbh->disconnect();
 print "Yay all done\n";
