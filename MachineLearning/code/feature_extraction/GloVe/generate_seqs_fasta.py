@@ -2,7 +2,6 @@
 # encoding: utf-8
 
 import numpy as np
-from preprocess import *
 import argparse
 import os
 import sys
