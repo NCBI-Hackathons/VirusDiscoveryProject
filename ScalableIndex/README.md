@@ -28,6 +28,14 @@ The layout of the data that will be added to the database is expected to be arou
 
 To add more usability, taxonomy and domain tables will need to be joined to the known and unknown contigs metadata. Some of the layout of the data was predicted to do better in a relational database structure as several unrelated data sets must be cross-referenced together in order to support queries. 
 
+###  Database Performance 
+Query we tested - All the contigs that are more than 100 bp and that were by University of Oxford, and belong to “NC_019915”,
+
+|               | SOLR          | MongoDB     | PostgreSQL  |
+| ------------- | ------------- |-------------|-------------|
+| Query speed   | 1k- 0.1ms     |1k- 0.3s     | 1K - 0.3ms  |
+|               | 1M - 60ms     |1M - 15s     | 1M - <2min  |
+|Ease of search | has a defualt UI we used| command-line script used to lookup | UI possible but took some work |  
 
 
 ## Presentation ##
