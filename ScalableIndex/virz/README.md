@@ -1,3 +1,7 @@
+# Virz
+
+A simple Node/Express interface to query a Mongo viral contig database.
+
 # To start
 
 ```
