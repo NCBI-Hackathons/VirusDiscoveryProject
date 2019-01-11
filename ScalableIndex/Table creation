@@ -1,0 +1,59 @@
+CREATE TABLE contigs(
+    ID serial NOT NULL PRIMARY KEY,
+	accession varchar(20),
+    contig varchar(50),
+    type varchar(50),
+    perc50 int,
+    length int,
+    covered_length int
+	);
+	
+	
+CREATE TABLE metadata(
+    ID serial NOT NULL PRIMARY KEY,
+    accession varchar(20),
+    contig varchar(50),
+    center varchar(255),
+    run_spots int,
+    run_bytes int,
+    run_bases int,
+    experiment varchar(20),
+    experiment_title varchar(255),
+    library_strategy varchar(10),
+    library_selection varchar (50),
+    library_source varchar(20),
+    library_layout varchar(10),
+    insert_size int,
+    insert_dev varchar(10),
+    platform varchar(20),
+    model varchar(50),
+    bio_project varchar(20),
+    study_name varchar(255),
+    study_title text,
+    sample varchar(20),
+    sample_type varchar(20),
+    bio_sample varchar(20),
+    sample_name varchar(50),
+    tax_id varchar(20),
+    scientific_name varchar(20),
+    common_name varchar(50),
+    display_name text
+);
+
+create TABLE sample_knowns(
+    ID serial NOT NULL PRIMARY KEY,
+    accession varchar(20),
+    contig varchar(50),
+    sacc varchar(20),
+    btax int,
+    pident float,
+    evalue float,
+    bitscore decimal,
+    hit_len int
+);
+
+ALternative testing:
+CREATE TABLE sample_knowns (
+ ID serial NOT NULL PRIMARY KEY,
+ info json NOT NULL
+);
