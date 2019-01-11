@@ -12,6 +12,7 @@ def main():
     r = requests.get(url)
     if r.status_code == 200:
         df = pd.DataFrame(r.json())
+        df.drop(columns=['_id'], inplace=True)
         print(df.head())
 
 main()
