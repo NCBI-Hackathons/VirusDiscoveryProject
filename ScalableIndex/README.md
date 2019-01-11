@@ -87,7 +87,7 @@ http://localhost:8983/solr/known_contigs/select?fq={!join%20from=accession%20to=
 - unknown 
 
 ### Adding JSON files to MongoDB 
-Currently because we are not working with all of SRA data, the files are being flattened to one big table instead of joining. Scaling up for this data will require joining but for this hackathon this seems feasible. 
+Currently because we are not working with all of SRA data, the files are being flattened to one big table instead of joining. Scaling up for this data will require joining, but for the current hackathon we were unable to explore the feasability. 
 
 To flatten the file - run "flatten.pl" from mongodb 
 
