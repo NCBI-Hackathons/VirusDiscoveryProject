@@ -1,10 +1,10 @@
 
 # Scaling 
 
-The teams will be generating JSON files with metadata for each contig with its features which will be indexed using a database and joined accordingly to best adderess database lookups based on suggested use cases. 
+The teams will be generating JSON files with metadata for each contig with its features which will be indexed using a database and joined accordingly to best address database lookups based on identified use cases. 
 
-## Use cases that should be addressed with the indexes 
-- Datasets sourced from human gut, what virus types of present, broken down by known taxonomy, related families, and novel viruses?
+## Use cases supported with the indexes created 
+- Datasets sourced from human gut: identified known viruses,drilled down into known taxonomies and related families; and novel viruses
 - Select taxon (e.g., Human betaherpesviruses) and identify all samples that contain that taxon
 - Lookup datasets that have specific viral genes - e.g., capsid, tail fiber, helicase, reverse transcriptases, integrases, polymerases, proteases, etc.
 - A user will want to know which runs contain reads that can be assembled into some kind or kinds (taxa/species) of virus and see if they correlate with reads that can be assembled into contigs of a particular: host taxa, environment integration of a particular known viruses from metagenomes in a certain part of Africa.
