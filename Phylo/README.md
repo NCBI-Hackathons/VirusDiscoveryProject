@@ -59,17 +59,17 @@ Second, it can write a new FASTA file of only the longest sequence in each clust
 
 `python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv -e`
 
-###  blastnToGraph.tar.gz 
+###  blastNToGraph.tar.gz 
 This tar file contains the scripts required for running the full clustering blastn pipeline, starting from a multifasta and generating files which can be later plugged to network analysis software. The process involves generating a blast database for the multifasta (`makeblastdb`) and blasting the sequences against themselves (`blastn`). Then, using custom scripts (see below) self hits are removed and the blast output is formated to generate both a tsv file with pairwirse distances between sequences and a complete distance matrix. The bitscore of the blast alignments is used as the distance criteria. The tsv file and distance matrices produced can be loaded to network analysis software (e.g.: Gephi, Cytoscape, or Pajek). 
 
-To run the pipeline, untar the file and execute the master script (blastnToGraph, see below). Results will be placed inside the blastPipeline/results directory, including the blast database (`testDB`), blast results (`results.blastn`), tsv and distance matrix files (`blast_pairs.tsv` and `disMat.csv` respectively).
+To run the pipeline, untar the file and execute the master script (blastNToGraph, see below). Results will be placed inside the blastPipeline/results directory, including the blast database (`testDB`), blast results (`results.blastn`), tsv and distance matrix files (`blast_pairs.tsv` and `disMat.csv` respectively).
 
 The customs scripts for the pipeline are described below in order of usage:
 
-#### blastnToGraph.sh
+#### blastNToGraph.sh
 General script for the pipeline. Carries out all of the processes. Syntax is as follows:
 
-`bash blastToGraph.sh <input_file.fasta> <e-value> <minimum_identity>`
+`bash blastNToGraph.sh <input_file.fasta> <e-value> <minimum_identity>`
 
 Where e-value and minimum identity correspond to the options -evalue and -perc_identity in blastn. The resulting files (blast dabatase, blastn results, and distance matrix) will be located in the results directory. Other parameters of blast can be tweaked inside the script.
 
