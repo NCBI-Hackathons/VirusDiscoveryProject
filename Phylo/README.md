@@ -46,9 +46,11 @@ This script duplicates entries in a fasta file *n* times. Every header will have
 ### longest_in_cluster.py
 This script has two functions. 
 First, it can rename the representative sequence of a cluster to the longest (bp) sequence in the cluster. This prevents clusters from being named after a small contig.
+
 `python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv`
 
 Second, it can write a new FASTA file of only the longest sequence in each cluster. **This is done with the "-e" flag**
+
 `python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv -e`
 
 ###  blastnToGraph.tar.gz 
