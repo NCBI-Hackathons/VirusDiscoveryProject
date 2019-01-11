@@ -119,13 +119,12 @@ query.pl - query mongodb
 
 Options:
 
-  --length|-l         contig.length (e.g., 100, <100, >=100)
-  --meta__center|-c   contig.meta__center
-  --sample__sacc|-s   contig.sample__sacc
-  --json|-j           Show JSON
+  -f          field_name/value to search
+  --db|-d     Database name
+  --json|-j   Show JSON
 
-  --help              Show brief help and exit
-  --man               Show full documentation
+  --help      Show brief help and exit
+  --man       Show full documentation
 
 =head1 DESCRIPTION
 
