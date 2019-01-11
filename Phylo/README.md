@@ -103,14 +103,24 @@ Where `blast_pairs.tsv` is the output of the blast_pairs.py command (name can be
 ## Results from Sample Data
 Contigs clustered are available in the example_clusters.tsv. The largest 10 clusters are displated below (if a known refseq virus is in the cluster, then the cluster is named with the refseq accession.)
 
-| ERR1308128_Contig_292_17.1635:1.1561 | 108 |
-|----------------------------------------|-----|
-| SRR6659449_Contig_11442_1446.67:1.3897 | 109 |
-| SRR1490934_Contig_145_68.9628:1.1957 | 116 |
-| SRR6659538_Contig_420_96.6643:1.1709 | 122 |
-| NC_026014.1 | 127 |
-| SRR6659585_Contig_718_60.183:1.19044 | 130 |
-| ERR1711614_Contig_36997_17.9674:1.3762 | 136 |
-| SRR6659424_Contig_425_59.3234:1.1631 | 137 |
-| SRR4101321_Contig_99_104.661:1.2144 | 164 |
 | NC_001422.1 | 209 |
+|----------------------------------------|-----|
+| SRR4101321_Contig_99_104.661:1.2144 | 164 |
+| SRR6659424_Contig_425_59.3234:1.1631 | 137 |
+| ERR1711614_Contig_36997_17.9674:1.3762 | 136 |
+| SRR6659585_Contig_718_60.183:1.19044 | 130 |
+| NC_026014.1 | 127 |
+| SRR6659538_Contig_420_96.6643:1.1709 | 122 |
+| SRR1490934_Contig_145_68.9628:1.1957 | 116 |
+| SRR6659449_Contig_11442_1446.67:1.3897 | 109 |
+| ERR1308128_Contig_292_17.1635:1.1561 | 108 |
+
+The results were 13,173 clusters with 239 of them containing at least 10 contigs.
+
+
+
+
+
+
+
+
