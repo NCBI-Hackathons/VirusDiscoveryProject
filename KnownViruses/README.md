@@ -42,6 +42,45 @@ Output is tab separated file in the following format:
 Contig_805_73.4912:1.2127 | 2127 | NC_027339 | 1732063 | Enterobacteria phage SfI, complete genome | 38389 | 96.330 | 1.11e-42 | 178 | 109 |
 
 
+**Parse blastn hits for contigs in each class**
+
+Generate list of contig names in the following classes
+
+| Description | Blastn length cutoff | Blastn identity cutoff | 
+| --- | --- | --- |
+| Known knowns | >80% | >85% |
+| Known unknowns | > 80% | >50% and <85% |
+| Known unknowns | >50% to <80% | >85% |
+| Unknown unknowns with blast hits | <50% | NA |
+
+
+```
+for blout in *.realign.local.blastout
+	do 
+		sort -u -k1,1 $blout | awk '{FS="\t"; OFS="\t"} {if ($10/$2 > 0.799 && $7 > 84.99) {print $1}}' > ${blout%.realign.local.blastout}.known_knowns_85id_80len.txt
+		sort -u -k1,1 $blout | awk '{FS="\t"; OFS="\t"} {if ($10/$2 > 0.499 && $10/$2 < 0.8 && $7 > 84.99) {print $1}}' > ${blout%.realign.local.blastout}.known_unknowns_85id_50len.txt
+		sort -u -k1,1 $blout | awk '{FS="\t"; OFS="\t"} {if ($10/$2 > 0.499 && $7 < 84.99 && $7 > 49.99) {print $1}}' > ${blout%.realign.local.blastout}.known_unknowns_50id_50len.txt
+	done
+```
+
+Generate the fasta file for each class
+```
+for raw_fasta in /home/vpeddu/testing/*.fa.gz
+	do 
+		il=$( echo $raw_fasta | sed 's/.*\///g' )
+		gunzip -c $raw_fasta | bioawk -c fastx '{ if(length($seq) > 1000) { print}}' > ${il%.realign.local.fa.gz}.temp.tab
+		if [ -s ${il%.realign.local.fa.gz}.temp.tab ]
+		then
+			grep -f ${il%.realign.local.fa.gz}.known_knowns_85id_80len.txt ${il%.realign.local.fa.gz}.temp.tab | awk '{print ">"$1; print $2}' | sed '/--/d' > ${il%.realign.local.fa.gz}.known_knowns_85id_80len.fasta
+			grep -f ${il%.realign.local.fa.gz}.known_unknowns_85id_50len.txt ${il%.realign.local.fa.gz}.temp.tab | awk '{print ">"$1; print $2}' | sed '/--/d' > ${il%.realign.local.fa.gz}.known_unknowns_85id_50len.fasta
+			grep -f ${il%.realign.local.fa.gz}.known_unknowns_50id_50len.txt ${il%.realign.local.fa.gz}.temp.tab | awk '{print ">"$1; print $2}' | sed '/--/d' > ${il%.realign.local.fa.gz}.known_unknowns_50id_50len.fasta
+			cat ${il%.realign.local.fa.gz}.known_unknowns_50id_50len.txt ${il%.realign.local.fa.gz}.known_unknowns_85id_50len.txt ${il%.realign.local.fa.gz}.known_knowns_85id_80len.txt > ${il%.realign.local.fa.gz}.legit_blasthits.txt
+			grep -v -f ${il%.realign.local.fa.gz}.legit_blasthits.txt ${il%.realign.local.fa.gz}.temp.tab | awk '{print ">"$1; print $2}' | sed '/--/d' > ${il%.realign.local.fa.gz}.unknown_unknowns_refviral.fasta
+		fi
+	done
+```
+
+
 **Features from the blastn hits**
 
 Index for 'Known' viral contigs indipendent blastn run
