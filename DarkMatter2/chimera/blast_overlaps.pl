@@ -16,10 +16,10 @@ use constant {QID => 0, SID => 1, PID => 3, LEN => 3, MM => 4, GO => 5, QS => 6,
 
 my $not_self = defined($allow_self) ? 0 : 1;
 if ( !defined($nonoverlap_threshold) ) { $nonoverlap_threshold = 1; }
-if ( !defined($overlap_threshold) ) { $overlap_threshold = 0; }
+if ( !defined($overlap_threshold) ) { $overlap_threshold = 1; }
 
-print STDERR "NONOVERLAP THRESHOLD: $nonoverlap_threshold\n";
-print STDERR "OVERLAP THRESHOLD: $overlap_threshold\n";
+print STDERR "NONOVERLAP THRESHOLD\t(i < thresh)\t$nonoverlap_threshold\n";
+print STDERR "OVERLAP THRESHOLD\t(i >= thresh)\t$overlap_threshold\n";
 print STDERR "Q_id\tS1_id\tS2_id\tOverlap_coeff\tS1_start\tS1_end\tBitscore1\tS2_start\tS2_end\tBitscore2\n";
 
 sub inferior_overlapping($$$) {
@@ -97,10 +97,8 @@ while(my $line=<>) {
 									$coords{$s2}->[0],$coords{$s2}->[1] );
 
 					$intersections{$s1}{$s2} = $isect; $intersections{$s2}{$s1} = $isect;		
-					if ( $isect <= $nonoverlap_threshold ) {
-						if ( $isect <= $overlap_threshold ) {
-							$subjects_to_remove{inferior_overlapping(\%coords,$s1,$s2)} = 1;
-						}
+					if ( $isect >= $overlap_threshold ) {
+						$subjects_to_remove{inferior_overlapping(\%coords,$s1,$s2)} = 1;
 					}
 				}
 			}
@@ -110,7 +108,7 @@ while(my $line=<>) {
 				foreach my $i ( 0 .. $#subjects ) {
 					foreach my $j ( ($i+1) .. $#subjects ) {
 						my ($s1,$s2) = ($subjects[$i],$subjects[$j]);
-						if ( $intersections{$s1}{$s2} <= $nonoverlap_threshold ) {
+						if ( $intersections{$s1}{$s2} < $nonoverlap_threshold ) {
 							if ( $not_self && ($s1 eq $currentQ || $s2 eq $currentQ) ) { next; } 
 							print STDOUT $currentQ,"\t",$s1,"\t",$s2,"\t",
 								sprintf("%1.4f",$intersections{$s1}{$s2}),
@@ -136,10 +134,8 @@ if ( scalar(keys(%coords)) > 1 ) {
 							$coords{$s2}->[0],$coords{$s2}->[1] );
 			
 			$intersections{$s1}{$s2} = $isect; $intersections{$s2}{$s1} = $isect;		
-			if ( $isect <= $nonoverlap_threshold ) {
-				if ( $isect <= $overlap_threshold ) {
-					$subjects_to_remove{inferior_overlapping(\%coords,$s1,$s2)} = 1;
-				}
+			if ( $isect >= $overlap_threshold ) {
+				$subjects_to_remove{inferior_overlapping(\%coords,$s1,$s2)} = 1;
 			}
 		}
 	}
@@ -149,7 +145,7 @@ if ( scalar(keys(%coords)) > 1 ) {
 		foreach my $i ( 0 .. $#subjects ) {
 			foreach my $j ( ($i+1) .. $#subjects ) {
 				my ($s1,$s2) = ($subjects[$i],$subjects[$j]);
-				if ( $intersections{$s1}{$s2} <= $nonoverlap_threshold ) {
+				if ( $intersections{$s1}{$s2} < $nonoverlap_threshold ) {
 					if ( $not_self && ($s1 eq $currentQ || $s2 eq $currentQ) ) { next; }
 					print STDOUT $currentQ,"\t",$s1,"\t",$s2,"\t",
 						sprintf("%1.4f",$intersections{$s1}{$s2}),

@@ -20,9 +20,9 @@ Index for 'Known' viral contigs:
 - Median depth of coverage by reads of contig [int]
 - Length [int]
 - Covered length from hit [int]
-- Compressed size of realigned object in bytes [int]
-- Original size in bytes [int]
-- Ratio of compressed size / original size [float]
+- ~~Compressed size of realigned object in bytes [int]~~
+- ~~Original size in bytes [int]~~
+- ~~Ratio of compressed size / original size [float]~~
 - NCBI taxonomy id by kmer [int]
 - NCBI taxonomic species by kmer [string]
 - Unique kmer hits [int]
