@@ -24,13 +24,13 @@ hmmscan -o RVDB/DRR128724.realign.local.prodigal.11.meta.out --tblout RVDB/DRR12
 
 ```
 
-## ab initio gene profiling and gene annotation with VIGA pipeline
+## Ab initio gene profiling and gene annotation with VIGA pipeline
 
-De novo VIral Genome Annotator or (VIGA)[https://www.biorxiv.org/content/early/2018/03/07/277509] is an automated pipeline that performes ab initio ORF profiling with Prodigal and gene annotation with Diamond, Blast and HMMER.
+De novo VIral Genome Annotator or [VIGA](https://www.biorxiv.org/content/early/2018/03/07/277509) is an automated pipeline that performes ab initio ORF profiling with Prodigal and gene annotation with Diamond, Blast and HMMER.
 
 Uses multiple databases (i.e. RefSeq, pVOG, RVDB, etc).
 
-All programs can be used through a (Docker image)[https://hub.docker.com/r/vimalkvn/viga/]
+All programs can be used through a [Docker image]https://hub.docker.com/r/vimalkvn/viga/)
 
 ```bash
 
@@ -83,7 +83,7 @@ rm refseq_viral_proteins.faa
 
 mkdir pvogs
 cd pvogs
-curl -O ftp://ftp.ncbi.nlm.nih.gov/pub/kristensen/pVOGs/downloads/All/AllvogHMMprofiles.tar.gz &> /dev/null
+curl -O http://dmk-brain.ecn.uiowa.edu/VOG/downloads/All/AllvogHMMprofiles.tar.gz &> /dev/null
 tar zxvf AllvogHMMprofiles.tar.gz &> /dev/null
 { echo AllvogHMMprofiles/*.hmm | xargs cat; } > pvogs.hmm
 rm -rf AllvogHMMprofiles
@@ -117,3 +117,5 @@ To scale its usage to multiple contig files, a threading-controller was coded, b
 Additionally, `director.sh` will call `unmapvigaannotations.pl`, `genbankfeature.py` and `unmapvigaannotations2.pl`, in this order, expand pVOG info and extract the translated ORF annotated in the VIGA `.gbk` output.
 
 All scripts should be located in the working directory.
+
+Script `genbankfeatures.py` needs to run in `python2.X` and `biopython` as module dependency.
