@@ -4,6 +4,7 @@
 - Feature set: Using MASH to construct kmer composition of contigs
 - Label set: SRAdb to extract SRR metadata
 - Learning: Pricipal Coordinate Analysis (PCoA)
+- Learning: kNN to share common descriptors accross similar SRRs in MASH kmer space
 
 ## Problem 1_b: Network Smoothing for interpolation of continuous variables in kmer-space
 - Network/Matrix: MASH kmer composition
@@ -17,6 +18,37 @@
 
 ## Shortcomings
 There are none, the computers are sentient so we can relax.
+
+# Run Overview
+
+## Feature set collection
+
+### MASH: kmer clustering on contigs
+
+*Alise*
+
+### SRAdb: collect abstracts, descriptions (to "SRA.sel") and all bioproject data (to "SRA.all")
+Query SRA and bioprojects study description, abstracts...data for string-based learning and annotation
+```R
+# install
+source("https://bioconductor.org/biocLite.R")
+biocLite("SRAdb") # requires additional install of openssl in the bash environment
+# input: VirusDiscoveryProject/MachineLearning/data_in/allSRR.txt
+source('VirusDiscoveryProject/MachineLearning/data_in/SRAdb/sra_query.r')
+# output: SRA.all_SRR.csv & SRA.sel_SRR.csv in VirusDiscoveryProject/MachineLearning/data_in/SRAdb/
+```
+SRA data was cleaned and tabulated for word frequency using
+```
+source('MachineLearning/feature_computed/SRA_meta_matrix.r')
+```
+This produced feature_computed/SRA_meta_matrix.word_count.csv and feature_computed/SRA_meta_matrix.word_frequency.csv
+
+### Word counting 
+
+```R
+source('MachineLearning/learning/wordFreq2MASHgroups.r')
+```
+produces MachineLearning/learning/wordFreq2MASHgroups.json which contains frequent words by MASH group
 
 ## File Structure
 ```

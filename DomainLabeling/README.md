@@ -46,12 +46,12 @@ Using full CDD database:
 	- dataselection + (10 samples)
 	- Crassphage dataset (249 contigs, Done)
 	- REFSEQ viral genomes (ongoing)
-	- Cellular organisms (ongoing) --> CHOP contigs
-	- Prokaryotic organisms (ongoing) --> CHOP contigs
+	- Cellular organisms (ongoing) --> CHOP contigs + --> running RPSTBLN 
+	- Prokaryotic organisms (ongoing) --> CHOP contigs + --> running RPSTBLN 
  - Scale up to multiple instances
  - run RPSTBLN for known knowns (RUNNING)
  - run RPSTBLN for known unknown / unknown unknown (ON HOLD)
 #Parsing results
- - combine JSON files / sample
+ - combine JSON files / sample --> in progress at least for positive_crassphage
  - Parse JSON files + run basic statistic metrics for cutoff
  - Divide contigs in parts
