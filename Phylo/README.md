@@ -6,6 +6,8 @@ This is done through a simple and full clustering processes aimed at determining
 
 ![alt text](https://raw.githubusercontent.com/NCBI-Hackathons/VirusDiscoveryProject/master/Phylo/Phylo_summary.jpg)
 
+*Figure 1. Overall methodology for phylogenetic analyses.*
+
 ## 'Simple' Clustering using MMSeq2
 The goal of this section is to provide the simplest answer to users who are searching through the database, find a putative virus they're interested in, and wonder: "Are there any similar contigs?" 
 
