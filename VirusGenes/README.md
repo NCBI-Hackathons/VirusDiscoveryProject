@@ -117,15 +117,7 @@ To scale its usage to multiple contig files, a threading-controller was coded, b
 
 Additionally, `director.sh` will call `unmapvigaannotations.pl`, `genbankfeature.py` and `unmapvigaannotations2.pl`, in this order, expand pVOG info and extract the translated ORF annotated in the VIGA `.gbk` output.
 
-All scripts should be located in the working directory.
+All scripts should be located in the working directory. Scripts have `python2.X`, `biopython` and `pandas`, as dependencies.
 
-Script `genbankfeatures.py` needs to run in `python2.X` and `biopython` as module dependency.
 
-Finally, `director.sh` needs `csvkit` to convert the modified `.csv` file to `.json`:
-
-```bash
-
-sudo pip install csvkit
-
-```
  

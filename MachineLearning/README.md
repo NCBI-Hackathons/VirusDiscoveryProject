@@ -19,9 +19,13 @@
 ## Shortcomings
 There are none, the computers are sentient so we can relax.
 
-# Run instructions
+# Run Overview
 
 ## Feature set collection
+
+### MASH: kmer clustering on contigs
+
+*Alise*
 
 ### SRAdb: collect abstracts, descriptions (to "SRA.sel") and all bioproject data (to "SRA.all")
 Query SRA and bioprojects study description, abstracts...data for string-based learning and annotation
@@ -35,9 +39,16 @@ source('VirusDiscoveryProject/MachineLearning/data_in/SRAdb/sra_query.r')
 ```
 SRA data was cleaned and tabulated for word frequency using
 ```
-source('/MachineLearning/feature_computed/SRA_meta_matrix.r')
+source('MachineLearning/feature_computed/SRA_meta_matrix.r')
 ```
 This produced feature_computed/SRA_meta_matrix.word_count.csv and feature_computed/SRA_meta_matrix.word_frequency.csv
+
+### Word counting 
+
+```R
+source('MachineLearning/learning/wordFreq2MASHgroups.r')
+```
+produces MachineLearning/learning/wordFreq2MASHgroups.json which contains frequent words by MASH group
 
 ## File Structure
 ```
