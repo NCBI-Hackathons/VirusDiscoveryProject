@@ -4,6 +4,7 @@
 - Feature set: Using MASH to construct kmer composition of contigs
 - Label set: SRAdb to extract SRR metadata
 - Learning: Pricipal Coordinate Analysis (PCoA)
+- Learning: kNN to share common descriptors accross similar SRRs in MASH kmer space
 
 ## Problem 1_b: Network Smoothing for interpolation of continuous variables in kmer-space
 - Network/Matrix: MASH kmer composition
