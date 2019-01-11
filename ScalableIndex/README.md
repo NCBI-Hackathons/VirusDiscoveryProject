@@ -12,7 +12,7 @@ The teams will be generating JSON files with metadata for each contig with its f
 
 ## Suggested JSON files realtionships
 <p align="center">
-< img src="https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/ScalableIndex/hack.png?raw=true" alt="Table relationships" /)
+  <img src="https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/ScalableIndex/hack.png?raw=true" alt="Table relationships"/>
 </p>
   
 ## Benchmarking databases 
