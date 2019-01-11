@@ -45,5 +45,5 @@ https://docs.google.com/presentation/d/1qhToiEkrQo4-_BW6xScAQ0pzMXW-MufQ6dtQuhw9
 
 
 <p align="center">
-  <img src="logo.png?raw=true" alt="Cookbook logo"/>
+  <img src="logo2.png?raw=true" alt="Cookbook logo"/>
 </p>
