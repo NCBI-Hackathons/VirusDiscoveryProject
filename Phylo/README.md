@@ -79,7 +79,7 @@ Second, it can write a new FASTA file of only the longest sequence in each clust
 ###  blastnToGraph.tar.gz 
 This tar file contains the scripts required for running the full clustering blastn pipeline, starting from a multifasta and generating files which can be later plugged to network analysis software. The process involves generating a blast database for the multifasta (`makeblastdb`) and blasting the sequences against themselves (`blastn`). Then, using custom scripts (see below) self hits are removed and the blast output is formated to generate both a tsv file with pairwirse distances between sequences and a complete distance matrix. The bitscore of the blast alignments is used as the distance criteria. The tsv file and distance matrices produced can be loaded to network analysis software (e.g.: Gephi, Cytoscape, or Pajek). 
 
-To run the pipeline, untar the file and execute the master script (blastnToGraph, see below). Results will be placed inside the blastPipeline/results directory, including the blast database (`testDB`), blast results (`results.blastn`), tsv and distance matrix files (`blast_pairs.tsv` and `disMat.csv` respectively).
+To run the pipeline, untar the file and execute the master script (blastnToGraph, see below). Results will be placed inside the blastPipeline/results directory, including the blast database (`testDB`), blast results (`results.blastn`), tsv and distance matrix files (`blast_pairs.tsv` and `distMat.csv` respectively).
 
 The customs scripts for the pipeline are described below in order of usage:
 
@@ -98,4 +98,4 @@ Generates the distance matrix from the csv file. Syntax is:
 
 `python3 toMatrix.py blast_pairs.tsv`
 
-Where `blast_pairs.tsv` is the output of the blast_pairs.py command (name can be changed inside `blastnToGraph.sh`). Generates a csv file, `disMat.csv` with the bitscore between all contigs. Contigs with no hits reported in the blastn have their distance set to 0.
+Where `blast_pairs.tsv` is the output of the blast_pairs.py command (name can be changed inside `blastnToGraph.sh`). Generates a csv file, `ditMat.csv` with the bitscore between all contigs. Contigs with no hits reported in the blastn have their distance set to 0.
