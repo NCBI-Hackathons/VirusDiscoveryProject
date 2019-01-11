@@ -124,7 +124,10 @@ For access to GitHub and Hackathon Servers, you'll need an _ssh key_.
       `gsutil -m cp gs://ncbi_sra_realign/SRR11587\*.realign .`
     
 
-> Tip: To copy data between servers, use gsutil to copy from the source server to google storage first, then copy to the destination.
+> Tip: To copy data between servers, 
+> * use gsutil to copy from the source server to google storage first, then copy to the destination.
+> * or, add your ssh keys to the source server and use `scp localfile username@REMOTE-IP:/foo/bar/`
+
 
 #### Google compute cloud tools (gcloud):
         
@@ -159,7 +162,11 @@ Several solr and other database servers are available.
 
 > See the pinned post in the `#help-desk` channel in slack for server IP addresses. Contact a friendly admin for username or password information.
 
-* Example API Query using `curl`
+* Solr is installed as a docker image `solr01`.
+  * Copy files to the image using `docker cp localfile solr01:/path/`
+  * Restart solr using `sudo docker container restart solr01`
+  
+* Example solr API Query using `curl`
 
   `$ curl -u USERNAME:PASSWORD "IP-ADDRESS:7790/solr/tstcol01/select?q=\*:\*"`  
 
