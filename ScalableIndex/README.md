@@ -47,7 +47,7 @@ To setup PostgreSQL, here were the steps taken
 - Downloading and setting up PostsreSQL on VM 
 
 - To import the JSON files to PostgreSQL databse, we used the script "JSON_to_Postgres.pl"
-
+Indeed 
 
 ### MongoDb 
 To setup MongoDB, the steps taken are written up under "mondodb" directory. Look at the readme here 
@@ -69,7 +69,7 @@ To run the query for benchmarking, here are the fileter we used from the known c
 http://localhost:8983/solr/known_contigs/select?fq={!join%20from=accession%20to=accession%20fromIndex=contigs}length:[100%20TO%20*]&fq={!join%20from=accession%20to=accession%20fromIndex=metadata}center:UNIVERSITY%20OF%20OXFORD&q=sacc:NC_019915
 
 
-## Presentation put toegther in hackathon and pre-hackathon##
+## Presentation put toegther in hackathon and pre-hackathon ##
 - Hackathon - https://docs.google.com/presentation/d/1qhToiEkrQo4-_BW6xScAQ0pzMXW-MufQ6dtQuhw9wVI/edit#slide=id.g4c3ef27744_0_127
 - Pre-hackathon - https://docs.google.com/presentation/d/1ESJwy6Wkh6VH0SD-vVEA4gjVYbkh0R1ynuQ8E_ZoO_s/edit#slide=id.g4a4fdc18f9_25_40
 
@@ -88,8 +88,18 @@ http://localhost:8983/solr/known_contigs/select?fq={!join%20from=accession%20to=
 - unknown 
 
 ### Adding JSON files to MongoDB 
-Currently because we are not working with all of SRA data, the files are being flattened to one big table instead of joining. Scaling up for this data will require joining but for this hackathon thos seems feasible. 
+Currently because we are not working with all of SRA data, the files are being flattened to one big table instead of joining. Scaling up for this data will require joining but for this hackathon this seems feasible. 
 
-
+To flatten the file - run "flatten.pl" from mongodb 
 
 ### Lookup 
+- To lookup the data using command line, run query.pl in mongodb directory. 
+- Using an API (node-js), goto 35.245.126.160/"write condition" 
+  To get an idea of a few examples, we have a few conditions listed on the webpage "https://35.245.126.160
+  The output is a reulting JSON file. 
+  
+### Parsing through the output JSON file 
+- Setting up scripts in Jupyter notebooks to convert JSON to a tsv, and for any further downstream analysis. 
+
+
+
