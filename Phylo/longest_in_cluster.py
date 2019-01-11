@@ -57,7 +57,10 @@ if __name__ == '__main__':
     with open(cluster_file, 'r') as infile:
         for line in infile:
             line = line.replace('\n', '').split('\t')
-            clusters[line[0]] = clusters.get(line[0], []) + [line[1]]
+            try:
+                clusters[line[0]] = clusters.get(line[0], []) + [line[1]]
+            except:
+                sys.stderr.write('something went wrong with line:\n{}\n'.format(line))
 
 
     # define new clusters
