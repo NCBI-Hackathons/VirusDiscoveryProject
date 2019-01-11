@@ -86,3 +86,8 @@ http://localhost:8983/solr/known_contigs/select?fq={!join%20from=accession%20to=
 - Annotation table - 
 - known contigs table from Team 2
 - 
+
+### Adding JSON files to MongoDB 
+
+
+### Lookup 
