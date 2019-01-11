@@ -5,7 +5,7 @@
 * Database can be provided by #testing group
 
 ```
-./run-viga --input ERR2538396.known_knowns1.fasta --diamonddb /data/databases/RefSeq_Viral_DIAMOND/refseq_viral_proteins.dmnd --blastdb /data/databases/RefSeq_Viral_BLAST/refseq_viral_proteins.faa --rfamdb /data/databases/rfam/Rfam.cm --hmmerdb /data/databases/pvogs/pvogs.hmm --modifiers modifiers.txt
+./run-viga --input ERR2538396.known_knowns1.fasta --diamonddb /data/databases/RefSeq_Viral_DIAMOND/refseq_viral_proteins.dmnd --blastdb /data/databases/RefSeq_Viral_BLAST/refseq_viral_proteins --rfamdb /data/databases/rfam/Rfam.cm --hmmerdb /data/databases/pvogs/pvogs.hmm --modifiers modifiers.txt
 ```
 
 ### Shortcomings

@@ -10,110 +10,24 @@
         
 For access to GitHub and Hackathon Servers, you'll need an _ssh key_.
 
-* [https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
+* [Generating a new SSH Key for Github](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
     
 ### Markdown, for writing and formatting ReadMe and other documents on GitHub (like this document!)
 
-* [https://commonmark.org/help/](https://commonmark.org/help/)
+* [Markdown Help](https://commonmark.org/help/)
         
-* [https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-    
-### For additional questions …
-        
-* TODO: visit the `#help-desk` channel in Slack
-
-* Ask Carl or Ben or one of the other NCBI people at the hackathon!
-        
-* Ask your fellow hackathon participants\!
+* [Handy Markdown cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ## Where’s the Data?!
 
-|Data               |Address 1     |Address 2             |
-|-------------------|--------------|----------------------|
-|SRA Realign Objects|/data/realign/|gs://ncbi_sra_realign/|
-|Contig FASTAs|/data/testset_contigs/|gs://ncbi_sra_contigs/|
-|BLAST DBs|/blast/blastdb/| |
-|BigQuery Tables|project: `strides-sra-hackathon-ops` <br/>table: `ncbi_sra_realign.hackathon_data`|project: `strides-sra-hackathon-data`<br/>table: various, see 4a TODO: [below](#)|
-|Solr DBs| TODO: Refer to the [Server Details](#) post in Slack||
-|Additional Tools|gs://ncbi_hackathon_aux_tools/||
-
-# Pre-Hackathon Takeaways
-    
-## Known Viruses, \#knowns
-        
-> One Strategy from pre-Hackathon
-> 1. blastn all contigs against refseq virus db; 
-> 2. contigs without good hits passed to novel group; 
-> 3. contigs with good hits reported to scaling in JSON format
->
-  > Good hit = pident\*align_len/contig_len \>= 0.8
-            
-  > JSON schema:
-```
-[{"SRR":<str>,
-    "contig":<str>,
-    "hit_accession":<str>,
-    "hit_taxid":<int>,
-    "evalue":<float>,
-    "length":<int>,
-    "pident":<float>,
-    "bitscore":<int>},
-    ]
-```
-
-> Benchmarks -
-            
-  >  * Refseq.fa - 259 MB, \>1E4 seq., \>2E8 bases
-            
-  >  * Contig.fa - 31GB, \>55E7 seq., \>3E10 bases
-
-  >  * Contigs vs refseq blast db (single thread/process) \~526 min
-            
-  >  * refseq vs contigs blast db (single thread/process) \~407 min
-            
-  >  * Multithreading and parallelization can get runtime down to \~30 min, lower is likely possible
-
-> Results - \~1% of contigs examined (those \>1kb and non-amplicon source) hit sequences in the refseq set; this seems reasonable
-    
-    6.  ### Novel VIruses, \#novelcontigs
-        
-        11. > One Strategy from
-pre-Hackathon - **1)** screen against multiple sets
-of models, test contigs on cheapest methods first and pass
-contigs without hits to next most expensive methods
-repeatedly until all methods have been tried or all
-contigs have hits; **2)** report contig model hits to
-scaling in JSON format
-            
-            8.  > Methods investigated: VirFinder, VirSorter, MARVEL,
-    drep/MUMmer, prodigal, hmmersearch, vsearch, CDD,
-    CD-HIT, MMseqs2, SigClust, rpstblastn, pVOG, RVDB
-            
-            9.  > Proposed pipeline: 1a. rpstblastn vs. cdd, 1b. MMseq2
-    vs. refseq, 2a. pVOG, 2b. RVDB
-            
-            10. > JSON schema: \[({"hit_id":\<int\>, "contig":\<str\>,
-    "method":\<str\>,"parameters":\<str\>,
-    "accession":\<str\>, "simil":\<float\>},\]
-        
-        12. > Results - \~2% of contigs
-(\>1 kb and non-amplicon source) fail to hit any tested
-model; this seems reasonable
-    
-    7.  ### Scaling/Index, \#scaling
-        
-        13. > One Strategy from
-pre-Hackathon - 1) JSON output from other teams, 2)
-load into solr, 3) support querying/visualizing results
-from outside console
-        
-        14. > Data Model - 5 collections:
-known, novel, taxonomy, contig descriptions, SRR metadata
-        
-        15. > Results - example JSONs
-were successfully loaded into solr; need more input on
-desired features of query
-interface
+|Data               |Location     |
+|-------------------|--------------|
+|SRA Realign Objects| `/data/realign/` or `gs://ncbi_sra_realign/`|
+|Contig FASTAs|`/data/testset_contigs/` or `gs://ncbi_sra_contigs/`|
+|BLAST DBs|`/blast/blastdb/` |
+|BigQuery Tables|project: `strides-sra-hackathon-ops` <br/>table: `ncbi_sra_realign.hackathon_data` <br>project: `strides-sra-hackathon-data`<br/>table: various, see 4a TODO: [below](#)|
+|Server information| Refer to the pinned post Slack (`#help-desk` channel)|
+|Additional Tools|`gs://ncbi_hackathon_aux_tools/`|
 
 ## General GCP Advice
     
@@ -209,6 +123,12 @@ interface
 
       `gsutil -m cp gs://ncbi_sra_realign/SRR11587\*.realign .`
     
+
+> Tip: To copy data between servers, 
+> * use gsutil to copy from the source server to google storage first, then copy to the destination.
+> * or, add your ssh keys to the source server and use `scp localfile username@REMOTE-IP:/foo/bar/`
+
+
 #### Google compute cloud tools (gcloud):
         
 * Check your service account and project: `gcloud info`
@@ -222,17 +142,31 @@ interface
             
   * Pull a message from the subscription: `gcloud pubsub subscriptions pull sub1`
 
-# Solr
-    
+# Server Access
+
+For server access, create an SSH key using `ssh-keygen -t rsa -b 4096 -C "your-email@domain.edu"`, then post the public key in the`#public_keys' slack channel.  
+
+Server IP information is listed in the `#help-desk` channel in slack (pinned message).
+
+For most servers, access them using `ssh your-email@1.2.3.4` where `your-email` is the name part of the email address you used when generating your SSH key, and `1.2.3.4` is the IP address of the server
+
+* A quick way to verify access is to use the command `ssh your-email@1.2.3.4 whoami` - this will echo back your username if successful.
+
+* If you have trouble connecting, check the username, and try first with a simple command-line `ssh` client.
+
 ## Premade servers
 
-* URL Access: [http://IP-ADDRESS:7790/solr/\#/](http://IP-ADDRESS:7790/solr/#/)
+Several solr and other database servers are available.
 
-> TODO: See the  [Server Information Post in Slack](#) for information like USERNAME, IP Addresses, etc.
+* For Solr: URL Access: [http://IP-ADDRESS:7790/solr/\#/](http://IP-ADDRESS:7790/solr/#/) (requires browser authentication).
 
-* vkt-solr01, vkt-solr02, vkt-solr03. vkt-solr04
+> See the pinned post in the `#help-desk` channel in slack for server IP addresses. Contact a friendly admin for username or password information.
 
-* Example API Query using `curl`
+* Solr is installed as a docker image `solr01`.
+  * Copy files to the image using `docker cp localfile solr01:/path/`
+  * Restart solr using `sudo docker container restart solr01`
+  
+* Example solr API Query using `curl`
 
   `$ curl -u USERNAME:PASSWORD "IP-ADDRESS:7790/solr/tstcol01/select?q=\*:\*"`  
 
