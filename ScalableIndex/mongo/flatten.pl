@@ -47,20 +47,19 @@ sub main {
         my $sample = $sample_coll->find_one({contig => $contig->{'contig'}})
                      or next;
 
-        while (my ($key, $val) = each %$meta) {
-            $contig->{'meta__' . $key} = $val;
-        }
-
-        while (my ($key, $val) = each %$sample) {
-            $contig->{'sample__' . $key} = $val;
-        }
-
-        #say "contig = ", dump($contig);
-        #say "meta = ", dump($meta);
-        #say "sample = ", dump($sample);
-
         printf "%3d: %s\n", ++$i, $contig->{'contig'};
-        $query_coll->insert_one($contig);
+
+        my %convert = ( contig => $contig, meta => $meta, sample => $sample );
+
+        my %insert;
+        while (my ($prefix, $hashref) = each %convert) {
+            while (my ($key, $val) = each %$hashref) {
+                next if $key eq '_id';
+                $insert{ join('__', $prefix, $key) } = $val;
+            }
+        }
+
+        $query_coll->insert_one(\%insert);
     }
 
     say "Done.";
