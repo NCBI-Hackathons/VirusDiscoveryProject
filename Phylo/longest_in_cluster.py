@@ -1,7 +1,12 @@
 """
-USAGE: python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv
+USAGE
+This command will read in a fasta file (of all sequences clustered) and a cluster file (from mmseqs) and output a new cluster file with the longest sequence as the 'representative' of the cluster
+    python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv
 
- python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv -e
+This command will extract only the longest sequence from each cluster, using the same files as above. It writes a new FASTA file
+    python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv -e
+
+
 contact: kylemlevi@gmail.com
 """
 
