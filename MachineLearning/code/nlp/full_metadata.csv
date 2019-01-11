@@ -1,0 +1,2 @@
+FATAL Flags positioning error: Flag '--nouse_legacy_sql' appears after final command line argument. Please reposition the flag.
+Run 'bq help' to get help.
