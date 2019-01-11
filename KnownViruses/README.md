@@ -19,26 +19,84 @@ STAT tool from NCBI was run on each realign sequence. The web interface for STAT
 
 STAT is used for the [taxonomic analysis](https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR4098608) of SRA accessions. You can get the tool from [Github](https://github.com/ncbi/ngs-tools/tree/tax/tools/tax)
 
+
+**Taxonomic assignment by HMM match**
+
+**Taxonomic assignment by rpstblast match**
+
 **Taxonomic assignment blastn hit**
 
 The commands to do the blastn of the realigned sequences against NCBI Refseq virus genomes database are:
 ```
-for i in *.fa.gz; 
-	do 
-		gunzip -c $i | blastn -db ref_viruses_rep_genomes_v5 -evalue 0.001 -num_alignments 1 -num_threads 32 -outfmt "6 qseqid qlen sacc stitle slen pident evalue bitscore length" -out ${i%.fa.gz}.blastout.taxid.test; 
+mkdir ref_virus_blastout
+for i in *.fa.gz
+	do il=$( echo $i | sed 's/.*\///g' )
+		gunzip -c $i | bioawk -c fastx '{ if(length($seq) > 1000) { print ">"$name; print $seq }}' | blastn -db ref_viruses_rep_genomes_v5 -evalue 0.001 -num_alignments 1 -num_threads 32 -outfmt "6 qseqid qlen sacc staxid sscinames slen pident evalue bitscore length" -out ref_virus_blastout/${il%.fa.gz}.blastout
 	done
 ```
 
 Output is tab separated file in the following format:
 
-| Contig name | Contig length | Blast hit acc | Blast hit name | Blast hit total length | % identity | evalue | Bit score | Length aligned to blast hit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-Contig_805_73.4912:1.2127 | 2127 | NC_027339 | Enterobacteria phage SfI, complete genome | 38389 | 96.330 | 1.11e-42 | 178 | 109 |
+| Contig name | Contig length | Blast hit acc | Taxon ID | Blast hit name | Blast hit total length | % identity | evalue | Bit score | Length aligned to blast hit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+Contig_805_73.4912:1.2127 | 2127 | NC_027339 | 1732063 | Enterobacteria phage SfI, complete genome | 38389 | 96.330 | 1.11e-42 | 178 | 109 |
+
+
+**Parse blastn hits for contigs in each class**
+
+Generate list of contig names in the following classes
+
+| Description | Blastn length cutoff | Blastn identity cutoff | 
+| --- | --- | --- |
+| Known knowns | >80% | >85% |
+| Known unknowns | > 80% | >50% and <85% |
+| Known unknowns | >50% to <80% | >85% |
+| Unknown unknowns with blast hits | <50% | NA |
+
+
+```
+for blout in *.realign.local.blastout
+	do 
+		sort -u -k1,1 $blout | awk '{FS="\t"; OFS="\t"} {if ($10/$2 > 0.799 && $7 > 84.99) {print $1}}' > ${blout%.realign.local.blastout}.known_knowns_85id_80len.txt
+		sort -u -k1,1 $blout | awk '{FS="\t"; OFS="\t"} {if ($10/$2 > 0.499 && $10/$2 < 0.8 && $7 > 84.99) {print $1}}' > ${blout%.realign.local.blastout}.known_unknowns_85id_50len.txt
+		sort -u -k1,1 $blout | awk '{FS="\t"; OFS="\t"} {if ($10/$2 > 0.499 && $7 < 84.99 && $7 > 49.99) {print $1}}' > ${blout%.realign.local.blastout}.known_unknowns_50id_50len.txt
+	done
+```
+
+Generate the fasta file for each class
+```
+for raw_fasta in /home/vpeddu/testing/*.fa.gz
+	do 
+		il=$( echo $raw_fasta | sed 's/.*\///g' )
+		gunzip -c $raw_fasta | bioawk -c fastx '{ if(length($seq) > 1000) { print}}' > ${il%.realign.local.fa.gz}.temp.tab
+		if [ -s ${il%.realign.local.fa.gz}.temp.tab ]
+		then
+			grep -f ${il%.realign.local.fa.gz}.known_knowns_85id_80len.txt ${il%.realign.local.fa.gz}.temp.tab | awk '{print ">"$1; print $2}' | sed '/--/d' > ${il%.realign.local.fa.gz}.known_knowns_85id_80len.fasta
+			grep -f ${il%.realign.local.fa.gz}.known_unknowns_85id_50len.txt ${il%.realign.local.fa.gz}.temp.tab | awk '{print ">"$1; print $2}' | sed '/--/d' > ${il%.realign.local.fa.gz}.known_unknowns_85id_50len.fasta
+			grep -f ${il%.realign.local.fa.gz}.known_unknowns_50id_50len.txt ${il%.realign.local.fa.gz}.temp.tab | awk '{print ">"$1; print $2}' | sed '/--/d' > ${il%.realign.local.fa.gz}.known_unknowns_50id_50len.fasta
+			cat ${il%.realign.local.fa.gz}.known_unknowns_50id_50len.txt ${il%.realign.local.fa.gz}.known_unknowns_85id_50len.txt ${il%.realign.local.fa.gz}.known_knowns_85id_80len.txt > ${il%.realign.local.fa.gz}.legit_blasthits.txt
+			grep -v -f ${il%.realign.local.fa.gz}.legit_blasthits.txt ${il%.realign.local.fa.gz}.temp.tab | awk '{print ">"$1; print $2}' | sed '/--/d' > ${il%.realign.local.fa.gz}.unknown_unknowns_refviral.fasta
+		fi
+	done
+```
 
 
 **Features from the blastn hits**
 
-Index for 'Known' viral contigs:
+Index for 'Known' viral contigs indipendent blastn run
+- Metagenome SRR accession [string]
+- Contig name [string]
+- Contig length [int]
+- Accession for subject in blastn [string]
+- NCBI taxonomy id for subject in blastn hit [string]
+- Name of subject in blastn hit [string]
+- Length of subject in blastn hit [int]
+- Percent idendity of blastn hit [float]
+- Evalue of blastn hit [float]
+- Bit score of blastn hit [float]
+- Length aligned in blastn hit [int]
+
+Index for 'Known' viral contigs from bq tables
 - Metagenome SRR accession [string]
 - Contig name [string]
 - Assembly type [denovo, reference guided]
