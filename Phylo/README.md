@@ -1,3 +1,4 @@
+
 # Clustering and Phylogeny
 This part of the ViralDiscoveryProject aims to answer the question: **How are these new contigs related to known viruses and each other**?
 
@@ -31,9 +32,21 @@ Here we aim to cluster all contigs and all refseq viruses (again) but extract ac
 
 The graph will be generated with Gephi. Two nodes will have an edge if a blast result was obtained (with the e-value established below). The weight of the graph will be equal to be bit score for the alignment.
 
-Process is done using the set of scripts in the blastnToGraph tar file. For use decompress and run blastnToGraph.sh using the following command:
+## Commands and Scripts
+### blastn:
+`blastn -query known_knowns.fasta -db known_knowns.fasta -out known_knowns.blastn -num_threads 96 -outfmt 7 -evalue 1e-10 -max_hsps 1`
+### blast_pairs.py
+This script extracts three columns from the blastn output, the three columns are:
+Contig1  |  Contig2  |  bit score
+`python3 blast_pairs.py -i example_files/knowns.blastn -o example_files/example_blast_paris.tsv`
+### fasta_duplicator.py
+This script duplicates entries in a fasta file *n* times. Every header will have the value of *n* insterted in the header. For example, with *n* = 3, ">seq1"   will become  >0seq1  >1seq1  >2seq1
+`fasta_duplicator.py -i example_files/test_contigs.fasta -o example_files/dup_contigs.fasta -n 3`
 
-`bash blastToGraph.sh <input_file.fasta> <e-value> <minimum_identity>`
+### longest_in_cluster.py
+This script has two functions. 
+First, it can rename the representative sequence of a cluster to the longest (bp) sequence in the cluster. This prevents clusters from being named after a small contig.
+`python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv`
 
-Where e-value and minimum identity correspond to the options -evalue and -perc_identity in blastn. The resulting files (blast dabatase, blastn results, and distance matrix) will be located in the results directory. The distance matrix can be uploaded directly to Gephi for clustering and network analysis.
-
+Second, it can write a new FASTA file of only the longest sequence in each cluster. **This is done with the "-e" flag**
+`python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv -e`
