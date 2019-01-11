@@ -79,15 +79,17 @@ http://localhost:8983/solr/known_contigs/select?fq={!join%20from=accession%20to=
   <img src="logo2.png?raw=true" alt="Cookbook logo"/>
 </p>
 
-### Getting JSON files from all the teams 
-- SRA metadata - SRA 
-- contigs table - already assembled and table available from bigquery 
-- Taxonomy table - 
+### Getting JSON files from all the teams - uploaded to the JSON_data directory
+- SRA metadata - uploaded 
+- contigs table - 
+- Taxonomy table - uploaded  
 - Annotation table - 
-- known contigs table from Team 2
-- 
+- known 
+- unknown 
 
 ### Adding JSON files to MongoDB 
+Currently because we are not working with all of SRA data, the files are being flattened to one big table instead of joining. Scaling up for this data will require joining but for this hackathon thos seems feasible. 
+
 
 
 ### Lookup 
