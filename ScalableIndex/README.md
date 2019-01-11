@@ -31,7 +31,7 @@ To improve usability, taxonomy and domain tables will need to be joined to the k
 ###  Database Performance 
 Query we tested - All the contigs that are: > 100 bp + associated with the University of Oxford + belong to “NC_019915”,
 
-|               | SOLR          | MongoDB     | PostgreSQL  |
+|               | Solr         | MongoDB     | PostgreSQL  |
 | ------------- | ------------- |-------------|-------------|
 | Query speed   | 1k- 0.1ms     |1k- 0.3s     | 1K - 0.3ms  |
 |               | 1M - 60ms     |1M - 15s     | 1M - <2min  |
@@ -52,16 +52,16 @@ Indeed
 ### MongoDb 
 To setup MongoDB, the steps taken are written up under "mondodb" directory. Look at the readme here 
 
-### SOLR 
-- SOLR was setup on the VM from a docker image already, but this is a great resource to downlaod and get started with SOLR http://www.solrtutorial.com/solr-in-5-minutes.html
-SOLR UI starts simultaenouly and most of the uploading and search was done using the interface. 
+### Solr 
+- Solr was setup on the VM from a docker image already, but this is a great resource to downlaod and get started with Solr http://www.solrtutorial.com/solr-in-5-minutes.html
+Solr Admin GUI starts simultaenouly and most of the uploading and search was done using the interface. 
 
-- Creating a core/collection on SOLR 
+- Creating a core/collection on Solr 
 ./solr create -c blastdb #creating a core 
 - Posting the JSON data to the core/collection  
 ./post -c blastdb ../../testdata/blastp.out.xml #indexing the xml or input JSON file 
 
-To run the query for benchmarking, here are the fileter we used from the known contigs table
+To run the query for benchmarking the filters below were used on the known contigs table
 - fq ={!join%20from=accession%20to=accession%20fromIndex=contigs}length:[100 TO * ]
   fq={!join%20from=accession%20to=accession%20fromIndex=metadata}center:UNIVERSITY OF OXFORD
 - q=sacc:NC_019915
@@ -73,13 +73,12 @@ http://localhost:8983/solr/known_contigs/select?fq={!join%20from=accession%20to=
 - Hackathon - https://docs.google.com/presentation/d/1qhToiEkrQo4-_BW6xScAQ0pzMXW-MufQ6dtQuhw9wVI/edit#slide=id.g4c3ef27744_0_127
 - Pre-hackathon - https://docs.google.com/presentation/d/1ESJwy6Wkh6VH0SD-vVEA4gjVYbkh0R1ynuQ8E_ZoO_s/edit#slide=id.g4a4fdc18f9_25_40
 
-
 ## How we plan to scale all the data using MondoDB
 <p align="center">
   <img src="logo2.png?raw=true" alt="Cookbook logo"/>
 </p>
 
-### Getting JSON files from all the teams - uploaded to the JSON_data directory
+### Status of JSON files from all the teams, some of which were uploaded to the JSON_data directory
 - SRA metadata - uploaded 
 - contigs table - 
 - Taxonomy table - uploaded  
