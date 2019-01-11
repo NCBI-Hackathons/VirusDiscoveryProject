@@ -66,7 +66,7 @@ if __name__ == '__main__':
     # define new clusters
     newclusters = {}
     for k,v in clusters.items():
-        sizes = [genome_lens[x] for x in v]
+        sizes = [genome_lens.get(x, 0) for x in v]
         biggest = v[sizes.index(max(sizes))]
         newclusters[biggest] = v
     if not args.extractlongest:
