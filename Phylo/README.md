@@ -31,5 +31,9 @@ Here we aim to cluster all contigs and all refseq viruses (again) but extract ac
 
 The graph will be generated with Gephi. Two nodes will have an edge if a blast result was obtained (with the e-value established below). The weight of the graph will be equal to be bit score for the alignment.
 
-### Command used:
-`blastn -query known_knowns.fasta -db known_knowns.fasta -out known_knowns.blastn -num_threads 96 -outfmt 7 -evalue 1e-10 -max_hsps 1`
+Process is done using the set of scripts in the blastnToGraph tar file. For use decompress and run blastnToGraph.sh using the following command:
+
+`bash blastToGraph.sh <input_file.fasta> <e-value> <minimum_identity>`
+
+Where e-value and minimum identity correspond to the options -evalue and -perc_identity in blastn. The resulting files (blast dabatase, blastn results, and distance matrix) will be located in the results directory. The distance matrix can be uploaded directly to Gephi for clustering and network analysis.
+
