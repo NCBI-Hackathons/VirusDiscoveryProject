@@ -23,9 +23,10 @@ for( g in groupID){
 	most_freq_words[[g]] = lapply( sort(unique(data[[g]])) , function(gi){
 		s=sort( colSums( data[ data[[g]]==gi , names ] ),decreasing=T)
 		s = s[s>0]
-		s
+		list(words=names(s),cummulative_frequency=s)
 	})
 	names(most_freq_words[[g]]) = sort(unique(data[[g]]))
+	#most_freq_words[[g]] = c(srr=group$X[groups[[g]]
 }
 
 
