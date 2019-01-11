@@ -36,6 +36,7 @@ Query we tested - All the contigs that are more than 100 bp and that were by Uni
 | Query speed   | 1k- 0.1ms     |1k- 0.3s     | 1K - 0.3ms  |
 |               | 1M - 60ms     |1M - 15s     | 1M - <2min  |
 |Ease of search | has a defualt UI we used| command-line script used to lookup | UI possible but took some work |  
+|Challeneges    | Took a while to learn how to serach in Solr UI | need to build a user interface  | performance and getting started| 
 
 
 ## Presentation ##
