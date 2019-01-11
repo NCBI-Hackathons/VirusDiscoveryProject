@@ -33,6 +33,11 @@ biocLite("SRAdb") # requires additional install of openssl in the bash environme
 source('VirusDiscoveryProject/MachineLearning/data_in/SRAdb/sra_query.r')
 # output: SRA.all_SRR.csv & SRA.sel_SRR.csv in VirusDiscoveryProject/MachineLearning/data_in/SRAdb/
 ```
+SRA data was cleaned and tabulated for word frequency using
+```
+source('/MachineLearning/feature_computed/SRA_meta_matrix.r')
+```
+This produced SRA_meta_matrix.csv
 
 ## File Structure
 ```
