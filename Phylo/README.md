@@ -2,6 +2,10 @@
 # Clustering and Phylogeny
 This part of the ViralDiscoveryProject aims to answer the question: **How are these new contigs related to known viruses and each other**?
 
+This is done through a simple and full clustering processes aimed at determining the relationships between the contigs, through MMSeq2 and Blast analyses (*Figure 1*).
+
+![alt text](https://raw.githubusercontent.com/NCBI-Hackathons/VirusDiscoveryProject/master/Phylo/Phylo_summary.jpg)
+
 ## 'Simple' Clustering using MMSeq2
 The goal of this section is to provide the simplest answer to users who are searching through the database, find a putative virus they're interested in, and wonder: "Are there any similar contigs?" 
 
