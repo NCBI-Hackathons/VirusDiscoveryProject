@@ -2,20 +2,26 @@
 **Input data from NCBI SRR**
 
 
-**_De novo_ and reference-guided assembly**
+**_De novo_ assembly**
 
-[SKESA](https://github.com/ncbi/SKESA) is a sequence read assembler for microbial genomes based on debruijn graphs. It uses conservative heuristics for *de novo* and refenrece guided assembly. SKESA can process read information by accessing reads from SRA (option --sra_run) or from files in fasta (option --fasta) or fastq (option --fastq) format. Any combination of input streams is allowed.
+[SKESA](https://github.com/ncbi/SKESA) is a sequence read assembler for microbial genomes based on debruijn graphs. It uses conservative heuristics for *de novo* assembly. SKESA can process read information by accessing reads from SRA (option --sra_run) or from files in fasta (option --fasta) or fastq (option --fastq) format. Any combination of input streams is allowed.
+
+**Realigned objects**
+
+The realigned object is a compilation of human alignment, viral guided assembly or alignment, SKESA assembly and unmapped reads.
+
+Realign objects are effectively the same reads (bases) as the original SRA runs but aligned onto host (human) and either viral contigs or references and onto *de novo* contigs assembled with SKESA. 
+
 
 **Taxonomic assignment by kmer match**
 
-STAT tool from NCBI was run on each contig from the skesa assembly
-The web interface for STAT is available [here] (https://www.ncbi.nlm.nih.gov/Traces/sra_stat_search/). There is no command line version available at the moment but in the works.
+STAT tool from NCBI was run on each realign sequence. The web interface for STAT is available [here] (https://www.ncbi.nlm.nih.gov/Traces/sra_stat_search/). There is no command line version available at the moment but in the works.
 
 STAT is used for the [taxonomic analysis](https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR4098608) of SRA accessions. You can get the tool from [Github](https://github.com/ncbi/ngs-tools/tree/tax/tools/tax)
 
 **Taxonomic assignment blastn hit**
 
-The commands to do the blastn of the assembled contigs against NCBI Refseq virus genomes database are:
+The commands to do the blastn of the realigned sequences against NCBI Refseq virus genomes database are:
 ```
 for i in *.fa.gz; 
 	do 
