@@ -2,7 +2,7 @@
 **Input data from NCBI SRR**
 
 
-**_De novo_ and reference-guided assembly**
+**_De novo_ assembly**
 
 [SKESA](https://github.com/ncbi/SKESA) is a sequence read assembler for microbial genomes based on debruijn graphs. It uses conservative heuristics for *de novo* assembly. SKESA can process read information by accessing reads from SRA (option --sra_run) or from files in fasta (option --fasta) or fastq (option --fastq) format. Any combination of input streams is allowed.
 
