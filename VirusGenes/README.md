@@ -120,3 +120,12 @@ Additionally, `director.sh` will call `unmapvigaannotations.pl`, `genbankfeature
 All scripts should be located in the working directory.
 
 Script `genbankfeatures.py` needs to run in `python2.X` and `biopython` as module dependency.
+
+Finally, `director.sh` needs `csvkit` to convert the modified `.csv` file to `.json`:
+
+```bash
+
+sudo pip install csvkit
+
+```
+ 

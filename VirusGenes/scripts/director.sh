@@ -15,6 +15,6 @@ parallel '      name=$(basename {} | sed "s/\.fasta//g")
 		perl /home/tully.bj/unmapvigaannotations.pl ${name}_annotated.csv ${name}.fasta ${name}_annotated_rename.csv
 		python /home/tully.bj/genbankfeature.py ${name}_annotated.gbk
 		perl /home/tully.bj/unmapvigaannotations2.pl ${name}_annotated.protein.faa ${name}.fasta ${name}_annotated_rename.protein.faa
-
+		csvjson -i 4 --key "Protein ID" ${name}_annotated_rename.csv >	 ${name}_annotated_rename.json
 
 ' ::: $(ls *.fasta)
