@@ -1,22 +1,25 @@
 # Domain Labeling using rpstblastn
 Using full CDD database:
  - rpstblastn with e-value cut-off of 1e-3
+ - bitscore cut-off >50
  - output in JSON
  - split CDD database in :
-    - Viral CDD
-    - Cellular CDD
-    - Prokaryotic CDD
+    - Viral CDD --> Provided by Rodney 
+    - Cellular CDD --> Provided by Rodney
+    - Prokaryotic CDD --> Provided by Rodney 
     - mixed CDD
 
 ## Samples to test:
  - Negative:
-    - No phage sel from data selection
-    - REFSEQ bacterial sequences
-    - REFSEQ cellular sequences
+    - No phage sel from data selection (10 datasets)
+    - REFSEQ bacterial sequences (random 100 sequences, chopped in smaller pieces; cut-off: from 1kbp to 1Mbp)
+    - REFSEQ cellular sequences (random 31 sequences belonging to fungi, invertebrate and protozoa, chopped in smaller pieces; cut-off: from 1kbp to 1Mbp)
+    - optional: minimal Bacillus (deletion strains) WGS
  - Positive:
     - REFSEQ viral genomes
     - Selected SRA from data selection
-    - crassphage DB
+    - crassphage DB (the 249 crAss-like phage contigs from Guerin et al., 2018)
+    - known-known contigs (1330 datasets from the test dataset)
 
 ## Metrics:
  - Evalue
@@ -33,11 +36,22 @@ Using full CDD database:
  - drop PRO
  - drop cellular
  - ambigious / unkown to Genes / darkmatter?
+ - Darkmatter wants a list of 'definitive viral'
 
 
 ##TODO:
- - run RPSTBLN
- - Chop positive control samples from REFSEQ
- - set up jupyter notebook for analysis
- - generate control samples
- - combine JSON formats
+#Running RPSTBLN
+ - Test dataset:
+ 	- dataselection - (10 samples)
+	- dataselection + (10 samples)
+	- Crassphage dataset (249 contigs, Done)
+	- REFSEQ viral genomes (ongoing)
+	- Cellular organisms (ongoing) --> CHOP contigs + --> running RPSTBLN 
+	- Prokaryotic organisms (ongoing) --> CHOP contigs + --> running RPSTBLN 
+ - Scale up to multiple instances
+ - run RPSTBLN for known knowns (RUNNING)
+ - run RPSTBLN for known unknown / unknown unknown (ON HOLD)
+#Parsing results
+ - combine JSON files / sample --> in progress at least for positive_crassphage
+ - Parse JSON files + run basic statistic metrics for cutoff
+ - Divide contigs in parts
