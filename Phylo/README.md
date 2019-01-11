@@ -2,6 +2,12 @@
 # Clustering and Phylogeny
 This part of the ViralDiscoveryProject aims to answer the question: **How are these new contigs related to known viruses and each other**?
 
+This is done through a simple and full clustering processes aimed at determining the relationships between the contigs, through MMSeq2 and Blast analyses (**Figure 1**).
+
+![alt text](https://raw.githubusercontent.com/NCBI-Hackathons/VirusDiscoveryProject/master/Phylo/Phylo_summary.jpg)
+
+**Figure 1. Overall methodology for phylogenetic analyses.**
+
 ## 'Simple' Clustering using MMSeq2
 The goal of this section is to provide the simplest answer to users who are searching through the database, find a putative virus they're interested in, and wonder: "Are there any similar contigs?" 
 
@@ -30,7 +36,7 @@ Each contig will be assigned to a single cluster, and each cluster will be repre
 ## Full Clustering using BLASTN
 Here we aim to cluster all contigs and all refseq viruses (again) but extract actual edge weights between the nodes in the cluster. This will be done using blastn and extracting the top non-self hit. If a virus has no non-self hits, it's 'lonely' and wont show up to the graph.
 
-The graph will be generated with Gephi. Two nodes will have an edge if a blast result was obtained (with the e-value established below). The weight of the graph will be equal to be bit score for the alignment.
+Clustering and networks are generated with Gephi or Japek (although other software can be employed). Two nodes will have an edge if a blast result was obtained (with the e-value established below). The weight of the graph will be equal to be bit score for the alignment.
 
 ## Commands and Scripts
 ### blastn:
