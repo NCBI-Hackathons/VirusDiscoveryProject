@@ -12,9 +12,11 @@ parallel '      name=$(basename {} | sed "s/\.fasta//g")
 		cp ${name}.fasta result/${name}
 		cd result/${name}
 		./run-viga --input ${name}.fasta --diamonddb /data/databases/RefSeq_Viral_DIAMOND/refseq_viral_proteins.dmnd --blastdb /data/databases/RefSeq_Viral_BLAST/refseq_viral_proteins --rfamdb /data/databases/rfam/Rfam.cm --hmmerdb /data/databases/pvogs/pvogs.hmm --threads 1 --modifiers modifiers.txt
-		perl /home/tully.bj/unmapvigaannotations.pl ${name}_annotated.csv ${name}.fasta ${name}_annotated_rename.csv
-		python /home/tully.bj/genbankfeature.py ${name}_annotated.gbk
-		perl /home/tully.bj/unmapvigaannotations2.pl ${name}_annotated.protein.faa ${name}.fasta ${name}_annotated_rename.protein.faa
-		csvjson -i 4 --key "Protein ID" ${name}_annotated_rename.csv >	 ${name}_annotated_rename.json
+		perl <working-dir>unmapvigaannotations.pl ${name}_annotated.csv ${name}.fasta ${name}_annotated_rename.csv
+		python <working-dir>genbankfeature.py ${name}_annotated.gbk
+		perl <working-dir>unmapvigaannotations2.pl ${name}_annotated.protein.faa ${name}.fasta ${name}_annotated_rename.protein.faa
+		python <working-dir>addvq.py ${name}_annotated_rename.csv ViralQuotient.txt ${name}_annotated_rename_vq.csv
+		python <working-dir>converter.py -i ${name}_annotated_rename_vq.csv -o ${name}_annotated_rename_vq.json
+
 
 ' ::: $(ls *.fasta)
