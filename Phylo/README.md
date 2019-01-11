@@ -9,9 +9,26 @@ This is done through a simple and full clustering processes aimed at determining
 **Figure 1. Overall methodology for phylogenetic analyses.**
 
 ## 'Simple' Clustering using MMSeq2
-The goal of this section is to provide the simplest answer to users who are searching through the database, find a putative virus they're interested in, and wonder: "Are there any similar contigs?" 
+The goal of this section is to provide the simplest answer to users who are searching through the database, find a putative virus they're interested in, and wonder: "Are there any similar contigs?"
 
-Each contig will be assigned to a single cluster, and each cluster will be represented by one "representative contig".  Often times a contig will be the "representative contig" in its own cluster. We colloquially refer to these as 'lonely contigs'.
+This is achieved by clustering all presumed-to-be viral contigs together with all sequences currently present in virus refseq. Each contig will be assigned to a single cluster, and each cluster will be represented by one "representative contig". This “representative contig” is the refseq sequence present in the cluster or, if there is none, the longest sequence in the cluster. Often times a contig will be the "representative contig" in its own cluster. We colloquially refer to these as 'lonely contigs'.
+
+First, contigs of interested are joined with a fasta-file containing all virus refseq entries (downloaded from NCBI Genbank using (viruses[orgn] NOT bacteria [orgn]) and (refseq) as keywords.)
+
+`cat <contigs.fasta> <virus_refseq.fasta> > <fullset.fasta>`
+
+Then, a database is built.
+
+`mmseqs createdb <fullset.fasta> <fullset_DB> --dbtype 2`
+
+Clustering is done using the linclust algorithm:
+
+`mmseqs linclust <fullset_DB> <out_DB> <tmp_dir> --sub-mat nucleotide.out --alph-size 4 -c 0.05 --min-seq-id 0.9 -e 0.000001 --alignment-mode 4`
+
+use createtsv to convert the output to .tsv
+
+`mmseqs createtsv <fullset_DB> <fullset_DB> <out_DB> <out_DB.tsv>`
+
 
 | Cluster Representative Sequence | Sequence in Cluster |
 |----------------------------------------|--------------------------------------------------------|
