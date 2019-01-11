@@ -38,7 +38,7 @@ for i in *.fa.gz
 Output is tab separated file in the following format:
 
 | Contig name | Contig length | Blast hit acc | Taxon ID | Blast hit name | Blast hit total length | % identity | evalue | Bit score | Length aligned to blast hit |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 Contig_805_73.4912:1.2127 | 2127 | NC_027339 | 1732063 | Enterobacteria phage SfI, complete genome | 38389 | 96.330 | 1.11e-42 | 178 | 109 |
 
 
