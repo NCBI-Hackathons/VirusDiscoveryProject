@@ -38,6 +38,9 @@ Query we tested - All the contigs that are more than 100 bp and that were by Uni
 |Ease of search | has a defualt UI we used| command-line script used to lookup | UI possible but took some work |  
 |Challeneges    | Took a while to learn how to serach in Solr UI | need to build a user interface  | performance and getting started| 
 
+Although both SOLR and MongoDB performed relatively well, we selected **MongoDB** based on the teams perference. 
+
+We also tested MongoDB to run a query serach "lookup all contigs that have a certain length and retrieve all the contigs taxa information". This query was done to test if looking up multiple entries in the taxa field from the results will decrease the performance, also the taxa table had a different index compared to the other tables (shown below). MongoDB continued to performed really well (~1s) for these lookups. 
 
 ## Presentation ##
 
@@ -45,5 +48,5 @@ https://docs.google.com/presentation/d/1qhToiEkrQo4-_BW6xScAQ0pzMXW-MufQ6dtQuhw9
 
 
 <p align="center">
-  <img src="logo2.png?raw=true" alt="Cookbook logo"/>
+  <img src="logo.png?raw=true" alt="Cookbook logo"/>
 </p>
