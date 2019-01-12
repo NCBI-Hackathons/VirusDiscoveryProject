@@ -119,4 +119,5 @@ Additionally, `director.sh` will call `unmapvigaannotations.pl`, `genbankfeature
 
 All scripts should be located in the working directory. Scripts have `python2.X`, `biopython` and `pandas`, as dependencies.
 
- 
+
+![Fig. 1: Example of dataset reduction:](pictures/reduction.jpg)
