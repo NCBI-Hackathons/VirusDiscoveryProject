@@ -1,4 +1,5 @@
 # Machine Learning Team: Data-based Metadata Interpolation
+Data-based completion, interpolation and smoothing of metadata
 
 ## Problem 1: Unsupervised clustering of datasets using viral MASH (Ondov et al 2016) contig features and extraction of highly associated metadata terms
 
