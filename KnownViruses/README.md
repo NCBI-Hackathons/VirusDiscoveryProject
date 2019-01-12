@@ -181,6 +181,7 @@ These are the counts from the new blastn run on Jan 11th against all contigs in 
 | Known unknowns | 4,713 | >50% to <80% | >85% |
 | Unknown unknowns | 4,204,364 | NA | NA |
 
+The CSV and JSON files are in /home/ss2489/Jan11_run
 
 These are the counts from the old run in bq
 
