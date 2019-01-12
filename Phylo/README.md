@@ -35,24 +35,18 @@ use createtsv to convert the output to .tsv
 `mmseqs createtsv <fullset_DB> <fullset_DB> <out_DB> <out_DB.tsv>`
 
 
-| Cluster Representative Sequence | Sequence in Cluster |
-|----------------------------------------|--------------------------------------------------------|
-| NC_027054_Porcine_kobuvirus | NC_027054_Porcine_kobuvirus |
-| NC_027054_Porcine_kobuvirus | NC_011829_Porcine_kobuvirus_swine/S-1-HUN/2007/Hungary |
-| NC_027054_Porcine_kobuvirus | NC_016769_Porcine_kobuvirus_SH-W-CHN/2010/China |
-| NC_018226_Pasivirus_A1 | NC_018226_Pasivirus_A1 |
-| NC_016156_Feline_picornavirus | NC_016156_Feline_picornavirus |
-| NC_001479_Encephalomyocarditis_virus | NC_001479_Encephalomyocarditis_virus |
-| NC_010810_Human_TMEV-like_cardiovirus | NC_010810_Human_TMEV-like_cardiovirus |
-| NC_010810_Human_TMEV-like_cardiovirus | NC_009448_Saffold_virus |
-| NC_038306_Coxsackievirus_A2 | NC_038306_Coxsackievirus_A2 |
-| NC_015936_Mouse_kobuvirus_M-5/USA/2010 | NC_015936_Mouse_kobuvirus_M-5/USA/2010 |
-| NC_022332_Eel_picornavirus_1 | NC_022332_Eel_picornavirus_1 |
-| NC_024765_Chicken_picornavirus_1 | NC_024765_Chicken_picornavirus_1 |
-| NC_024765_Chicken_picornavirus_1 | NC_028380_Chicken_sicinivirus_JSY |
-| NC_024768_Chicken_picornavirus_4 | NC_024768_Chicken_picornavirus_4 |
-| NC_024768_Chicken_picornavirus_4 | NC_023858_Melegrivirus_A |
-| NC_024768_Chicken_picornavirus_4 | NC_021201_Turkey_hepatitis_virus_2993D |
+| Cluster Representative Sequence | Contig in Cluster |
+|------------------------------------------|-----------------------------------------|
+| SRR6659405_Contig_237_223.049:1.3224 | SRR6659405_Contig_237_223.049:1.3224 |
+| SRR6659405_Contig_237_223.049:1.3224 | SRR6659597_Contig_1523_15.6439:1.3224 |
+| SRR6659405_Contig_237_223.049:1.3224 | SRR6659435_Contig_5949_81.708:1.2547 |
+| SRR6659405_Contig_237_223.049:1.3224 | ERR1711665_Contig_47824_41.9819:1.1128 |
+| NC_001609.1 | NC_001609.1 |
+| NC_001609.1 | SRR7524180_Contig_2887_4.15617:1.8613 |
+| NC_001609.1 | SRR6028274_Contig_14203_56.7802:1.11362 |
+| NC_001609.1 | SRR4101292_Contig_16607_60.2093:1.3030 |
+| NC_001609.1 | ERR2749714_Contig_151_21.3722:1.2535 |
+| NC_001609.1 | SRR4101324_Contig_236_136.623:1.3030 |
 
 
 ## Full Clustering using BLASTN
