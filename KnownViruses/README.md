@@ -183,12 +183,35 @@ These are the counts from the new blastn run on Jan 11th against all contigs in 
 
 The CSV and JSON files are in /home/ss2489/Jan11_run
 The fasta files are in /home/michael.tisza/ref_virus_blast1/ref_virus_blastout
+
 File types EXTENSIONS:
 * UNKNOWN UNKNOWNS - .unknown_unknowns_refviral.fasta
 * KNOWN UNKNOWNS1 - .known_unknowns_50id_50len.fasta
 * KNOWN UNKNOWNS2 - .known_unknowns_85id_50len.fasta
 * KNOWN KNOWNS - .known_85id_80len_re_artif.fasta
 * BLAST OUTPUTS - .blastout
+
+Here are the top known virus hits with more than 100 hits
+* 101 Escherichia phage D108
+* 114 Enterobacteria phage BP-4795
+* 139 Enterobacteria phage YYZ-2008
+* 145 Escherichia phage TL-2011b
+* 146 Enterobacteria phage fiAA91-ss
+* 147 Salmonella phage 118970_sal3
+* 161 Escherichia phage PBECO 4
+* 162 Escherichia phage 121Q
+* 163 Escherichia phage APCEc01
+* 167 Shigella phage SfIV
+* 196 Escherichia virus P1
+* 214 Enterobacteria phage SfV
+* 277 Enterobacteria phage phiP27
+* 279 Enterobacteria phage cdtI
+* 320 Enterobacteria phage mEp460
+* 351 Stx2-converting phage 1717
+* 409 Enterobacteria phage P88
+* 608 Enterobacteria phage HK630
+* 3398 uncultured crAssphage
+
 
 These are the counts from the old run in bq. Please note that these sets are not from all the same fasta files.
 
