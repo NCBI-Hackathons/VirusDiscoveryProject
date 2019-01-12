@@ -9,6 +9,11 @@ This is done through a simple and full clustering processes aimed at determining
 **Figure 1. Overall methodology for phylogenetic analyses.**
 
 ## 'Simple' Clustering using MMSeq2
+
+MMseqs2 is needed for this part of the pipeline, see:
+
+https://github.com/soedinglab/MMseqs2
+
 The goal of this section is to provide the simplest answer to users who are searching through the database, find a putative virus they're interested in, and wonder: "Are there any similar contigs?"
 
 This is achieved by clustering all presumed-to-be viral contigs together with all sequences currently present in virus refseq. Each contig will be assigned to a single cluster, and each cluster will be represented by one "representative contig". This “representative contig” is the refseq sequence present in the cluster or, if there is none, the longest sequence in the cluster. Often times a contig will be the "representative contig" in its own cluster. We colloquially refer to these as 'lonely contigs'.
