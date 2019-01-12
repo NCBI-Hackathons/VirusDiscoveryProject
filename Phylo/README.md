@@ -34,7 +34,7 @@ use createtsv to convert the output to .tsv
 
 `mmseqs createtsv <fullset_DB> <fullset_DB> <out_DB> <out_DB.tsv>`
 
-
+The clusters are then renamed if they contain a known RefSeq virus. An example of this is shown below, the full data is available [here](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/Phylo/example_files/kk_ku_ref_outDB2.tsv).
 | Cluster Representative Sequence | Contig in Cluster |
 |------------------------------------------|-----------------------------------------|
 | SRR6659405_Contig_237_223.049:1.3224 | SRR6659405_Contig_237_223.049:1.3224 |
