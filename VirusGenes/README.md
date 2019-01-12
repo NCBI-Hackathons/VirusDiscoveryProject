@@ -119,12 +119,4 @@ Additionally, `director.sh` will call `unmapvigaannotations.pl`, `genbankfeature
 
 All scripts should be located in the working directory. Scripts have `python2.X`, `biopython` and `pandas`, as dependencies.
 
-The up-scalling of this pipeline is performed with 3 instances of VM google as:
-
-```bash
-
-35.227.25.198	`novel`		`160 cpu`
-35.237.65.12	`testing`	`96 cpu`
-146.244.236.241	`genes`		`96 cpu`
-```
  
