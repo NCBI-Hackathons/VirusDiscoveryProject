@@ -2,18 +2,23 @@
 # Clustering and Phylogeny
 This part of the ViralDiscoveryProject aims to answer the question: **How are these new contigs related to known viruses and each other**?
 
-This is done through a simple and full clustering processes aimed at determining the relationships between the contigs, through MMSeq2 and Blast analyses (**Figure 1**).
+This is done through a simple and full clustering processes aimed at determining the relationships between the contigs, through MMseqs2 and Blast analyses (**Figure 1**).
 
 ![alt text](https://raw.githubusercontent.com/NCBI-Hackathons/VirusDiscoveryProject/master/Phylo/Phylo_summary.jpg)
 
 **Figure 1. Overall methodology for phylogenetic analyses.**
 
-## 'Simple' Clustering using MMSeq2
+## 'Simple' Clustering using MMseqs2
+
+MMseqs2 is needed for this part of the pipeline, see:
+
+https://github.com/soedinglab/MMseqs2
+
 The goal of this section is to provide the simplest answer to users who are searching through the database, find a putative virus they're interested in, and wonder: "Are there any similar contigs?"
 
 This is achieved by clustering all presumed-to-be viral contigs together with all sequences currently present in virus refseq. Each contig will be assigned to a single cluster, and each cluster will be represented by one "representative contig". This “representative contig” is the refseq sequence present in the cluster or, if there is none, the longest sequence in the cluster. Often times a contig will be the "representative contig" in its own cluster. We colloquially refer to these as 'lonely contigs'.
 
-First, contigs of interested are joined with a fasta-file containing all virus refseq entries (downloaded from NCBI Genbank using (viruses[orgn] NOT bacteria [orgn]) and (refseq) as keywords.)
+First, contigs of interested are joined with a fasta-file containing all virus refseq entries (downloaded from NCBI GenBank using (viruses[orgn] NOT bacteria [orgn]) and (refseq) as keywords.)
 
 `cat <contigs.fasta> <virus_refseq.fasta> > <fullset.fasta>`
 
@@ -63,7 +68,7 @@ This script extracts three columns from the blastn output, the three columns are
 Contig1  |  Contig2  |  bit score
 `python3 blast_pairs.py -i example_files/knowns.blastn -o example_files/example_blast_paris.tsv`
 ### fasta_duplicator.py
-This script duplicates entries in a fasta file *n* times. Every header will have the value of *n* insterted in the header. For example, with *n* = 3, ">seq1"   will become  >0seq1  >1seq1  >2seq1
+This script duplicates entries in a fasta file *n* times. Every header will have the value of *n* inserted in the header. For example, with *n* = 3, ">seq1"   will become  >0seq1  >1seq1  >2seq1
 `fasta_duplicator.py -i example_files/test_contigs.fasta -o example_files/dup_contigs.fasta -n 3`
 
 ### longest_in_cluster.py
@@ -77,7 +82,7 @@ Second, it can write a new FASTA file of only the longest sequence in each clust
 `python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv -e`
 
 ###  blastnToGraph.tar.gz 
-This tar file contains the scripts required for running the full clustering blastn pipeline, starting from a multifasta and generating files which can be later plugged to network analysis software. The process involves generating a blast database for the multifasta (`makeblastdb`) and blasting the sequences against themselves (`blastn`). Then, using custom scripts (see below) self hits are removed and the blast output is formated to generate both a tsv file with pairwirse distances between sequences and a complete distance matrix. The bitscore of the blast alignments is used as the distance criteria. The tsv file and distance matrices produced can be loaded to network analysis software (e.g.: Gephi, Cytoscape, or Pajek). 
+This tar file contains the scripts required for running the full clustering blastn pipeline, starting from a multifasta and generating files which can be later plugged to network analysis software. The process involves generating a blast database for the multifasta (`makeblastdb`) and blasting the sequences against themselves (`blastn`). Then, using custom scripts (see below) self hits are removed and the blast output is formatted to generate both a tsv file with pairwise distances between sequences and a complete distance matrix. The bitscore of the blast alignments is used as the distance criteria. The tsv file and distance matrices produced can be loaded to network analysis software (e.g.: Gephi, Cytoscape, or Pajek). 
 
 To run the pipeline, untar the file and execute the master script (blastnToGraph, see below). Results will be placed inside the blastPipeline/results directory, including the blast database (`testDB`), blast results (`results.blastn`), tsv and distance matrix files (`blast_pairs.tsv` and `distMat.csv` respectively).
 
@@ -101,7 +106,7 @@ Generates the distance matrix from the csv file. Syntax is:
 Where `blast_pairs.tsv` is the output of the blast_pairs.py command (name can be changed inside `blastnToGraph.sh`). Generates a csv file, `ditMat.csv` with the bitscore between all contigs. Contigs with no hits reported in the blastn have their distance set to 0.
 
 ## Results from Sample Data
-Contigs clustered are available in the example_clusters.tsv. The largest 10 clusters are displated below (if a known refseq virus is in the cluster, then the cluster is named with the refseq accession.)
+Contigs clustered are available in the example_clusters.tsv. The largest 10 clusters are displayed below (if a known refseq virus is in the cluster, then the cluster is named with the refseq accession.)
 
 | NC_001422.1 | 209 |
 |----------------------------------------|-----|
@@ -118,7 +123,7 @@ Contigs clustered are available in the example_clusters.tsv. The largest 10 clus
 The results were 13,173 clusters with 239 of them containing at least 10 contigs.
 
 
-Below we show a visualization of the diversity of cluster sizes. This dataset contains only the known-known and known-unknown contigs, it does not contain refseq viruses or unknown-unknown contigs (contigs that are likely bacterial)
+Below we show a visualization of the diversity of cluster sizes. This dataset contains only the known-known and known-unknown contigs, it does not contain refseq viruses or unknown-unknown contigs (contigs that are likely bacterial). This figure was made using [Pajek](http://mrvar.fdv.uni-lj.si/pajek/) and the labeling was added manually.
 ![examplenpng](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/Phylo/example_files/kk_ku_no_refseq_labelled.jpg)
 
 

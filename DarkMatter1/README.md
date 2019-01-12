@@ -56,7 +56,7 @@ We are currrently exploring two options and comparing the overlap:
 The resulting information on each contig will be stored in JSON format. The JSON file is passed in the outlined format to team scaling. 
 
 ### Example results
-
+New norovirus sequence was recovered from ERR2030176 and automatically annotated with [VAPiD](https://github.com/rcs333/VAPiD)
 ### Scripts and Parameters
 
 We will write most of our scripts with Python.

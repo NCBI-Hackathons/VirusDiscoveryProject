@@ -4,7 +4,8 @@
 
 Using MASH to estimate Jaccard distances between samples based on their viral content. Ward's method was used to cluster datasets. Samples with less than 3 contigs were removed from the analysis. A kmer size of 21pb and a sketch size of 10 000 was used.
 
-FIGURE CLUSTERS
+![alt text](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/MachineLearning/figures/Slide1.png "Clustering")
+
 
 In order to identify some drivers that could explain this content-based clusters, the words from the SRA study comments and abstracts were extracted using SRAdb(DOI: 10.18129/B9.bioc.SRAdb). 
 A vector of word frequencies was constructed across the selected samples. A manual cleaning of the terms was performed to remove punctuation and low-informative terms. 
@@ -13,8 +14,7 @@ WORD CLOUDS ?
 
 In total, 210 samples with abstract and comments were analyzed. A PLS was performed in order to identify any co-variance between the identified clusters using MASH and the word frequencies associated to the samples. No strong co-variance could identified using this approach, suggesting that abstracts and comments vocabularies are too vague to automatically caracterize samples.
 
-FIGURE NETWORKS PLS
-
+![alt text](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/MachineLearning/figures/network_PLS.png "PLS_analysis")
 
 
 ## Problem 2: Inferring metadata 
@@ -22,39 +22,15 @@ FIGURE NETWORKS PLS
 As a proof of concept, we show that natural language processing (NLP) trained on SRA and associated project metadata can identify SRA’s from human gut microbiome metagenomes. 
 
 Doc2vec, an NLP algorithm that uses unsupervised learning to embed variable-length texts into a vector, was trained on the SRA metadata of 628 samples and transformed the metadata into a 300-dimension vector. t-SNE, a popular dimensionality reduction tool, was trained and transformed the vectors into coordinates for a 2D space. 
-The SRA metadata was labeled based on the center_project_name, which is typically used to identify the environment from which the metagenome was sequenced from. Three “center_project_name” classes were examined: “human gut microbiome”, “NA”/“None”, and other. Figure X shows that all three classes are easily and cleanly separable. Next, NA samples were removed from the dataset and Doc2vec and t-SNE were retrained on this new dataset. In this setting, SRA metadata from human gut microbiome projects can still be distinguished from other projects.
+The SRA metadata was labeled based on the center_project_name, which is typically used to identify the environment from which the metagenome was sequenced from. Three “center_project_name” classes were examined: “human gut microbiome”, “NA”/“None”, and other. The Figure shows that all three classes are easily and cleanly separable. Next, NA samples were removed from the dataset and Doc2vec and t-SNE were retrained on this new dataset. In this setting, SRA metadata from human gut microbiome projects can still be distinguished from other projects.
 
-FIGURE MATT
+![alt text](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/MachineLearning/figures/hgm_na_other.png "HMG")
 
 Some possible uses of this technique include correcting mislabeled metadata or annotating SRA’s with missing metadata.
 
 
 
 
-
-
-
-
-#####################################OLD NOTES#######################################
-
-## Problem 1: Unsupervised clustering of datasets using viral MASH (Ondov et al 2016) contig features and extraction of highly associated metadata terms
-- Feature set: Using MASH to construct kmer composition of contigs
-- Label set: SRAdb to extract SRR metadata
-- Learning: Pricipal Coordinate Analysis (PCoA)
-- Learning: kNN to share common descriptors accross similar SRRs in MASH kmer space
-
-## Problem 1_b: Network Smoothing for interpolation of continuous variables in kmer-space
-- Network/Matrix: MASH kmer composition
-- Label: % Dark Matter, % Herpes...whatever
-- Method: Network Smoothing
-
-## Problem 2 : Predicting the amount of "Dark Matter"
-- Feature set : doc2vec, Paragraph Vector parsing of the SRR metadata (library preparation....) 
-- label : %Dark Matter
-- Learning: ataboost, random forest, generalized linear regression
-
-## Shortcomings
-There are none, the computers are sentient so we can relax.
 
 # Run Overview
 
@@ -87,35 +63,7 @@ source('MachineLearning/learning/wordFreq2MASHgroups.r')
 ```
 produces MachineLearning/learning/wordFreq2MASHgroups.json which contains frequent words by MASH group
 
-## File Structure
-```
-MachineLearning/
-+-- data_in/
-|   +-- known_contigs.json
-|   +-- known_contig_metadata.json
-+-- feature_computed/
-|   +-- contig_features.GLOVE.json
-|   +-- contig_features.prodigal.json
-|   +-- contif_features.TE_informatoin.json
-+-- data_out/
-|   +-- contig_features.all.json
-+-- code
-|   +-- taxID.py # convert tax ID to taxanomic groups
-|   +-- feature_extraction/
-|       +-- feature_extract.GLOVE.py
-|       +-- feature_extract.prodigal.py
-|       +-- feature_extract.TE_information.py
-|   +-- predictors/
-|       +-- training.viral_groups.py # random forest, ataboost, logit :: features.all --> taxanomic groups
-|       +-- model.viral_groups.pickle
-|       +-- run_model.viral_groups.py ## take contig and generate prediction
-```
-## To do list
-- [ ] get "known" contig set from #known team 
-- [ ] choose the taxanomic groups # taxID.py
-- [ ] generate contig_features.GLOVE.json
-- [ ] generate contig_features.prodical.json
-- [ ] generate contig_features.TE_informatoin.json
-- [ ] aggregate contig_features to .all
-- [ ] training.viral_groups.py 
-- [ ] run_model.viral_groups.py
+Figures were generated in python using ... *MATT*
+
+### Partial Least Squares Analysis
+*Alise*
