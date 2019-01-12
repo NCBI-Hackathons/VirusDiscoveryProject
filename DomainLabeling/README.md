@@ -26,9 +26,9 @@ Tested (thanks Sam for filtering script):
  	- 14614 contigs
 		- 9625 passed
 		- 711 have viral CDDs
-		- 2525 completely dark
+		- 2525 completely dark  
 Running:
- - First complete testset from known (4 223 563 contigs)
+- First complete testset from known (4 223 563 contigs)
 	- 12 650 known known
 	- 1836 known unknown
 	- 4713 known unknown (50 - 85)
