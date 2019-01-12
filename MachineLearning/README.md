@@ -40,7 +40,12 @@ Some possible uses of this technique include correcting mislabeled metadata or a
 
 ### MASH: kmer clustering on contigs
 
-*Alise*
+```
+source('MachineLearning/code/run_Mash.sh')
+
+source('MachineLearning/code/heatmaps.r')
+
+```
 
 ### SRAdb: collect abstracts, descriptions (to "SRA.sel") and all bioproject data (to "SRA.all")
 Query SRA and bioprojects study description, abstracts...data for string-based learning and annotation
@@ -72,3 +77,5 @@ Figures were generated in python using ... *MATT*
 source('MachineLearning/code/PLS.R')
 ```
 
+### Final thoughts :
+https://twitter.com/kareem_carr/status/1083412004642213895
