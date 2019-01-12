@@ -182,7 +182,13 @@ These are the counts from the new blastn run on Jan 11th against all contigs in 
 | Unknown unknowns | 4,204,364 | NA | NA |
 
 The CSV and JSON files are in /home/ss2489/Jan11_run
-The fasta files are in 
+The fasta files are in /home/michael.tisza/ref_virus_blast1/ref_virus_blastout
+File types EXTENSIONS:
+* UNKNOWN UNKNOWNS - .unknown_unknowns_refviral.fasta
+* KNOWN UNKNOWNS1 - .known_unknowns_50id_50len.fasta
+* KNOWN UNKNOWNS2 - .known_unknowns_85id_50len.fasta
+* KNOWN KNOWNS - .known_85id_80len_re_artif.fasta
+* BLAST OUTPUTS - .blastout
 
 These are the counts from the old run in bq. Please note that these sets are not from all the same fasta files.
 
