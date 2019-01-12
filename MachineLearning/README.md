@@ -75,7 +75,7 @@ Figures were generated in python using ... *MATT*
 
 ### Network Smoothing
 ```R
-source('MachineLearning/learning/network_word_smoothing.r
+source('MachineLearning/learning/network_word_smoothing.r')
 ```
 output: smoothed_metadata.csv a matrix of SRR by metadata words where the value represents the z-score likelihood that a word would be an appropriate descriptor of an SRR.
 
