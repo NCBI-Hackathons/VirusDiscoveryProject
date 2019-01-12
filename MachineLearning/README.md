@@ -10,7 +10,9 @@ Using MASH to estimate Jaccard distances between samples based on their viral co
 In order to identify some drivers that could explain this content-based clusters, the words from the SRA study comments and abstracts were extracted using SRAdb(DOI: 10.18129/B9.bioc.SRAdb). 
 A vector of word frequencies was constructed across the selected samples. A manual cleaning of the terms was performed to remove punctuation and low-informative terms. 
 
-WORD CLOUDS ?
+The most frequent meaningfull words for each clusters were represented 
+
+![alt text](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/MachineLearning/figures/clusters_hack.png "word frequencies")
 
 In total, 210 samples with abstract and comments were analyzed. A PLS was performed in order to identify any co-variance between the identified clusters using MASH and the word frequencies associated to the samples. No strong co-variance could identified using this approach, suggesting that abstracts and comments vocabularies are too vague to automatically caracterize samples.
 
