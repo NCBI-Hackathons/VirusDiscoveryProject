@@ -1,0 +1,35 @@
+rpstblastn -db ../DB/CDD_DB/xaa -query line.size.fa -evalue 1e-3 -out xaa.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xab -query line.size.fa -evalue 1e-3 -out xab.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xac -query line.size.fa -evalue 1e-3 -out xac.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xad -query line.size.fa -evalue 1e-3 -out xad.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xae -query line.size.fa -evalue 1e-3 -out xae.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xaf -query line.size.fa -evalue 1e-3 -out xaf.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xag -query line.size.fa -evalue 1e-3 -out xag.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xah -query line.size.fa -evalue 1e-3 -out xah.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xai -query line.size.fa -evalue 1e-3 -out xai.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xaj -query line.size.fa -evalue 1e-3 -out xaj.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xak -query line.size.fa -evalue 1e-3 -out xak.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xal -query line.size.fa -evalue 1e-3 -out xal.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xam -query line.size.fa -evalue 1e-3 -out xam.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xan -query line.size.fa -evalue 1e-3 -out xan.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xao -query line.size.fa -evalue 1e-3 -out xao.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xap -query line.size.fa -evalue 1e-3 -out xap.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xaq -query line.size.fa -evalue 1e-3 -out xaq.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xar -query line.size.fa -evalue 1e-3 -out xar.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xas -query line.size.fa -evalue 1e-3 -out xas.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xat -query line.size.fa -evalue 1e-3 -out xat.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xau -query line.size.fa -evalue 1e-3 -out xau.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xav -query line.size.fa -evalue 1e-3 -out xav.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xaw -query line.size.fa -evalue 1e-3 -out xaw.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xax -query line.size.fa -evalue 1e-3 -out xax.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xay -query line.size.fa -evalue 1e-3 -out xay.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xaz -query line.size.fa -evalue 1e-3 -out xaz.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xba -query line.size.fa -evalue 1e-3 -out xba.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xbb -query line.size.fa -evalue 1e-3 -out xbb.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xbc -query line.size.fa -evalue 1e-3 -out xbc.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xbd -query line.size.fa -evalue 1e-3 -out xbd.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xbe -query line.size.fa -evalue 1e-3 -out xbe.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xbf -query line.size.fa -evalue 1e-3 -out xbf.line.rpstbln -outfmt 15 &
+rpstblastn -db ../DB/CDD_DB/xbg -query line.size.fa -evalue 1e-3 -out xbg.line.rpstbln -outfmt 15 &
+wait
+

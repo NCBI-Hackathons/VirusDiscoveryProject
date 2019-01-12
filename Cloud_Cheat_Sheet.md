@@ -394,3 +394,73 @@ Some VMs will have these tools installed:
 | cytoscape-impl | velvet        | tophat                 | FastQC           |
 | HTSeq          | mcl           | muscle                 | MrBayes          |
 | GARLI          | Clustal omega | Dedupe                 | trintyrnaseq     |
+
+## Jupyter notebook server setup
+
+
+Based on [this cheatsheet](https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubuntu-18-04-quickstart).
+
+> make sure that `wget` and `bzip2` are installed.
+
+1. Get the latest version from https://www.anaconda.com/download/#linux (note your version or filename may be different).
+
+> `$ wget https://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh`
+
+2. Verify your download 
+
+> `$ sha256sum Anaconda3-5.2.0-Linux-x86_64.sh`
+
+3. Run the script
+
+> `$ bash Anaconda3-5.2.0-Linux-x86_64.sh`
+
+4. Create a jupyter config file
+
+> `$ jupyter notebook --generate-config`
+
+5. Create a self-signed SSL certificate
+
+> `$ mkdir certs``
+> `$ cd certs/`
+> `$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem`
+
+6. Generate a password hash (you will use the same password to access your jupyter notebook remotely)
+
+> `$ ipython` 
+> `In [1]: from IPython.lib import passwd`
+> `In [2]: passwd()                                                                             
+>  `   Enter password: 
+>  `   Verify password: 
+> `Out[3]: 'sha1:0bebc03bff39:25b6ebdkrisbf0cc3f7e6c8e0f82fcbe9e66801a'
+> Copy the `sha` string for later use.
+
+7. Edit `.jupyter/jupyter_notebook_config.py` to add the following
+> Note the path to your mycert.pem file from step 5.
+> Note the `sha` hash from step 6
+
+```
+######################
+c.NotebookApp.allow_remote_access = True  
+# Kernel config
+c.IPKernelApp.pylab = 'inline'  # if you want plotting support always in your notebook
+# Notebook config
+c.NotebookApp.certfile = u'/home/username/certs/mycert.pem' #location of your certificate file
+c.NotebookApp.ip = '*'
+c.NotebookApp.open_browser = False  #so that the ipython notebook does not opens up a browser by default
+c.NotebookApp.password = u'sha1:ff35ddacee39:e9faaaaa1c6d5008cb50160ad1a00527c9dec09'  #edit this with the SHA hash that you generated after typing in Step 9
+# This is the port we opened in Step 3.
+c.NotebookApp.port = 8080
+ ###############
+```
+ 
+ 8. Start a screen instance so you can close your terminal without killing jupyter
+ 
+ > `$ screen -DR notebook
+ 
+ 9. Run the notebook as root
+ 
+ > `$ sudo /home/username/anaconda3/bin/jupyter notebook --config /home/username/.jupyter/jupyter_notebook_config.py --allow-root`
+ 
+ 10. Press `ctrl+a` then `d` to detach from the screen session.
+ 
+ 11. Browse to https://SERVER:8080/ and enter the password you supplied in step 6, above.

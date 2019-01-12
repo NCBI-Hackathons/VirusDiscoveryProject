@@ -80,6 +80,54 @@ for raw_fasta in /home/vpeddu/testing/*.fa.gz
 	done
 ```
 
+Create CSV for blastn hits
+
+Known knowns 85id 80len
+```
+for KK in /home/michael.tisza/ref_virus_blast1/ref_virus_blastout/*.known_knowns_85id_80len.txt
+	do 
+		echo "$KK"
+		ACC=`echo "$KK"| sed -e 's,\/.*\/,,g' -e 's,\..*,,g'`
+		echo "$ACC"
+		while read CONTIG
+			do 
+				ACC_VALUES=`grep -m1 "$CONTIG" /home/michael.tisza/ref_virus_blast1/ref_virus_blastout/${ACC}.realign.local.blastout`; printf "$ACC\t$ACC_VALUES\n"
+			done >> acc_known_knowns_85id_80len.txt < "$KK"
+	done
+```
+
+Remove contigs viral contaminants in assemblies /home/michael.tisza/viral_ref_contigs1.sort1.txt
+```
+sed 's,\,,\t,' viral_ref_contigs1.sort1.txt > viral_ref_contigs1.sort1.txt.tab
+grep -v -f viral_ref_contigs1.sort1.txt.tab acc_known_knowns_85id_80len.txt > acc_known_knowns_85id_80len_re_artif.txt
+```
+Convert TSV to CSV and JSON (using [perl](https://github.com/nevostruev/csv2json))
+```
+sed 's,\t,\,,g' acc_known_knowns_85id_80len_re_artif.txt > acc_known_knowns_85id_80len_re_artif.csv
+perl ~/csv2json/csv2json.pl acc_known_unknowns_50id_50len.csv > acc_known_unknowns_50id_50len.json
+```
+
+Known unknowns 85id 50len
+```
+for KK in /home/michael.tisza/ref_virus_blast1/ref_virus_blastout/*.known_unknowns_85id_50len.txt; do echo "$KK"; ACC=`echo "$KK"| sed -e 's,\/.*\/,,g' -e 's,\..*,,g'`;echo "$ACC"; while read CONTIG; do ACC_VALUES=`grep -m1 "$CONTIG" /home/michael.tisza/ref_virus_blast1/ref_virus_blastout/${ACC}.realign.local.blastout`; printf "$ACC\t$ACC_VALUES\n"; done >> acc_known_unknowns_85id_50len.txt < "$KK"; done
+```
+Convert TSV to CSV and JSON (using [perl](https://github.com/nevostruev/csv2json))
+```
+sed 's,\t,\,,g' acc_known_unknowns_85id_50len.txt > acc_known_unknowns_85id_50len.csv
+perl ~/csv2json/csv2json.pl acc_known_unknowns_85id_50len.csv > acc_known_unknowns_85id_50len.json 
+```
+
+Known unknowns 50id 50len
+```
+for KK in /home/michael.tisza/ref_virus_blast1/ref_virus_blastout/*.known_unknowns_50id_50len.txt; do echo "$KK"; ACC=`echo "$KK"| sed -e 's,\/.*\/,,g' -e 's,\..*,,g'`;echo "$ACC"; while read CONTIG; do ACC_VALUES=`grep -m1 "$CONTIG" /home/michael.tisza/ref_virus_blast1/ref_virus_blastout/${ACC}.realign.local.blastout`; printf "$ACC\t$ACC_VALUES\n"; done >> acc_known_unknowns_50id_50len.txt < "$KK"; done
+```
+Convert TSV to CSV and JSON (using [perl](https://github.com/nevostruev/csv2json))
+```
+sed 's,\t,\,,g' acc_known_unknowns_50id_50len.txt > acc_known_unknowns_50id_50len.csv
+perl ~/csv2json/csv2json.pl acc_known_unknowns_50id_50len.csv > acc_known_unknowns_50id_50len.json
+
+
+```
 
 **Features from the blastn hits**
 
@@ -124,12 +172,25 @@ Index for 'Known' viral contigs from bq tables
 
 **Known virus data sets**
 
+These are the counts from the new blastn run on Jan 11th against all contigs in test_dataset
+
+| Description | Count | Blastn length cutoff | Blastn identity cutoff | 
+| --- | --- | --- | --- |
+| Known knowns | 12,650 | >80% | >85% |
+| Known unknowns | 64,309 | > 80% | >50% and <85% |
+| Known unknowns | 4,713 | >50% to <80% | >85% |
+| Unknown unknowns | 4,204,364 | NA | NA |
+
+The CSV and JSON files are in /home/ss2489/Jan11_run
+
+These are the counts from the old run in bq
+
 | Description | Count | Blastn length cutoff | Blastn identity cutoff | 
 | --- | --- | --- | --- |
 | Known knowns | 525,346 | >80% | >85% |
 | Known unknowns | 64,309 | > 80% | >50% and <85% |
 | Known unknowns | 104,154 | >50% to <80% | >85% |
-| Unknown unknowns with blast hits| 1,351,557 | <50% | NA |
-| Unknown unknowns without blast hits| 20,181,350 | NA | NA |
+| Unknown unknowns with blast hits | 1,351,557 | <50% | NA |
+| Unknown unknowns without blast hits | 20,181,350 | NA | NA |
 
 Output is provided in .CSV and .JSON formats. We also have FASTA for all these sets.

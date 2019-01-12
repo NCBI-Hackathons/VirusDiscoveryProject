@@ -6,7 +6,7 @@
 use strict;
 use warnings;
 
-my ($nonoverlap_threshold,$overlap_threshold,$allow_self,$allow_multiple,$no_redundant);
+my ($nonoverlap_threshold,$overlap_threshold,$allow_self,$allow_multiple,$no_redundant,$message);
 use Data::Dumper qw(Dumper);
 use Getopt::Long;
 GetOptions( 	'nonoverlap-threshold|N=f' => \$nonoverlap_threshold,
@@ -16,6 +16,16 @@ GetOptions( 	'nonoverlap-threshold|N=f' => \$nonoverlap_threshold,
 		'no-redundant|R' => \$no_redundant
 	);
 use constant {QID => 0, SID => 1, PID => 3, LEN => 3, MM => 4, GO => 5, QS => 6, QE => 7, SS => 8, SE => 9, EVALUE => 10, BITSCORE => 11};
+
+if ( -t STDIN && ! scalar(@ARGV) ) {
+	$message = "Usage:\n\tperl $0 <blastFMT6> [options]\n";
+	$message .= "\t\t-N|--nonoverlap-threshold <#>\t\tFloat in [0,1]. Nonoverlap is less than threshold. Default = 1\n";
+	$message .= "\t\t-O|--overlap-threshold <#>\t\tFloat in [0,1]. Min overlap for merging like pairs. Default = 1\n";
+	$message .= "\t\t-S|--allow-self\t\t\t\tAllow query to match subject.\n";
+	$message .= "\t\t-M|--allow-multiples\t\t\tAllow multiple hits per subject.\n";
+	$message .= "\t\t-R|--no-redundant\t\t\tReduce output for multiple to make roughly sequential..\n";
+	die($message."\n");
+}
 
 $no_redundant = defined($no_redundant) ? 1 : 0;
 $allow_multiple = defined($allow_multiple) ? 1 : 0;
