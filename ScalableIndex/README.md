@@ -1,5 +1,7 @@
 
 # Scaling 
+<p align="center"> *Metadata is the love letter to the future*  </p>
+- we have no idea who said this but we are using it. 
 
 The teams will be generating JSON files with metadata for each contig with its features which will be indexed using a database and joined accordingly to best address database lookups based on identified use cases. 
 
@@ -79,12 +81,12 @@ http://localhost:8983/solr/known_contigs/select?fq={!join%20from=accession%20to=
 </p>
 
 ### Status of JSON files from all the teams, some of which were uploaded to the JSON_data directory
-- SRA metadata - uploaded 
+- SRA metadata - uploaded labelled as "bq-meta.zip"
 - contigs table - 
-- Taxonomy table - uploaded  
+- Taxonomy table - uploaded as "taxonomy.json"
 - Annotation table - 
-- known 
-- unknown 
+- known- 
+- unknown -  
 
 ### Adding JSON files to MongoDB 
 Currently because we are not working with all of SRA data, the files are being flattened to one big table instead of joining. Scaling up for this data will require joining, but for the current hackathon we were unable to explore the feasability. 
@@ -92,13 +94,22 @@ Currently because we are not working with all of SRA data, the files are being f
 To flatten the file - run "flatten.pl" from mongodb 
 
 ### Lookup 
+**API- Node JS**
 - To lookup the data using command line, run query.pl in mongodb directory. 
 - Using an API (node-js), goto 35.245.126.160/"write condition" 
   To get an idea of a few examples, we have a few conditions listed on the webpage "https://35.245.126.160
   The output is a reulting JSON file. 
+- *Visualization* - the result from the API can be fed into a ipython notebook to generate some visulazation.
+- Advantage- this does not need to be run from the same machine where MongoDB is setup
+
+  More information is available under readme in virz/
   
-### Parsing through the output JSON file 
-- Setting up scripts in Jupyter notebooks to convert JSON to a tsv, and for any further downstream analysis. 
+**PyMongoDB**
+- Needs to be setup on the same machine wher MongoDB was setup 
+- Query search can be done using a Jupyter Notebooks, where the lookup commands can be done to retrieve soem fields. 
+- Running on Jupyter Notebooks, with matplotlib libararies for visulaization 
 
+An example script is available under virz/ry-test.ipynb.
 
-
+## Things to consider for scalability ##
+Currently this was all developed from the test data for 1 million entries. When we get real data from all the teams or all of SRA metadata, some of this may need to be changed but for now this works !! 
