@@ -172,7 +172,7 @@ Index for 'Known' viral contigs from bq tables
 
 **Known virus data sets**
 
-These are the counts from the new blastn run on Jan 11th against all contigs in /data/test_dataset/
+These are the counts from the new blastn run on Jan 11th against all contigs in test_dataset
 | Description | Count | Blastn length cutoff | Blastn identity cutoff | 
 | --- | --- | --- | --- |
 | Known knowns | 12,650 | >80% | >85% |
