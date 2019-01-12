@@ -63,6 +63,6 @@ We will write most of our scripts with Python.
 
 ### Contact
 
-rcs333@uw.edu
-lindsayannerutter@gmail.com
+rcs333@uw.edu  
+https://github.com/lrutter
 
