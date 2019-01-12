@@ -183,6 +183,7 @@ These are the counts from the new blastn run on Jan 11th against all contigs in 
 
 
 These are the counts from the old run in bq
+
 | Description | Count | Blastn length cutoff | Blastn identity cutoff | 
 | --- | --- | --- | --- |
 | Known knowns | 525,346 | >80% | >85% |
