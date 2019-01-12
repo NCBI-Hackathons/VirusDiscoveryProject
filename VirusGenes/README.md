@@ -117,7 +117,13 @@ To scale its usage to multiple contig files, a threading-controller was coded, b
 
 Additionally, `director.sh` will call `unmapvigaannotations.pl`, `genbankfeature.py` and `unmapvigaannotations2.pl`, in this order, expand pVOG info and extract the translated ORF annotated in the VIGA `.gbk` output.
 
+Fig. 1: 
+
+![alt figure](pictures/cpu_occupy_160.png)
+
+
 All scripts should be located in the working directory. Scripts have `python2.X`, `biopython` and `pandas`, as dependencies.
 
+Fig. 2: Example of dataset reduction though the pipeline
 
- 
+![alt figure](pictures/reduction.jpg)
