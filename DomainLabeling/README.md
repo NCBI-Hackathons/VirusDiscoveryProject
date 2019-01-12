@@ -1,3 +1,6 @@
+Rationale:
+ - Prefilter the contigs to remove some Eukaryotic clutter / obvious bacteria / ...
+
 # Domain Labeling using rpstblastn
 Done:
 Using full CDD database:
