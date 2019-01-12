@@ -28,7 +28,7 @@ Then, a database is built.
 
 Clustering is done using the linclust algorithm:
 
-`mmseqs linclust <fullset_DB> <out_DB> <tmp_dir> --sub-mat nucleotide.out --alph-size 4 -c 0.05 --min-seq-id 0.9 -e 0.000001 --alignment-mode 4`
+`mmseqs linclust <fullset_DB> <out_DB> <tmp_dir> --sub-mat nucleotide.out --alph-size 4 -c 0.1 --min-seq-id 0.85 -e 1e-10 --alignment-mode 4`
 
 use createtsv to convert the output to .tsv
 
