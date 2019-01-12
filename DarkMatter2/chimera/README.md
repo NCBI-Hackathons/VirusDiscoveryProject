@@ -8,7 +8,7 @@ The program expects the output to be ordered by query, but this could be easily 
 perl blast_overlaps.pl <blast.txt> [--nonoverlap-threshold <float>] [--overlap-threshold <float>] [--allow-self]
 	-N|--nonoverlap_threshold <float>	Takes a float from 0 to 1, default 1. Basis for detecting chimera.
 	-O|--overlap_threshold <float>		Takes a float from 0 to 1, default 0. Basis for merging similar matches.
-	-A|--allow-self				Allows a match where query and subject are the same.
+	-S|--allow-self				Allows a match where query and subject are the same.
 	-M|--allow-multiples			Allows multiple high scoring segment per hit.
 	-R|--no-redundant			Reduces the pairwise output for multiple hits to something more sequential.
 ```
@@ -87,9 +87,9 @@ AF547430.1	DQ398046.1	91.667	48	4	0	41132	41179	58625	58672	2.11e-11	67.6
 AF547430.1	DQ398046.1	93.023	43	1	2	61182	61224	61365	61405	9.82e-10	62.1
 AF547430.1	DQ398046.1	97.222	36	0	1	61937	61971	60611	60646	3.53e-09	60.2
 $ 
-$ perl blast_overlaps.pl -M -R -N 0.75 -O 0.25 mycophage_sample.txt 
-NONOVERLAP THRESHOLD	(i < thresh)	0.75
-OVERLAP THRESHOLD	(i >= thresh)	0.25
+$ perl blast_overlaps.pl -N 0.25 -O 0.75 mycophage_sample.txt -M -R
+NONOVERLAP THRESHOLD	(i < thresh)	0.25
+OVERLAP THRESHOLD	(i >= thresh)	0.75
 Q_id	S1_id	S2_id	Overlap_coeff	S1_start	S1_end	Bitscore1	S2_start	S2_end	Bitscore2
 GU247133.1	DQ398046.1	DQ398046.1	0.0000	1	51562	93759	51867	55865	7347
 GU247133.1	DQ398046.1	DQ398046.1	0.0000	51867	55865	7347	56177	56265	159
