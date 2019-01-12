@@ -72,3 +72,5 @@ Figures were generated in python using ... *MATT*
 source('MachineLearning/code/PLS.R')
 ```
 
+### Final thoughts :
+https://twitter.com/kareem_carr/status/1083412004642213895
