@@ -137,3 +137,28 @@ Some BigQuery examples:
 
 
 [getting-blastdbs-documentation]: https://www.ncbi.nlm.nih.gov/books/NBK532645/
+
+# Conclusions
+
+### Premature scaling is the root of all evil.
+## Diversity of test data -- and by extension, real data -- is critical
+## Reference sets are critical and must be large, diverse and accurate
+#### They also must be dynamic and grow quickly
+## Massive datasets may be able to dynamically reduce unknown space 
+### i/o is a huge limitation, even in cloud
+#### Permission and access issues can be a huge limitations
+#### Networks of fast databases dynamically created from stable databases may be the optimal structure for serving disparate use cases
+### Communication between data generators and processors is ideally (initially) done in person
+#### If it can’t be communicated, the (meta)datasets and toolsets should not exist.  
+### All meta-analysis should be done on exactly the same set
+## Domain profiles have immense potential for sorting things in massive datasets
+#### They should be treated as first-class reference objects
+#### A massive expansion of these data objects (computationally) may be the most effective way to expand into new data spaces
+### Contigs are much more popular than reads with the participants here.  Knowing which reads map to those contigs is also helpful
+### Easy-to-use ensemble-method pipelines are critical for rapid implementation
+### Theoretical calculations are no replacement for experiencing fast compute first-hand 
+## Clean metadata on metagenomes is really important
+#### Motivation to work hard on a dataset
+#### When we spend time curating datasets we should work on the ones with the most metadata
+## It is easier to make novel discoveries from a homogenous information space.  
+
