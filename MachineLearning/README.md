@@ -68,4 +68,7 @@ produces MachineLearning/learning/wordFreq2MASHgroups.json which contains freque
 Figures were generated in python using ... *MATT*
 
 ### Partial Least Squares Analysis
-*Alise*
+```R
+source('MachineLearning/code/PLS.R')
+```
+
