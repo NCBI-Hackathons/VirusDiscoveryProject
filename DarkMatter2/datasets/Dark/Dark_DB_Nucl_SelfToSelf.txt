@@ -1,0 +1,9 @@
+
+
+Building a new DB, current time: 01/11/2019 23:49:23
+New DB name:   /hd2/froy/Dark/Dark_DB_Nucl_SelfToSelf
+New DB title:  UnUn_Dark_1000Filtered.fa
+Sequence type: Nucleotide
+Keep MBits: T
+Maximum file size: 1000000000B
+Adding sequences from FASTA; added 2527 sequences in 0.080363 seconds.
