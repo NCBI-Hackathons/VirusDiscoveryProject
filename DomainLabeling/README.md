@@ -34,4 +34,4 @@ Running:
 	- 4713 known unknown (50 - 85)
 	- 4 204 364 unknown unknown
 
-![alt text](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/DomainLabeling/RPSTBLN/pipe.png)
+![alt text](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/DomainLabeling/pipe.png)
