@@ -191,7 +191,7 @@ File types EXTENSIONS:
 * KNOWN KNOWNS - .known_85id_80len_re_artif.fasta
 * BLAST OUTPUTS - .blastout
 
-Here are the top known virus hits with more than 100 hits
+Here are the virus species from Refseq with more than 100 hits in the 12,650 known knowns
 * 101 Escherichia phage D108
 * 114 Enterobacteria phage BP-4795
 * 139 Enterobacteria phage YYZ-2008
