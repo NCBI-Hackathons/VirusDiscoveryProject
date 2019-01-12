@@ -3,8 +3,8 @@ DEFINITION  (/).
 ACCESSION   
 VERSION
 KEYWORDS    .
-SOURCE      Norovirus Hu/GII.4, complete genome.
-  ORGANISM  Norovirus Hu/GII.4, complete genome.
+SOURCE      Norovirus Hu/GII.4
+  ORGANISM  Norovirus Hu/GII.4
             Unclassified.
 REFERENCE   1  (bases 1 to 7519)
   AUTHORS   Doe,J.
