@@ -1,0 +1,1 @@
+/home/pakalasb/apps/bbtools/bbmap/bbduk.sh in=ERR2749428.realign.local.fa out=filtered.fa outm=low_complexity.fa entropy=0.7

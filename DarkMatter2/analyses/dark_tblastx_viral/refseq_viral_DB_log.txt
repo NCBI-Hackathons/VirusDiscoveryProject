@@ -1,0 +1,9 @@
+
+
+Building a new DB, current time: 01/11/2019 23:22:21
+New DB name:   /home/pakalasb/analyses/dark_tblastx_viral/refseq_viral_DB
+New DB title:  refseq_full_viruses_viroids_010919.fasta
+Sequence type: Nucleotide
+Keep MBits: T
+Maximum file size: 1000000000B
+Adding sequences from FASTA; added 10544 sequences in 3.03109 seconds.
