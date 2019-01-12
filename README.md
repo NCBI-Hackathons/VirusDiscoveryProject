@@ -162,3 +162,6 @@ Some BigQuery examples:
 #### When we spend time curating datasets we should work on the ones with the most metadata
 ## It is easier to make novel discoveries from a homogenous information space.  
 
+# Want to be a part of this:
+
+## https://biohackathons.github.io
