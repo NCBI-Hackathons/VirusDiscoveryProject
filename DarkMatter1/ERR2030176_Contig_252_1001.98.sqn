@@ -1,0 +1,389 @@
+Seq-submit ::= {
+  sub {
+    contact {
+      contact {
+        name
+          name {
+            last "Doe" ,
+            first "Jane" ,
+            middle "" ,
+            initials "" ,
+            suffix "" ,
+            title "" } ,
+        affil
+          std {
+            affil "University of Science" ,
+            div "Virology" ,
+            city "Seattle" ,
+            sub "WA" ,
+            country "United States of America" ,
+            street "123 University Road" ,
+            email "jdoe@university.edu" ,
+            postal-code "98105" } } } ,
+    cit {
+      authors {
+        names
+          std {
+            {
+              name
+                name {
+                  last "Doe" ,
+                  first "Jane" ,
+                  middle "" ,
+                  initials "" ,
+                  suffix "" ,
+                  title "" } } } ,
+        affil
+          std {
+            affil "University of Science" ,
+            div "Virology" ,
+            city "Seattle" ,
+            sub "WA" ,
+            country "United States of America" ,
+            street "123 University Road" ,
+            postal-code "98105" } } ,
+      date
+        std {
+          year 2019 ,
+          month 1 ,
+          day 12 } } ,
+    subtype new ,
+    tool "tbl2asn 25.6 - LINUX UNIX" } ,
+  data
+    entrys {
+      set {
+        class nuc-prot ,
+        descr {
+          source {
+            org {
+              taxname "Norovirus Hu/GII.4/Hong Kong/CUHK3630/2012/CHN,
+ complete genome." ,
+              orgname {
+                mod {
+                  {
+                    subtype nat-host ,
+                    subname "Homo sapiens" } } ,
+                gcode 1 } } } ,
+          pub {
+            pub {
+              gen {
+                cit "Unpublished" ,
+                authors {
+                  names
+                    std {
+                      {
+                        name
+                          name {
+                            last "Doe" ,
+                            first "Jane" ,
+                            initials "J." } } } } ,
+                title "Viral Genome Sequences from University of Science" } } } ,
+          user {
+            type
+              str "NcbiCleanup" ,
+            data {
+              {
+                label
+                  str "method" ,
+                data
+                  str "SeriousSeqEntryCleanup" } ,
+              {
+                label
+                  str "version" ,
+                data
+                  int 8 } ,
+              {
+                label
+                  str "month" ,
+                data
+                  int 1 } ,
+              {
+                label
+                  str "day" ,
+                data
+                  int 12 } ,
+              {
+                label
+                  str "year" ,
+                data
+                  int 2019 } } } ,
+          create-date
+            std {
+              year 2019 ,
+              month 1 ,
+              day 12 } } ,
+        seq-set {
+          seq {
+            id {
+              local
+                str "ERR2030176_Contig_252_1001.98" } ,
+            descr {
+              title "(/)" ,
+              molinfo {
+                biomol genomic } ,
+              comment "##Assembly-Data-START## Created with VAPiDv1.3.2
+ Reference annotations were pulled from KC175323.1 ##Assembly-Data-END##" ,
+              user {
+                type
+                  str "Submission" ,
+                data {
+                  {
+                    label
+                      str "AdditionalComment" ,
+                    data
+                      str "ALT EMAIL:jdoe@university.edu" } } } ,
+              user {
+                type
+                  str "Submission" ,
+                data {
+                  {
+                    label
+                      str "AdditionalComment" ,
+                    data
+                      str "Submission Title:None" } } } } ,
+            inst {
+              repr raw ,
+              mol rna ,
+              length 7519 ,
+              seq-data
+                ncbi2na 'EF941241061364037D0B86BBBFD413A7B47FC26A576A99A5C0496
+5560A0314548556614544520FAD0023575D551506A8A381CBADDF1265023A6F16879789D147B48
+4168201411A6F4BB5559D0D02A224A86502251C1E810D3E03BA8E880DC53C697B1BA062B7CC7EB
+B910945A494F25F942B6272459DDFEF7A217BB11554B374DDD48477CA23C4E88B4F55C4793F841
+0F9C65FFBEFAB3C85E061D3A70928838F488104AFDF4A5B14A3E8128055D5473A18F503C082B25
+04CF7EEC7FB7D1CF452153C284C32A0BE0177C13DF04F7A713B8FA17D92932E834F0C77E92077F
+A2FF7A115523BB798E36557E72B8F381E4285E285F92E81EB5432E3AAA8CAFEB9CA3D140880368
+08E734D679351FC225EC085FAE4C687A037C03EB4E0BAF7D5020228240E07A73AE2353628E4B1C
+85D8A43E004144E14571F02102127E905C4E2057E17E28A2025200774140DE7D158CCBA910D077
+7DE9083679E467572E4DA9808227752CA5885EDBEE38CDA8214A8CA801D17E52A27A50823E6975
+744AA149BBAB7CD51B0EBB6147A864C42A6022FB5CEA18F3A0E24154D4E395D2BE4A27E7847E55
+746703EE120F88102A02DFE12E394C3CD1470DE94152451E873B41FE29B9D8864F8FD76EC64825
+5E2BA20A409987D52B41784EE82067F4B5E1F7444C01ED3E9D44ABAFF842069045593A00AAD382
+15D1C7A7574D95A934ABC75388A72383381E4295057451FD07F8D904231F9FF2127E79E0042CEA
+78E844388BE80127428ED08539485D01091D0813663420B948CBB10EBA45C447E29E3A42ACBB80
+BE102E40B977B921410E0725AE571145C2B99C8348C73BC2E6D4A291ECF534D40D9EA9E4FED146
+64D9C264E0CC4837FAD42512BA08448A23A504086BE5E0150238E08BFB6DDF58613401E2A4202A
+0810B5A5BA42091125FF4240A9D2E38A2C638B10883488E0283AC2C753208B17D284884AC718A2
+BA53E52A41608A1F7B82082294035A4883FD21410A0106408222A5DDDA5EB44A7780D282201520
+87D0150A809EEA78E38482EF8710E201D07F8A551424DEB668CBC1FEBD29EA9F7AB7554B7BF304
+D054ED31542B9008BDF68B5734240D48C440D2B83DE5AF88F540963481E3B86A4E3DC820AE6562
+A85BA511E74D088507A2274E5DE92520EA854E414E00F4AA644BEAA903AB39DF86A3506508B3A1
+729106529879A7957137108AA83871BAD32AB531A59E56E8A011ED33B9454AA2E2A209447E0A2B
+8CB02A131EE991437EA54A899D609D2C50870BFE88D3510459D517A45C60525C5DAE90215C8B40
+AE95F4F9042F38A85078253D120548A4051421406EFA09E508014D343B5F89010F8D455003AD3F
+9909F99357E100517526945645139A00187BE83AA2D7D12803E9E3425DC294170EFE0828081387
+52DC44AE47C08E2FAC0858C0BF3AC2B4208A7DEEABD237A414E31AE65627FE8A5F3A389D0A447B
+B447D7B48BEB3813838A3AD534DFE2091D48CCACD1CE39E3CF56BA87411040A8EE72492472034E
+BC2F775205117A548CBE482175FD5726C3A3B2B87F40CD0C2E2ADD577AAC5FB1754BA0F536547A
+75D1DEEE477782D1A17B55E134D4A50757FDD7DCEB8E388FB09121302FA152209E12401D0A2C6A
+7805056558401E0A157ED3778217A3A5E13D75A207B856E3527A7AFE803E8102F43DD2903B1E85
+2AB5414E08D4FE010E31447740854C43E3B5F9EA629E4751A5693DCC900F240F2D3C48BE0A0AE9
+3A3FF1B952108943BD23A388F748DE246EA2A636437A754BFEE0E08E9B62E19415378EAD649417
+6D522B410E2BCE9DE895BEFAE594F9A45EC9A94100EC3E157A3C80C3FEC4255EBA22FC4B355C80
+6752B80C73A26657EA5785C0D5C5CD53FA520EC43AF392BA7F82E4AC3DD9AA0E6F4596A0AD33F9
+24B54503FD41E0A7E2552D2B473BD55332CB23BCA41C817BBE3D5F158EF2830FDCD3C434340E15
+C53C0F8C90EFB31147CA9C30E7AA38EDF44BF7E48BDD188535563FE3F4CFDCB94544BE2D081C05
+3FDED52FF07BE288E143D08F553D7FA00BEF46AD524B97FBED414401ACAE461E3A6E75CA451507
+B75ED04DE45F48A23B454CD12B2DB07110E0FE9F7403E810F385412080D5255DCA07523FEEA823
+D0A4E74540510A123A74119A5102712ECC7A89961FE75007AB22F43F8078448518FF8270500440
+BD154BEBB4D423AC91454580605504BAB9D50BC74A480C75C3B93FA5567BA5547FD6AE241F77DF
+4AD45395A3926AC5504E8FE87B79D55283AB92C7DC508A4954910DE3BA779C23FB8152112B2AFF
+BF8BB09F4C0D29CEF12E9D11E94138FEBCD5552EBCFF2BF8F5EAC052FF119F9553A80E81AA6C86
+E4730E9E89FDFE7A3E9378ED7E9DE87EBD5F3439EA9EA94D05002F8BF80304803E410935F50FC9
+243710427D7F41384088E7509103E29450027104A038E02F09290E75C8ABABDDE212392566A90D
+0655CE1009FE87A26A10AC7A9D5CE7287104C4392967FD455D0536AA4794A089C37CA8E7B579DA
+AF5D490B7DC3DD71E71F7BB1D034071F41887EBDF49EBDEB14BB762755B41E4287289EAF8A340B
+283FB45FF38AAA5441336FED154537248D77250A44B7416E5C08AFFA1D7A1E99FD04664A49477D
+9D13DB098AA2D1A9B0EE008403E3CDFDFFDFCBB7C'H } } ,
+          seq {
+            id {
+              local
+                str "ERR2030176_Contig_252_1001.98_1" } ,
+            descr {
+              title "non-structural polyprotein, partial [Norovirus
+ Hu/GII.4/Hong Kong/CUHK3630/2012/CHN, complete genome.]" ,
+              molinfo {
+                biomol peptide ,
+                tech concept-trans ,
+                completeness no-left } } ,
+            inst {
+              repr raw ,
+              mol aa ,
+              length 1687 ,
+              seq-data
+                ncbieaa "VANSNNDIAKSSSDGVFSNMAVTFKRALGARPKQPPPKEIPPRPPRPPTPELV
+KKIPPPPPNGEDELVVSYSAKDGVTGLPELTTVRQPEETNTAFSVPPLNQRESRDAKEPLTGTIIEMWDGEIYHYGLY
+VERGLILGVHKPPAAISLAKVELAPLSLFWRPVYTPQYLISPDTLRRLHGESFPYTAFDNNCYAFCCWVLDLNDSWLS
+RRMIQRTTGFFRPYQDWNRKPLPTMDDSKLKKVANIFLCTLSSLFTRPIKDIIGKLKPLNILNILATCDWTFAGIVES
+LILLAELFGVFWTPPDVSAMIAPLLGDYELQGPEDLAVELVPIVMGGIGLVLGFTKEKIGKMLSSAASTLRACKDLGA
+YGLEILKLVMKWFFPKKEEANELAMVRSIEDAVLDLEAIENNHMTTLLKDKDSLATYMRTLDLEEEKARKLSTKSASP
+DIVGTINSLLARIAAARSLVHRAKEELSSRPRPVVVMISGRPGIGKTHLARELAKKIAASLTGDQRVGLIPRNGVDHW
+DAYKGERVVLWDDYGMSNPIHDALRLQELADTCPLTLNCDRIENKGKVFDSDAIIITTNLANPAPLDYVNFEACSRRI
+DFLVYAEAPEVEKAKRDFPGQPDMWKNAFSPDFSHIKLSLAPQGGFDKNGNTPHGKGVMKTLTTGSLIARASGLLHER
+LDEYELQGPTLTTFNFDRNKILAFRQLAAENKYGLMDTMRVGKQLKDVKTMPDLKQALKNIAIKKCQIVYNGGTYTLE
+ADGKGSVKVDKVQSASVQTNNELAGALHHLRCARIRYYVKCVQEALYSIIQIAGAAFVTTRIAKRMNIQNLWSKPQVE
+DTEEMANKDGCLKPKDDEEFVVSSDDIKTEGKKGKNKSGRGKKHTAFSSKGLSDEEYDEYKRIRDERNGKYSIEEYLQ
+DRDRYYEEVAIARATEEDFCEEEEAKIRQRIFRPTRKQRKEERASLGLVTGSEIRKRNPEDFKPKGKLWADDDRSVDY
+NEKLNFEAPPSIWSRIVNFGSGWGFWVSPSLFITSTHVIPQGAKEFFGVPIKQIQIHKSGEFCRLRFPKPIRTDVTGM
+ILEEGAPEGTVATLLIKRPTGELMPLAARMGTHATMKIQGRTVGGQMGMLLTGSNAKSMDLGTTPGDCGCPYIYKRGN
+DYVVIGVHTAAARGGNTVICATQGSEGEATLEGGDSKGTYCGAPILGPGSAPKLSTKTKFWRSSTTPLPPGTYEPAYL
+GGKDPRVKGGPSLQQVMRDQLKPFTEPRGKPPRPNVLEAAKKTIINVLEQTIDPPQKWSFAQACASLDKTTSSGHPHH
+MRKNDCWNGESFTGKLADQASKANLMFEEGKNMTPVYTGALKDELVKTDKVYGKVKKRLLWGSDLATMIRCARAFGGL
+MDELKAHCVTLPVRVGMNMNEDGPIIFEKHSRYRYHYDADYSRWDSTQQRDVLAAALEIMVKFSPEPHLAQIVAEDLL
+SPSVMDVGDFQISISEGLPSGVPCTSQWNSIAHWLLTLCALSEVTDLSPDIIQANSLFSFYGDDEIVSTDIKLDPEKL
+TAKLKEYGLKPTRPDKTEGPLVISEDLDGLTFLRRTVTRDPAGWFGKLEQSSILRQMYWTRGPNHEDPFETMIPHSQR
+PIQLMSLLGEAALHGPAFYSKISKLVITELKEGGMDFYVPRQEPMFRWMRFSDLSTWEGDRNLAPSFVNEDGVE" } ,
+            annot {
+              {
+                data
+                  ftable {
+                    {
+                      data
+                        prot {
+                          name {
+                            "non-structural polyprotein" } } ,
+                      partial TRUE ,
+                      location
+                        int {
+                          from 0 ,
+                          to 1686 ,
+                          id
+                            local
+                              str "ERR2030176_Contig_252_1001.98_1" ,
+                          fuzz-from
+                            lim lt } } } } } } ,
+          seq {
+            id {
+              local
+                str "ERR2030176_Contig_252_1001.98_2" } ,
+            descr {
+              title "VP1 [Norovirus Hu/GII.4/Hong Kong/CUHK3630/2012/CHN,
+ complete genome.]" ,
+              molinfo {
+                biomol peptide ,
+                tech concept-trans } } ,
+            inst {
+              repr raw ,
+              mol aa ,
+              length 540 ,
+              seq-data
+                ncbieaa "MKMASSDANPSDGSAANLVPEVNNEVMALEPVVGAAIAAPVAGQQNVIDPWIR
+NNFVQAPGGEFTVSPRNAPGEILWSAPLGPDLNPYLSHLARMYNGYAGGFEVQVILAGNAFTAGKVIFAAVPPNFPTE
+GLSPSQVTMFPHIVVDVRQLEPVLIPLPDVRNNFYHYNQSNDPTIKLIAMLYTPLRANNAGDDVFTVSCRVLTRPSPD
+FDFIFLVPPTVESRTKPFSVPVLTVEEMTNSRFPIPLEKLFTGPSSAFVVQPQNGRCTTDGVLLGTTQLSPVNICTFR
+GDVTHITGSRNYTMNLASQNWNNYDPTEEIPAPLGTPDFVGKIQGMLTQTTRTDGSTRGHKATVYTGSADFAPKLGRV
+QFETDTDHDFEANQNTKFTPVGVIQDGSTTHRNEPQQWVLPSYSGRNTPNVHLAPAVAPTFPGEQLLFFRSTMPGCSG
+YPNMDLDCLLPQEWVQYFYQEAAPAQSDVALLRFVNPDTGRVLFECKLHKSGYVTVAHTGQHDLVIPPSGYFRFDSWV
+NQFYTLAPMGNGTGRRRAL" } ,
+            annot {
+              {
+                data
+                  ftable {
+                    {
+                      data
+                        prot {
+                          name {
+                            "VP1" } } ,
+                      location
+                        int {
+                          from 0 ,
+                          to 539 ,
+                          id
+                            local
+                              str "ERR2030176_Contig_252_1001.98_2" } } } } } } ,
+          seq {
+            id {
+              local
+                str "ERR2030176_Contig_252_1001.98_3" } ,
+            descr {
+              title "VP2 [Norovirus Hu/GII.4/Hong Kong/CUHK3630/2012/CHN,
+ complete genome.]" ,
+              molinfo {
+                biomol peptide ,
+                tech concept-trans } } ,
+            inst {
+              repr raw ,
+              mol aa ,
+              length 268 ,
+              seq-data
+                ncbieaa "MAGAFFAGLASDVLGSGLGSLINAGAGAINQKVEFENNRKLQQASFQFSSNLQ
+QASFQHDKEMLQAQIEATKKLQQEMMKVKQAMLLEGGFSETDAARGAINAPMTKALDWSGTRYWAPYARTTTYNAGRF
+STPQPSGALPGRANLRDAVPARGSSSKSSNSPTATSVYSNQTTSTRLGSSAGSGTSVSSSPSTARTRSWVEDQSRNLS
+PFMRGAHNISFVTPPSSRSSSQGTVSTVPKEVLDSWTGAFNTRRQPLFAHIRKRGESRA" } ,
+            annot {
+              {
+                data
+                  ftable {
+                    {
+                      data
+                        prot {
+                          name {
+                            "VP2" } } ,
+                      location
+                        int {
+                          from 0 ,
+                          to 267 ,
+                          id
+                            local
+                              str "ERR2030176_Contig_252_1001.98_3" } } } } } } } ,
+        annot {
+          {
+            data
+              ftable {
+                {
+                  data
+                    cdregion {
+                      frame two ,
+                      code {
+                        id 1 } } ,
+                  partial TRUE ,
+                  product
+                    whole
+                      local
+                        str "ERR2030176_Contig_252_1001.98_1" ,
+                  location
+                    int {
+                      from 0 ,
+                      to 5064 ,
+                      strand plus ,
+                      id
+                        local
+                          str "ERR2030176_Contig_252_1001.98" ,
+                      fuzz-from
+                        lim lt } } ,
+                {
+                  data
+                    cdregion {
+                      frame one ,
+                      code {
+                        id 1 } } ,
+                  product
+                    whole
+                      local
+                        str "ERR2030176_Contig_252_1001.98_2" ,
+                  location
+                    int {
+                      from 5045 ,
+                      to 6667 ,
+                      strand plus ,
+                      id
+                        local
+                          str "ERR2030176_Contig_252_1001.98" } } ,
+                {
+                  data
+                    cdregion {
+                      frame one ,
+                      code {
+                        id 1 } } ,
+                  product
+                    whole
+                      local
+                        str "ERR2030176_Contig_252_1001.98_3" ,
+                  location
+                    int {
+                      from 6667 ,
+                      to 7473 ,
+                      strand plus ,
+                      id
+                        local
+                          str "ERR2030176_Contig_252_1001.98" } } } } } } } }
