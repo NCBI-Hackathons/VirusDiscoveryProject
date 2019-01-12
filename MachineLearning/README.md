@@ -42,6 +42,9 @@ Some possible uses of this technique include correcting mislabeled metadata or a
 
 ```
 source('MachineLearning/code/run_Mash.sh')
+
+source('MachineLearning/code/heatmaps.r')
+
 ```
 
 ### SRAdb: collect abstracts, descriptions (to "SRA.sel") and all bioproject data (to "SRA.all")
