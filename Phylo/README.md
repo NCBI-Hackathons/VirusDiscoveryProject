@@ -34,7 +34,9 @@ use createtsv to convert the output to .tsv
 
 `mmseqs createtsv <fullset_DB> <fullset_DB> <out_DB> <out_DB.tsv>`
 
-The clusters are then renamed if they contain a known RefSeq virus. An example of this is shown below, the full data is available [here](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/Phylo/example_files/kk_ku_ref_outDB2.tsv).
+The clusters are then renamed if they contain a known RefSeq virus. An example of this is shown below, the full data is available [here](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/Phylo/example_files/kk_ku_ref_outDB2.tsv). The command used to rename a cluster (with the option of renaming it to the longest contig as well) is:
+`python3 longest_in_cluster.py -f example_files/test_contigs.fasta -c example_files/test_clusters.tsv -o example_files/newclusters.tsv`
+
 
 | Cluster Representative Sequence | Contig in Cluster |
 |------------------------------------------|-----------------------------------------|
