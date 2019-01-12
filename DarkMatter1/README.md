@@ -36,10 +36,10 @@ pVOGs
 Assembled fasta files and associated metadata
 
 ### Projected Output
-JSON file of ORFs with names, annotation, and possibly a scoring methodology? 
+JSON file of ORFs with names, annotation, and possibly a scoring methodology?
 
 ### Methods
-We are currrently exploring two options and comparing the overlap: 
+We are currrently exploring two options and comparing the overlap:
 
 1. Our predicted ORFs from unknown contigs (OrfM) are subjected to an iterative HMM search against proteins regarded as viral upstream (Definitive viral + proteins predicted by Team 3). We will use Jackhmmer for this approach. We will create a scoring metric that combines features such as contig length, domain hit abundances, ORF abundances, strand, e-value, and others. 
    * *Negative Control*: Bacterial contigs discovered by the domains team will be run to calculate the number of false positives
@@ -55,6 +55,8 @@ We are currrently exploring two options and comparing the overlap:
 
 The resulting information on each contig will be stored in JSON format. The JSON file is passed in the outlined format to team scaling. 
 
+### Example results
+New norovirus sequence was recovered from ERR2030176 and automatically annotated with [VAPiD](https://github.com/rcs333/VAPiD)
 ### Scripts and Parameters
 
 We will write most of our scripts with Python.
