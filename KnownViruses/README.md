@@ -177,13 +177,14 @@ These are the counts from the new blastn run on Jan 11th against all contigs in 
 | Description | Count | Blastn length cutoff | Blastn identity cutoff | 
 | --- | --- | --- | --- |
 | Known knowns | 12,650 | >80% | >85% |
-| Known unknowns | 64,309 | > 80% | >50% and <85% |
+| Known unknowns | 1,836 | > 80% | >50% and <85% |
 | Known unknowns | 4,713 | >50% to <80% | >85% |
 | Unknown unknowns | 4,204,364 | NA | NA |
 
 The CSV and JSON files are in /home/ss2489/Jan11_run
+The fasta files are in 
 
-These are the counts from the old run in bq
+These are the counts from the old run in bq. Please note that these sets are not from all the same fasta files.
 
 | Description | Count | Blastn length cutoff | Blastn identity cutoff | 
 | --- | --- | --- | --- |
