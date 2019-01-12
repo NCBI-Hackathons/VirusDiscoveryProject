@@ -1,3 +1,6 @@
+Rationale:
+ - Prefilter the contigs to remove some Eukaryotic clutter / obvious bacteria / ...
+
 # Domain Labeling using rpstblastn
 Done:
 Using full CDD database:
@@ -30,3 +33,5 @@ Running:
 	- 1836 known unknown
 	- 4713 known unknown (50 - 85)
 	- 4 204 364 unknown unknown
+
+![alt text](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/DomainLabeling/RPSTBLN/pipe.png)
