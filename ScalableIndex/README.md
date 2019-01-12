@@ -1,6 +1,6 @@
 
 # Scaling 
-<p align="center"> *Metadata is the love letter to the future* - "no idea who"</p>
+<p align="center"> Metadata is the love letter to the future - "no idea who"</p>
 
 The teams will be generating JSON files with metadata for each contig with its features which will be indexed using a database and joined accordingly to best address database lookups based on identified use cases. 
 
