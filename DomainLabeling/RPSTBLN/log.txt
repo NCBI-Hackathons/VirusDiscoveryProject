@@ -1,0 +1,2 @@
+ 2121  perl pass_fail_rpstbln.pl CDDlabels/*txt all_simple.txt > qc_for_rpstbln-knownknowns.txt 
+ 2160  grep -hP 'query_title|accession' unknownunknowns/* > unknownunknowns_simple.txt
