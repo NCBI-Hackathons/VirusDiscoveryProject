@@ -121,8 +121,11 @@ Contigs clustered are available in the example_clusters.tsv. The largest 10 clus
 The results were 13,173 clusters with 239 of them containing at least 10 contigs.
 
 
-Below we show a visualization of the diversity of cluster sizes. This dataset contains only the known-known and known-unknown contigs, it does not contain refseq viruses or unknown-unknown contigs (contigs that are likely bacterial). This figure was made using [Pajek](http://mrvar.fdv.uni-lj.si/pajek/) and the labeling was added manually.
+Below we show a visualization of the diversity of cluster sizes. This dataset contains only the known-known and known-unknown contigs, it does not contain refseq viruses or unknown-unknown contigs (contigs that are likely bacterial). This figure was made using [Pajek](http://mrvar.fdv.uni-lj.si/pajek/) and the labeling was added manually. 
 ![examplenpng](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/Phylo/example_files/kk_ku_no_refseq_labelled.jpg)
+
+The next figure is an example of the results of [Gephi](https://gephi.org/) clustering the blastn results. Bigger nodes have a higher weighted grade. Communities with high modularity are coloured.
+![examplenpng](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/Phylo/example_files/finalNet_Clust.png)
 
 
 
