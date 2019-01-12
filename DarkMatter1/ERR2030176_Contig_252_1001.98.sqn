@@ -56,7 +56,7 @@ Seq-submit ::= {
         descr {
           source {
             org {
-              taxname "Norovirus Hu/GII.4/Hong Kong/CUHK3630/2012/CHN,
+              taxname "Norovirus Hu/GII.4"
  complete genome." ,
               orgname {
                 mod {
