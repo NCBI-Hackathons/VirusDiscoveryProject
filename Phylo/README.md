@@ -38,6 +38,7 @@ The clusters are then renamed if they contain a known RefSeq virus. An example o
 `python3 longest_in_cluster.py -c example_files/test_clusters.tsv -o example_files/newclusters.tsv`
 
 
+
 | Cluster Representative Sequence | Contig in Cluster |
 |------------------------------------------|-----------------------------------------|
 | SRR6659405_Contig_237_223.049:1.3224 | SRR6659405_Contig_237_223.049:1.3224 |
