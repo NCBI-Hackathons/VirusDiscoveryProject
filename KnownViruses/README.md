@@ -212,6 +212,8 @@ Here are the virus species from Refseq with more than 100 hits in the 12,650 kno
 * 608 Enterobacteria phage HK630
 * 3398 uncultured crAssphage
 
+![Pie chart of top known hits](/KnownViruses/images/KnownKnowns_tophits.png "top known hits")
+
 
 These are the counts from the old run in bq. Please note that these sets are not from all the same fasta files.
 
