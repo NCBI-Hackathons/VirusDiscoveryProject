@@ -1,7 +1,7 @@
 # VirusDiscoveryProject
 Software, architecture, and data index design for the 2018/2019 Virus Discovery Project
 
-![exaple plot from indexed results](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/contig_len_v_cov.PNG "contig length v. coverage")
+![exaple plot from indexed results](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/updated_coverage_v_length.PNG "contig length v. coverage")
 
 ## Here we present a compromise pipeline for extracting virological information from publicly available metagenomic datasets, in order to present a usable index to the virological research community.  
 
