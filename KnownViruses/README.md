@@ -104,8 +104,11 @@ grep -v -f viral_ref_contigs1.sort1.txt.tab acc_known_knowns_85id_80len.txt > ac
 Convert TSV to CSV and JSON (using [perl](https://github.com/nevostruev/csv2json))
 ```
 sed 's,\t,\,,g' acc_known_knowns_85id_80len_re_artif.txt > acc_known_knowns_85id_80len_re_artif.csv
-perl ~/csv2json/csv2json.pl acc_known_unknowns_50id_50len.csv > acc_known_unknowns_50id_50len.json
+perl ~/csv2json/csv2json.pl acc_known_knowns_85id_80len_re_artif.csv > acc_known_knowns_85id_80len_re_artif.json
 ```
+[CSV:](KnownViruses/data/acc_known_knowns_85id_80len_re_artif.csv)
+[JSON:](KnownViruses/data/acc_known_knowns_85id_80len_re_artif.json)
+
 
 Known unknowns 85id 50len
 ```
@@ -116,6 +119,9 @@ Convert TSV to CSV and JSON (using [perl](https://github.com/nevostruev/csv2json
 sed 's,\t,\,,g' acc_known_unknowns_85id_50len.txt > acc_known_unknowns_85id_50len.csv
 perl ~/csv2json/csv2json.pl acc_known_unknowns_85id_50len.csv > acc_known_unknowns_85id_50len.json 
 ```
+[CSV:](KnownViruses/data/acc_known_unknowns_85id_50len.csv)
+[JSON:](KnownViruses/data/acc_known_unknowns_85id_50len.json)
+
 
 Known unknowns 50id 50len
 ```
@@ -125,9 +131,10 @@ Convert TSV to CSV and JSON (using [perl](https://github.com/nevostruev/csv2json
 ```
 sed 's,\t,\,,g' acc_known_unknowns_50id_50len.txt > acc_known_unknowns_50id_50len.csv
 perl ~/csv2json/csv2json.pl acc_known_unknowns_50id_50len.csv > acc_known_unknowns_50id_50len.json
-
-
 ```
+[CSV:](KnownViruses/data/acc_known_unknowns_50id_50len.csv)
+[JSON:](KnownViruses/data/acc_known_unknowns_50id_50len.json)
+
 
 **Features from the blastn hits**
 
