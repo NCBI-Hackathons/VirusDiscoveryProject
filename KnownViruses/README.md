@@ -106,8 +106,9 @@ Convert TSV to CSV and JSON (using [perl](https://github.com/nevostruev/csv2json
 sed 's,\t,\,,g' acc_known_knowns_85id_80len_re_artif.txt > acc_known_knowns_85id_80len_re_artif.csv
 perl ~/csv2json/csv2json.pl acc_known_knowns_85id_80len_re_artif.csv > acc_known_knowns_85id_80len_re_artif.json
 ```
-[CSV:](/KnownViruses/data/acc_known_knowns_85id_80len_re_artif.csv)
-[JSON:](/KnownViruses/data/acc_known_knowns_85id_80len_re_artif.json)
+[CSV](/KnownViruses/data/acc_known_knowns_85id_80len_re_artif.csv)
+[JSON](/KnownViruses/data/acc_known_knowns_85id_80len_re_artif.json)
+[FASTA](/KnownViruses/data/known_85id_80len_re_artif.fasta.tar.gz)
 
 
 Known unknowns 85id 50len
@@ -119,8 +120,9 @@ Convert TSV to CSV and JSON (using [perl](https://github.com/nevostruev/csv2json
 sed 's,\t,\,,g' acc_known_unknowns_85id_50len.txt > acc_known_unknowns_85id_50len.csv
 perl ~/csv2json/csv2json.pl acc_known_unknowns_85id_50len.csv > acc_known_unknowns_85id_50len.json 
 ```
-[CSV:](/KnownViruses/data/acc_known_unknowns_85id_50len.csv)
-[JSON:](/KnownViruses/data/acc_known_unknowns_85id_50len.json)
+[CSV](/KnownViruses/data/acc_known_unknowns_85id_50len.csv)
+[JSON](/KnownViruses/data/acc_known_unknowns_85id_50len.json)
+[FASTA](/KnownViruses/data/known_unknowns_85id_50len.fasta.tar.gz)
 
 
 Known unknowns 50id 50len
@@ -132,9 +134,9 @@ Convert TSV to CSV and JSON (using [perl](https://github.com/nevostruev/csv2json
 sed 's,\t,\,,g' acc_known_unknowns_50id_50len.txt > acc_known_unknowns_50id_50len.csv
 perl ~/csv2json/csv2json.pl acc_known_unknowns_50id_50len.csv > acc_known_unknowns_50id_50len.json
 ```
-[CSV:](/KnownViruses/data/acc_known_unknowns_50id_50len.csv)
-[JSON:](/KnownViruses/data/acc_known_unknowns_50id_50len.json)
-
+[CSV](/KnownViruses/data/acc_known_unknowns_50id_50len.csv)
+[JSON](/KnownViruses/data/acc_known_unknowns_50id_50len.json)
+[FASTA](/KnownViruses/data/known_unknowns_50id_50len.fasta.tar.gz)
 
 **Features from the blastn hits**
 
