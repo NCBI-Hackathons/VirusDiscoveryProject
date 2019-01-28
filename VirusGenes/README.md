@@ -1,8 +1,10 @@
 # Virus Genes 
 
+Annotation of genes (including viral genes) can be based on similarity to other known genes or based on gene features (_ab initio_ prediction).
+
 ## Ab initio gene predition
 
-Use prodigal for provisional gene annotation:
+Several programs or search models exist to determine putative genes, such as `GeneMark` or `Prodigal`. As `GeneMark` is a licensed program, in this open-source project prodigal has been chosen. An example of prodigal command is as following:
 
 ```bash
 
@@ -10,12 +12,15 @@ bin/prodigal -i DRR128724.realign.local.fa -a prodigal/DRR128724.realign.local.p
 
 ```
 
-See results in GitHub folder `prodigal/` in this team.
+In this command, `Prodigal` will search for putative ORFs and will extract the genes in nucleotides and aminoacids, using the 11^th genetic code. See results in GitHub folder `prodigal/` in this team-folder.
 
+## Annotation by similarity
 
-## HMM annotation
+Annotation by similarity is an standard feature of most of the programs that are regularly used. These similarity searches can either be based on basic scoring matrices, such as `BLAST` or `DIAMOND` or using probabilistic models, such `hidden-Markov models (HMM)`. As the first type of search has already been conducted by other teams in early stages, this team will focus on HMM annotation.
 
-Both pVOG and RVDB hidden-Markov models will be used to annotate our contigs.
+The most extensivly used, and still gold standard program is `HMMer`. `HMMer` requires one or multiple models to scan one or multiple sequnces. Interestingly, it allows to annotate distant orthologs, ideal for the discovery of viral ORF in NGS dark matter.
+
+Here 2 different databases or collections of HMM are used: pVOGs and RVDBs. Here there is an example of how they work:
 
 ```bash
 
@@ -23,12 +28,14 @@ hmmscan -o pVOGs/DRR128724.realign.local.prodigal.11.meta.out --tblout pVOGs/DRR
 hmmscan -o RVDB/DRR128724.realign.local.prodigal.11.meta.out --tblout RVDB/DRR128724.realign.local.prodigal.11.meta.tblout --cpu 32 /novel/databases/RVDB/U-RVDBv14.0-prot-new.hmm prodigal/DRR128724.realign.local.prodigal.11.meta.faa &
 
 ```
+See results in GitHub folder `pVOGs/` or `RVDB/` in this team-folder for the corresponding results.
+
 
 ## Ab initio gene profiling and gene annotation with VIGA pipeline
 
-De novo VIral Genome Annotator or [VIGA](https://www.biorxiv.org/content/early/2018/03/07/277509) is an automated pipeline that performes ab initio ORF profiling with Prodigal and gene annotation with Diamond, Blast and HMMER.
+For a real annotation of viral ORFs in a given NGS, it is important to use a combined strategy, or pipeline, of annotation, in order to obtain as much information as possible. In this open-source project, it was decided to use an already existing pipeline: De novo VIral Genome Annotator or [VIGA](https://www.biorxiv.org/content/early/2018/03/07/277509).
 
-Uses multiple databases (i.e. RefSeq, pVOG, RVDB, etc).
+VIGA is an automated pipeline that performes ab initio ORF profiling with Prodigal and gene annotation with Diamond, Blast and HMMER. It allows to uses multiple databases (i.e. RefSeq, pVOG, RVDB, etc).
 
 All programs can be used through a [Docker image](https://hub.docker.com/r/vimalkvn/viga/)
 
