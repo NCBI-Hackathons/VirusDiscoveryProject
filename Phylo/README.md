@@ -28,7 +28,7 @@ Then, a database is built.
 
 Clustering is done using the linclust algorithm:
 
-`mmseqs linclust <fullset_DB> <out_DB> <tmp_dir> --sub-mat nucleotide.out --alph-size 4 -c 0.05 --min-seq-id 0.9 -e 0.000001 --alignment-mode 4`
+`mmseqs linclust <fullset_DB> <out_DB> <tmp_dir> --sub-mat nucleotide.out --alph-size 4 -c 0.1 --min-seq-id 0.85 -e 1e-10 --alignment-mode 4`
 
 use createtsv to convert the output to .tsv
 
@@ -120,6 +120,14 @@ Contigs clustered are available in the example_clusters.tsv. The largest 10 clus
 
 The results were 13,173 clusters with 239 of them containing at least 10 contigs.
 
+|Title|numbers|
+| ------------------------- | ------ |
+| # of clusters             | 13,173 |
+| # of singleton clusters   | 11,120 |
+| # of non-singleton clusters  | 2,053 |
+| # of singleton refseq-clusters  | 8,333 |
+| # of non-singleton that have refseq-clusters  | 1,013 |
+| # of non-singleton that have no refseq-clusters  | 998 |
 
 Below we show a visualization of the diversity of cluster sizes. This dataset contains only the known-known and known-unknown contigs, it does not contain refseq viruses or unknown-unknown contigs (contigs that are likely bacterial). This figure was made using [Pajek](http://mrvar.fdv.uni-lj.si/pajek/) and the labeling was added manually. 
 ![examplenpng](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/Phylo/example_files/kk_ku_no_refseq_labelled.jpg)

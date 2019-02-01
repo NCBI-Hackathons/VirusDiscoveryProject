@@ -1,16 +1,18 @@
 #/bin/bash
-#script assumes we have 10 nodes (so total fasta gets split in 10).
-
+#set splitnum variable to number of contigs to be processed by single node
+$CDDloc=gs://novel_blast/hd2/CDD_DB
+$FASloc=gs://novel_blast/hd2/SCALESET1/*fasta
+$SPLITnum=250
 mkdir DB
 cd DB
-gsutil -m cp -r dir gs://novel_blast/hd2/CDD_DB ./
+gsutil -m cp -r dir $CDDloc ./
 cd ..
 mkdir fasta
 cd fasta
-gsutil -m cp -r dir gs://novel_blast/hd2/SCALESET1/*fasta ./
+gsutil -m cp -r dir $FASloc ./
 ls | grep fasta > ../fastanames.txt
 cd ..
-split -l 213 fastanames.txt
+split -l 250 fastanames.txt
 cd fasta
 
 while read line;do sed "s/line\.size\.fa/$line/g" ../cmd | sed "s/line/$line/g">> splitRPS1.sh;done < ../$1

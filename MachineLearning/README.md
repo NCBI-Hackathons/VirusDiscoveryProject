@@ -1,4 +1,5 @@
 # Machine Learning Team: Data-based Metadata Interpolation
+Data-based completion, interpolation and smoothing of metadata
 
 ## Problem 1: Unsupervised clustering of datasets using viral MASH (Ondov et al 2016) contig features and extraction of highly associated metadata terms
 
@@ -18,6 +19,7 @@ In total, 210 samples with abstract and comments were analyzed. A PLS was perfor
 
 ![alt text](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/MachineLearning/figures/network_PLS.png "PLS_analysis")
 
+We also took a network-basd approach to metadata interpolation. Using Random Walk with Restarts (RWR), we smoothed word frequency through the MASH similarity network. Leveraging network smoothing, we were able to generate a z-score for the likelihood that any SRR should be associated with a given word as informed by the similarity of the viral kmers they contain. 
 
 ## Problem 2: Inferring metadata 
 
@@ -71,6 +73,12 @@ source('MachineLearning/learning/wordFreq2MASHgroups.r')
 produces MachineLearning/learning/wordFreq2MASHgroups.json which contains frequent words by MASH group
 
 Figures were generated in python using ... *MATT*
+
+### Network Smoothing
+```R
+source('MachineLearning/learning/network_word_smoothing.r')
+```
+output: smoothed_metadata.csv a matrix of SRR by metadata words where the value represents the z-score likelihood that a word would be an appropriate descriptor of an SRR.
 
 ### Partial Least Squares Analysis
 ```R

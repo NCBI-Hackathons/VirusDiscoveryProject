@@ -104,8 +104,12 @@ grep -v -f viral_ref_contigs1.sort1.txt.tab acc_known_knowns_85id_80len.txt > ac
 Convert TSV to CSV and JSON (using [perl](https://github.com/nevostruev/csv2json))
 ```
 sed 's,\t,\,,g' acc_known_knowns_85id_80len_re_artif.txt > acc_known_knowns_85id_80len_re_artif.csv
-perl ~/csv2json/csv2json.pl acc_known_unknowns_50id_50len.csv > acc_known_unknowns_50id_50len.json
+perl ~/csv2json/csv2json.pl acc_known_knowns_85id_80len_re_artif.csv > acc_known_knowns_85id_80len_re_artif.json
 ```
+[CSV](/KnownViruses/data/acc_known_knowns_85id_80len_re_artif.csv)
+[JSON](/KnownViruses/data/acc_known_knowns_85id_80len_re_artif.json)
+[FASTA](/KnownViruses/data/known_85id_80len_re_artif.fasta.tar.gz)
+
 
 Known unknowns 85id 50len
 ```
@@ -116,6 +120,10 @@ Convert TSV to CSV and JSON (using [perl](https://github.com/nevostruev/csv2json
 sed 's,\t,\,,g' acc_known_unknowns_85id_50len.txt > acc_known_unknowns_85id_50len.csv
 perl ~/csv2json/csv2json.pl acc_known_unknowns_85id_50len.csv > acc_known_unknowns_85id_50len.json 
 ```
+[CSV](/KnownViruses/data/acc_known_unknowns_85id_50len.csv)
+[JSON](/KnownViruses/data/acc_known_unknowns_85id_50len.json)
+[FASTA](/KnownViruses/data/known_unknowns_85id_50len.fasta.tar.gz)
+
 
 Known unknowns 50id 50len
 ```
@@ -125,9 +133,10 @@ Convert TSV to CSV and JSON (using [perl](https://github.com/nevostruev/csv2json
 ```
 sed 's,\t,\,,g' acc_known_unknowns_50id_50len.txt > acc_known_unknowns_50id_50len.csv
 perl ~/csv2json/csv2json.pl acc_known_unknowns_50id_50len.csv > acc_known_unknowns_50id_50len.json
-
-
 ```
+[CSV](/KnownViruses/data/acc_known_unknowns_50id_50len.csv)
+[JSON](/KnownViruses/data/acc_known_unknowns_50id_50len.json)
+[FASTA](/KnownViruses/data/known_unknowns_50id_50len.fasta.tar.gz)
 
 **Features from the blastn hits**
 
@@ -177,13 +186,45 @@ These are the counts from the new blastn run on Jan 11th against all contigs in 
 | Description | Count | Blastn length cutoff | Blastn identity cutoff | 
 | --- | --- | --- | --- |
 | Known knowns | 12,650 | >80% | >85% |
-| Known unknowns | 64,309 | > 80% | >50% and <85% |
+| Known unknowns | 1,836 | > 80% | >50% and <85% |
 | Known unknowns | 4,713 | >50% to <80% | >85% |
 | Unknown unknowns | 4,204,364 | NA | NA |
 
 The CSV and JSON files are in /home/ss2489/Jan11_run
+The fasta files are in /home/michael.tisza/ref_virus_blast1/ref_virus_blastout
 
-These are the counts from the old run in bq
+File types EXTENSIONS:
+* UNKNOWN UNKNOWNS - .unknown_unknowns_refviral.fasta
+* KNOWN UNKNOWNS1 - .known_unknowns_50id_50len.fasta
+* KNOWN UNKNOWNS2 - .known_unknowns_85id_50len.fasta
+* KNOWN KNOWNS - .known_85id_80len_re_artif.fasta
+* BLAST OUTPUTS - .blastout
+
+Here are the virus species from Refseq with more than 100 hits in the 12,650 known knowns
+* 101 Escherichia phage D108
+* 114 Enterobacteria phage BP-4795
+* 139 Enterobacteria phage YYZ-2008
+* 145 Escherichia phage TL-2011b
+* 146 Enterobacteria phage fiAA91-ss
+* 147 Salmonella phage 118970_sal3
+* 161 Escherichia phage PBECO 4
+* 162 Escherichia phage 121Q
+* 163 Escherichia phage APCEc01
+* 167 Shigella phage SfIV
+* 196 Escherichia virus P1
+* 214 Enterobacteria phage SfV
+* 277 Enterobacteria phage phiP27
+* 279 Enterobacteria phage cdtI
+* 320 Enterobacteria phage mEp460
+* 351 Stx2-converting phage 1717
+* 409 Enterobacteria phage P88
+* 608 Enterobacteria phage HK630
+* 3398 uncultured crAssphage
+
+![Pie chart of top known hits](/KnownViruses/images/KnownKnowns_allhits.png "known hits")
+
+
+These are the counts from the old run in bq. Please note that these sets are not from all the same fasta files.
 
 | Description | Count | Blastn length cutoff | Blastn identity cutoff | 
 | --- | --- | --- | --- |
