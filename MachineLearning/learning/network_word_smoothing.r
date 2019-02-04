@@ -48,7 +48,10 @@ smoothing = do.call(cbind,smoothing)
 colnames(smoothing) = colnames(wf)
 
 smoothing = smoothing[,-(1:146)] # remove numbers of gibberish
-write.csv(smoothing,file='MachineLearning/learning/smoothed_metadata.csv')
+write.table(smoothing,file='MachineLearning/learning/smoothed_metadata.csv',sep=',')
+
+#n='human'
+#plot(wf[[n]],smoothing[,colnames(smoothing)==n])
 
 ### make graph
 library( igraph )
