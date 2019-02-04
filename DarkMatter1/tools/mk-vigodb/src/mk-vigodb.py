@@ -161,8 +161,6 @@ class VigoDbMaker:
       print(cov)
 
 
-#select srr||'_'||contig AS srr_contigname, start||'-'||stop FROM viga GROUP BY srr, contig, proteinid ORDER BY start;
-
 def main():
   ap =  argparse.ArgumentParser(description='Create SQLite database from tabular VIGA output')
   ap.add_argument('-b', '--build',
@@ -183,21 +181,8 @@ def main():
         v.parse_vigo(i, args.delimiter)
     v.add_remaining_entries()
     return 0
-  elif sys.argv[1] == '-t':
-    v.make_orftable()
-    return 0
   else:
     return 0
 
 if __name__ == '__main__':
   main()
-
-#new
-#real    0m3.612s
-#user    0m0.268s
-#sys     0m0.057s
-
-# old
-#real    1m38.490s
-#user    0m0.664s
-#sys     0m0.682s
