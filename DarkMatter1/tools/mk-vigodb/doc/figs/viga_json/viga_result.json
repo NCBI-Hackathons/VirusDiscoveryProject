@@ -1,0 +1,29 @@
+"Contig_213_101.679:1.6825_3" : {                   // Entry ID or primary key
+  "Contig" : "Contig_213_101.679:1.6825",           // Prediction template
+  "Protein_id" : "Contig_213_101.679:1.6825_3",     // Protein | ORF ID
+  "Start" : 1576,                                   // Predicted start position [nt]
+  "Stop" : 2980,                                    // Predicted stop position [nt]
+  "Strand" : 1,                                     // Direction: 1=fwd, -1=rev
+  "Length_aa" : 467,                                // Length of predicted protein [aa]
+  "Orflength" : 1401,                               // Length of predicted protein [nt]
+  "pI" : 6.09124755859,                             // Estimated Isoelectric point
+  "Molecular_weight" : 53.5625,                     // Estimated molecular weight [kDa]
+  "Instability_index" : 36.6983083512,              // Estimated Instability Index
+  "SRR" : "SRR6659510",                             // SRR accession of contig
+  "Organism" : "Edwardsiella phage PEi21",          // Source organism of prediction source
+  "Hitscore" : 0.736478082660833,                   // Score of prediction
+  "Virus_quotient" : 0.832707055,                   // Viral qutient
+  "Description" : "phage terminase, large subunit",
+  "Sources" : {                                     // Sources used in VIGA
+    "VOG4544" : {                                   // HMM hit (pVOG or RVDBs)
+        "Evalue" : 7.4e-28,                         // Evalue/Significance of hit
+        "Coverage" : 70.1754385965,                 // Coverage to closest reference [%]
+        "Similarity" : 56                           // Similarity to closest reference [%]
+    },
+    "DIAMOND" : {                                   // Prediction source
+        "Coverage" : 98.07,                         // Coverage to closest reference [%]
+        "Similarity" : 51.1,                        // Similarity to closest reference [%]
+        "Evalue" : 1.5e-119                         // Evalue/Significance of hit
+    }
+  }
+}
