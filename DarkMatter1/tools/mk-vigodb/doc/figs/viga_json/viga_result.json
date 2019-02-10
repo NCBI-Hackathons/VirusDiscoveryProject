@@ -12,7 +12,7 @@
   "SRR" : "SRR6659510",                             // SRR accession of contig
   "Organism" : "Edwardsiella phage PEi21",          // Source organism of prediction source
   "Hitscore" : 0.736478082660833,                   // Score of prediction
-  "Virus_quotient" : 0.832707055,                   // Viral qutient
+  "Virus_quotient" : 0.832707055,                   // Viral quotient
   "Description" : "phage terminase, large subunit",
   "Sources" : {                                     // Sources used in VIGA
     "VOG4544" : {                                   // HMM hit (pVOG or RVDBs)
