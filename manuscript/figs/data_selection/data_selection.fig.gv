@@ -1,0 +1,64 @@
+digraph Dataselection
+{
+  graph [
+  fontsize=11,
+  fontname="Helvetica-Bold",
+  fontcolor="#282828",
+  ];
+  partie
+  [
+    shape="ellipse",
+    label="PARTIE",
+    fontname="Terminal",
+    fontsize=10
+  ];
+  SRR
+  [
+    shape="Mrecord",
+    label="{SRR | 141,676}",
+    fontname="Terminal",
+    fontsize=10
+  ];
+  WGS
+  [
+    shape="Mrecord",
+    label="{WGS | 85,200}",
+    fontname="Terminal",
+    fontsize=10
+  ];
+  nonWGS
+  [
+    shape="Mrecord",
+    label="{Non-WGS | 56,476}",
+    fontname="Terminal",
+    fontsize=10
+  ];
+
+  testset [shape="record", fontname="Terminal", fontsize=10,
+           label="{ | SRRs  | ctgs}      | \
+                  { Random | 1000\r | } | \
+                  {   Size |  999\r | } | \
+                  {  Phage |  999\r | } | \
+                  {  Total | 2953\r | 55,503,968 }"]
+
+
+  SRR -> partie;
+  partie -> WGS -> testset;
+  partie -> nonWGS;
+  subgraph cluster_0
+  {
+    style=filled;
+    color="#eeeeec33";
+    labeljust="l";
+    label="Hackathon Testset";
+    testset;
+  }
+  //partie -> WGS -> testset -> {known, unknown};
+  //subgraph cluster_1
+  //{
+    //labeljust="l";
+    //label=< Contigs &ge; 1kb>;
+    //known;
+    //unknown;
+  //}
+}
