@@ -54,7 +54,7 @@ Presentation here - https://docs.google.com/presentation/d/1ESJwy6Wkh6VH0SD-vVEA
 ### Determination of phylogenetic position of viruses similar to knowns
 
 
-# Look at the what NCBI built for us!
+# Look at what NCBI built for us!
 
 ## NCBI Blast Docker:
 
