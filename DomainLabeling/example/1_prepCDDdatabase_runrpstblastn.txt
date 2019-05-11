@@ -1,0 +1,40 @@
+###############################SET UP DATABASE###############################
+#Move to your 'compute'location and set up the split CDD database:
+mkdir rpstbln
+cd rpstbln
+#Download the CDD database:
+wget ftp://ftp.ncbi.nih.gov/pub/mmdb/cdd/cdd.tar.gz
+#Extract:
+tar -xvzf cdd.tar.gz
+mkdir cdd_db
+mv *smp cdd_db
+rm *pn
+rm cdd.tar.gz
+#Create seperate databases, downstream for how many threads you want to use per fasta query. (In this case we take 32).
+a=($(ls cdd_db | wc -l))
+b=$((a / 32))
+ls cdd_db > profnames.txt
+split -l $b profnames.txt
+ls | grep x | grep -v profnames > dbnames.txt
+grep -v dbnames dbnames.txt > dbnames2.txt
+rm dbnames.txt
+mv dbnames2.txt dbnames.txt
+while read line;do mv $line cdd_db;done < dbnames.txt
+cd cdd_db
+while read line;do makeprofiledb -in ./$line -dbtype rps -scale 1.0;done < dbnames.txt
+#DATABASE ready, clean up:
+rm *smp
+Mv dbnames.txt ../
+cd ..
+rm profnames.txt
+
+##Run rpstbln on your fastas. (json output is preferred, since this is easiest to run with for scaling team, regular tab output would be easier to work with.)
+## For this example, we use the unknown-unknown sequences derived from accessions: ERR1857044 and ERR1913076
+#Place ERR1857044.unknown_unknowns_refviral.fasta and, ERR1913076.unknown_unknowns_refviral.fasta and 'cmd' file from github in this directory.
+mkdir results
+#create a regular text file with both the fasta sequences as lines. (doing this seperate is also an option, but if you upscale automatisation would be handy).
+ls |grep fasta | grep ERR > fastatext.txt
+#create sh files / fasta, which will simultaneously fire up 1 scan / thread. (In this case 32 / fasta file).
+while read line;do sed "s/line/$line/g" cmd >> $line.sh;done < fastatext.txt
+chmod u+x+ *sh
+#Run both the SH files.
