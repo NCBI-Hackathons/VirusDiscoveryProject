@@ -30,11 +30,11 @@ rm profnames.txt
 
 ##Run rpstbln on your fastas. (json output is preferred, since this is easiest to run with for scaling team, regular tab output would be easier to work with.)
 ## For this example, we use the unknown-unknown sequences derived from accessions: ERR1857044 and ERR1913076
-#Place ERR1857044.unknown_unknowns_refviral.fasta and, ERR1913076.unknown_unknowns_refviral.fasta and 'cmd' file from github in this directory.
+#Place ERR1857044.unknown_unknowns_refviral.fasta and, ERR1913076.unknown_unknowns_refviral.fasta and cmd.sh file from github in this directory.
 mkdir results
 #create a regular text file with both the fasta sequences as lines. (doing this seperate is also an option, but if you upscale automatisation would be handy).
 ls |grep fasta | grep ERR > fastatext.txt
 #create sh files / fasta, which will simultaneously fire up 1 scan / thread. (In this case 32 / fasta file).
-while read line;do sed "s/line/$line/g" cmd >> $line.sh;done < fastatext.txt
+while read line;do sed "s/line/$line/g" cmd.sh >> $line.sh;done < fastatext.txt
 chmod u+x+ *sh
 #Run both the SH files.
