@@ -1,7 +1,7 @@
 Steps:
 
-1 - Split CDD database (to run with multiple threads)
-2 - Run rpstblastn
-3 - Simplify json output for faster parsing
-4 - label the retrieved domains- Viral, Bacterial, Eukaryotic, Ambigious
-5 - Filter the contigs
+- Split CDD database (to run with multiple threads)
+- Run rpstblastn
+- Simplify json output for faster parsing
+- label the retrieved domains- Viral, Bacterial, Eukaryotic, Ambigious
+- Filter the contigs

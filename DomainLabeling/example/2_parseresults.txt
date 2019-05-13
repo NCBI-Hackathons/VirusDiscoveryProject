@@ -1,0 +1,14 @@
+#Under results folder:
+#32 results files per sample (1 for each split instance of cdd db).
+#Simplify json format for parsing (only interested in query_title and accession formats):
+grep -hP 'query_title|accession' results/* > results_simple.txt
+#Grab the 'CDDlabels' folder and subfolders / files from github
+#Grab the pass_fail_rpstbln.pl scripts from github
+chmod u+x+ pass_fail_rpstbln.pl
+#Run the classification:
+perl pass_fail_rpstbln.pl CDDlabels/*txt results_simple.txt > qc_results_unknownuknown.txt
+#Generate a txt file with header names that pass:
+grep 'PASS' qc_results_unknownuknown.txt | cut -f2 > passedfasta.txt
+#Subset initial fastas (passed get passed to the genes team
+#Requires seqtk
+while read line;do seqtk subseq $line.unknown_unknowns_refviral.fasta passedfasta.txt > $line.passed.fasta;done < sraaccs.txt 
