@@ -1,35 +1,10 @@
 # Virus Genes 
 
-Annotation of genes (including viral genes) can be based on similarity to other known genes or based on gene features (_ab initio_ prediction).
+Annotation of genes (including viral genes) can be based on similarity to other known genes or based on gene features (_ab initio_ prediction). 
 
-## Ab initio gene predition
+Several programs or search models exist to determine putative genes (_ab inition_ predicition), such as `GeneMark` or `Prodigal`. As `GeneMark` is a licensed program, in this open-source project other software should be used (ie prodigal). Annotation by similarity is an standard feature of most of the programs that are regularly used. These similarity searches can either be based on basic scoring matrices, such as `BLAST` or `DIAMOND` or using probabilistic models, such `hidden-Markov models (HMM)`.  The most extensivly used, and still gold standard program is `HMMer`. `HMMer` requires one or multiple models to scan one or multiple sequnces. Interestingly, it allows to annotate distant orthologs, ideal for the discovery of viral ORF in NGS dark matter.
 
-Several programs or search models exist to determine putative genes, such as `GeneMark` or `Prodigal`. As `GeneMark` is a licensed program, in this open-source project prodigal has been chosen. An example of prodigal command is as following:
-
-```bash
-
-bin/prodigal -i DRR128724.realign.local.fa -a prodigal/DRR128724.realign.local.prodigal.11.meta.faa -d prodigal/DRR128724.realign.local.prodigal.11.meta.fna -s prodigal/DRR128724.realign.local.prodigal.11.meta.txt -g 11 -o prodigal/DRR128724.realign.prodigal.11.meta.fa
-
-```
-
-In this command, `Prodigal` will search for putative ORFs and will extract the genes in nucleotides and aminoacids, using the 11^th genetic code. See results in GitHub folder `prodigal/` in this team-folder.
-
-## Annotation by similarity
-
-Annotation by similarity is an standard feature of most of the programs that are regularly used. These similarity searches can either be based on basic scoring matrices, such as `BLAST` or `DIAMOND` or using probabilistic models, such `hidden-Markov models (HMM)`. As the first type of search has already been conducted by other teams in early stages, this team will focus on HMM annotation.
-
-The most extensivly used, and still gold standard program is `HMMer`. `HMMer` requires one or multiple models to scan one or multiple sequnces. Interestingly, it allows to annotate distant orthologs, ideal for the discovery of viral ORF in NGS dark matter.
-
-Here 2 different databases or collections of HMM are used: pVOGs and RVDBs. Here there is an example of how they work:
-
-```bash
-
-hmmscan -o pVOGs/DRR128724.realign.local.prodigal.11.meta.out --tblout pVOGs/DRR128724.realign.local.prodigal.11.meta.tblout --cpu 32 /novel/databases/pVOGs/all_vogs.hmm prodigal/DRR128724.realign.local.prodigal.11.meta.faa &
-hmmscan -o RVDB/DRR128724.realign.local.prodigal.11.meta.out --tblout RVDB/DRR128724.realign.local.prodigal.11.meta.tblout --cpu 32 /novel/databases/RVDB/U-RVDBv14.0-prot-new.hmm prodigal/DRR128724.realign.local.prodigal.11.meta.faa &
-
-```
-See results in GitHub folder `pVOGs/` or `RVDB/` in this team-folder for the corresponding results.
-
+Ideally, 
 
 ## Ab initio gene profiling and gene annotation with VIGA pipeline
 
@@ -48,8 +23,8 @@ Databases need to be manually downloaded and formatted. Additionally, BLAST, Dia
 
 ```bash
 # Create all databases
-mkdir databases
-cd databases
+mkdir /data/databases
+cd /data/databases
 
 ## rfam
 mkdir rfam
@@ -134,3 +109,49 @@ All scripts should be located in the working directory. Scripts have `python2.X`
 Fig. 2: Example of dataset reduction though the pipeline
 
 ![alt figure](pictures/reduction.jpg)
+
+## Tutorial
+
+In this tutorial, we will follow 2 SRAs `ERR1857044` and `ERR1913076` as examples of how this annotation pipeline works inside the general `Virus Hunt Toolkit` (VHT) hackathon.
+
+From `DomainLabelling` sub-project, we will copy their output files `ERR1857044.passed.fasta` and `ERR1913076.passed.fasta` which correspond to contigs that have been labeled as non- bacterial, archeal or eukaryotic.
+
+  1. Download the required databases, as shown before in this page.
+
+  2. Copy the `.fasta` from #DomainLabeling example output (`ERR1857044.passed.fasta` and `ERR1913076.passed.fasta`) in your working directory or use  the content from here`VirusDiscovery/Virus/Genes/example/input/DomainLabelling/`.
+
+  3. Modify the fasta headers to include the name of the SRA experiment, as to improve traceability:
+  ```
+  sed "s/>/>ERR1857044_/g" example_input/DomainLabelling/ERR1857044.passed.fasta > example_input/ERR1857044_passed_mod.fasta
+  sed "s/>/>ERR1913076_/g" example_input/DomainLabelling/ERR1913076.passed.fasta > example_input/ERR1913076_passed_mod.fasta
+  ```
+  
+  4. Copy `run-viga` into `example_input/`:
+  ```
+  cp run-viga example_input
+  ```
+  
+  5. Move inside `example_input/` folder and run `scripts/director.sh` with `sudo` rights:
+  ```
+  cd example_input/
+  sudo bash ../scripts/director.sh 
+  ```
+  `sudo` rights are indispensible for having all operational persmissions within the dockerized viga.
+  
+  6. After the computing time (~ 1h per SRA filtered contig file) the results of each SRA should be in the folder  `example_input/results`. Each SRA experiment will have its own folder, where several files can be found:
+  ```
+  ERR1857044_passed_mod.fasta # original fasta file
+  ERR1857044_passed_mod_annotated.csv # annotation of fasta file in CSV format
+  ERR1857044_passed_mod_annotated.fasta # predicted ORF from original fasta in nucleotides
+  ERR1857044_passed_mod_annotated.gbk # # annotation of fasta file in Genbank format
+  ERR1857044_passed_mod_annotated.protein.faa # predicted ORF from original fasta in aminoacids
+  ERR1857044_passed_mod_annotated.protein_rename.faa # predicted ORF from original fasta in aminoacids with differnt name for VHT compatibility
+  ERR1857044_passed_mod_annotated.tbl # annotation of fasta file in tabular format
+  ERR1857044_passed_mod_annotated_rename.csv # annotation of fasta file in CSV format with differnt name for VHT compatibility
+  ERR1857044_passed_mod_annotated_rename_vq.csv # annotation of fasta file in CSV format with differnt name for VHT compatibility with Viral Quocients from pVOGs added to the table
+  ERR1857044_passed_mod_annotated_rename_vq.json # annotation of fasta file in CSV format with differnt name for VHT compatibility with Viral Quocients from pVOGs added to the table in JSON format for integration in VHT database
+  logfile.txt # correspondance of internal VIGA ORF names and VHT ORF names
+  modifiers.txt # modifiers of the project (non)
+  run-viga # copy of the executable wrapper
+  ```
+  
