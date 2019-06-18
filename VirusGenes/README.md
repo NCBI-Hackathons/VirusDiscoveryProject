@@ -100,7 +100,7 @@ wget https://rvdb-prot.pasteur.fr/files/U-RVDBv14.0-prot.hmm.bz2
 bzip2 -dk U-RVDBv14.0-prot.hmm.bz2
 hmmconvert U-RVDBv14.0-prot.hmm > U-RVDBv14.0-prot3.hmm
 
-cat pvogs.hmm U-RVDBv14.0-prot3.hmm > pvogs.hmm
+cat pvogs.hmm U-RVDBv14.0-prot3.hmm > pvogs.hmm # unite pvogs and RVDBs for VIGA compatibility
 hmmpress -f pvogs.hmm
 cd ../..
 
