@@ -4,7 +4,7 @@ Annotation of genes (including viral genes) can be based on similarity to other 
 
 Several programs or search models exist to determine putative genes (_ab inition_ predicition), such as `GeneMark` or `Prodigal`. As `GeneMark` is a licensed program, in this open-source project other software should be used (ie prodigal). Annotation by similarity is an standard feature of most of the programs that are regularly used. These similarity searches can either be based on basic scoring matrices, such as `BLAST` or `DIAMOND` or using probabilistic models, such `hidden-Markov models (HMM)`.  The most extensivly used, and still gold standard program is `HMMer`. `HMMer` requires one or multiple models to scan one or multiple sequnces. Interestingly, it allows to annotate distant orthologs, ideal for the discovery of viral ORF in NGS dark matter.
 
-Ideally, 
+Ideally, a combination of both _ab initio_ gene prediction and gene annotation by similarity (alignment to a sequence or to a model) should annotate the contigs obtain during _de novo_ genome assembly.
 
 ## Ab initio gene profiling and gene annotation with VIGA pipeline
 
@@ -151,7 +151,7 @@ From `DomainLabelling` sub-project, we will copy their output files `ERR1857044.
   ERR1857044_passed_mod_annotated_rename_vq.csv # annotation of fasta file in CSV format with differnt name for VHT compatibility with Viral Quocients from pVOGs added to the table
   ERR1857044_passed_mod_annotated_rename_vq.json # annotation of fasta file in CSV format with differnt name for VHT compatibility with Viral Quocients from pVOGs added to the table in JSON format for integration in VHT database
   logfile.txt # correspondance of internal VIGA ORF names and VHT ORF names
-  modifiers.txt # modifiers of the project (non)
+  modifiers.txt # modifiers of the project (none)
   run-viga # copy of the executable wrapper
   ```
   
