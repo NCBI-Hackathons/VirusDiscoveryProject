@@ -1,0 +1,32 @@
+#!/bin/bash
+# BASH shell script to run viga in a docker container.
+# Saved as /usr/local/bin/run-viga
+#
+# Notes:
+#
+# 1. Input files are assumed to be present in the directory where
+#    this command is run.
+# 2. Other viga options can be specified and are sent as is
+# 3. User must have either
+#    a. sudo access to run this script (script should be run as sudo run-viga) or
+#    b. user must be part of the docker group
+# 4. Default user is viga
+
+echo "Running command: python /program/VIGA.py $*"
+
+# Get current user
+CURRENT_USER=$(logname)
+
+# Get current user id
+CURRENT_UID=$(id -u ${CURRENT_USER})
+
+# Run container
+docker run --rm \
+       -e LOGNAME=${logname} \
+       -e USER=${logname} \
+       -u ${UID}:${UID} \
+       -v /data/databases:/data/databases:ro \
+       -v $(pwd):/wdir \
+       -w /wdir \
+       vimalkvn/viga python /program/VIGA.py $*
+
