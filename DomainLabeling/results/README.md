@@ -1,8 +1,8 @@
 # Some basic plots for the results obtained for the domainlabeling
-- Absolute counts for how many contigs were omitted.
+- Absolute counts for how many contigs were ommitted and kept.
     * Total: 347 188 contigs
     * Omitted: 180 820
-    * Kept: 166368
+    * Kept: 166 368
 
 - Subcategories:
     * Pass 1 = Dark Matter (No CDD hits)
