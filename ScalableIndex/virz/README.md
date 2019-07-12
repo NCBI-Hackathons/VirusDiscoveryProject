@@ -2,6 +2,8 @@
 
 A simple Node/Express interface to query a Mongo viral contig database.
 
+To see an example of its use, view the notebook: https://mybinder.org/v2/gh/NCBI-Hackathons/VirusDiscoveryProject/master?filepath=%2FScalableIndex%2Fvirz%2Findex_descriptive_stats.ipynb
+
 # To start
 
 ```
