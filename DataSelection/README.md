@@ -1,6 +1,6 @@
 # Data Selection
 
-Take a look at the [datasets](datasets.ipynb) jupyter notebook that summarizes everything.
+Take a look at the [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/NCBI-Hackathons/VirusDiscoveryProject/master?filepath=DataSelection%2Fdatasets.ipynb) jupyter notebook that summarizes everything.
 
 The [WGS datasets](wgs_datasets.tsv.gz) file (*Note*: This is gzip compressed) has all the raw data. This is a `.tsv` file and so you can load it into a spreadsheet program.
 
