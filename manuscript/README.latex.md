@@ -18,3 +18,9 @@ REPOROOT/manuscript$ bibtex sd-hack.main.aux
 REPOROOT/manuscript$ pdflatex sd-hack.main.tex
 REPOROOT/manuscript$ pdflatex sd-hack.main.tex
 ```
+
+## Supplementary Material
+
+Supplementary Material is added in `$REPOROOT/manuscript/supplement//sd-hack.supplemental.tex`.
+Some tweaking is required to run it without the Genes template, i.e. to access
+the references and labels from the main text.
