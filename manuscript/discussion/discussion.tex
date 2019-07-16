@@ -1,0 +1,177 @@
+\section{Discussion}
+Here we present the results from the NCBI's Virus Discovery Hackathon. A
+diverse group of international researchers met and  characterized not only
+characterized the viral content in 3,000 metagenomic a subset of the SRA
+datasets, and in doing so,but also identified opportunities to improve apply
+bioinformatic approaches using cloud computing infrastructure and
+bioinformatics research to the analysis of analyze NGS datasets. The original
+intent of the hackathon was to develop an index of SRA run sets that is
+searchable could be searched based on the viral content contained withinof the
+runs. To that end, several use cases were identified to guide development.
+
+The use cases developed are outlined below. 1) Identifying shared genomic
+content across runs. Thus users may submit a sequence, and find all runs from
+which similar contigs can be derived. 2) Filter based on run metadata. This is
+essentially the same service provided by the NCBI Entrez Index. 3) Gene/Domain
+based searches. Users may want to find only runs likely to encode some gene or
+functional domain of interest, as determined by an analysis of contigs
+assembled from the runs. 4) Searching based on virus taxonomy. A user may want
+to find runs likely to contain a particular viral taxa based on an analysis of
+contigs.
+
+
+While the data was not quite ready to be indexed, some test data was used to
+evaluate the database scheme. A full interface for user access will require
+further development, but testing of particular use cases was made possible
+through Python notebooks \cite{jupyterNotebook} and a collection of API
+endpoints. Successful query examples were completed for multiple SRA metadata fields, and the information
+could be obtained in JSON \cite{rfc_json} format or returned in tabular format
+within the notebook approach. To help users who are not fluent in writing database queries
+or parsing through JSON format, we made use of a PyMongoDB library to run
+database lookups using python scripts. This requires the user to run the
+scripts on the same machine where the database is set up, but starting from
+database lookup to visualization using matplotlib or personal R scripts can all
+be run on one platform - Jupyter Notebooks \cite{jupyterNotebook}. With the
+complete SRA datasets, the tables will get much larger in terms of the number
+of entries and the number of fields to describe each dataset. As a result, the
+relationship between the tables may need to be altered.
+
+Despite generating a number of interesting insights, technical challenges
+prevented more rapid progress. That said, we feel that these represent
+opportunities for future development to enhance cloud-based bioinformatic
+infrastructure and practice. While everyone involved appreciated working with
+contigs, as opposed to the reads, the sheer volume of SRA data means that the
+contigs do not represent enough data compression for efficient workflows. While
+effort was made to identify a test data set, this data set was still perhaps
+too large, as it represented nearly 55 million contigs. Thus, for future
+hackathon-type events, especially if the focus is on Big Data, it is
+recommended that a number of test sets be developed of various sizes, ideally
+nested such that the smaller sets are subsets of the larger sets, and that they
+capture the diversity of the full data set as much as is possible. More
+generally, developing a tool to generate subsamples from arbitrary inputs,
+relevant to bioinformatic studies, may be useful, not only for testing
+purposes, but also to allow estimation of how run times scale with sample size
+for a given computational task or set of tasks. This in turn will support
+estimating costs.
+
+Jupyter was immensely popular as a framework from which to develop work-flows
+and conduct exploratory analysis. However, supporting Jupyter in the cloud is
+not straightforward. Simultaneously supporting collaboration between groups,
+controlling access to machines, and allowing access to data buckets is
+challenging. Further efforts are needed to determine which notebooks formats
+are best suited to the hackathon environment. Relatedly, it was found that,
+when working at such a large scale, I/O remains a hurdle and workflows
+developed around BigData analysis in the cloud should accommodate this. Another
+challenge, felt most acutely by those working on applying machine learning to
+SRA data is the need for clean metadata. When we spend time curating datasets
+we should work on the ones with the most metadata, and this should be
+considered when constructing test data-sets in the future. Additionally, it was
+found that not all data labeled as WGS appeared to be WGS data, emphasizing the
+need for better metadata documentation by the research community. The sharing
+and reuse of data is one of the primary drivers behind open, FAIR bioinformatic
+cyberinfrastructure. As discussed above, many SRA entries have incomplete
+metadata, which deters researchers from performing their own analyses on other
+scientist’s data. Completing the metadata would promote the reusability of data
+archived in NCBI’s databases.
+
+A major goal of this work was to establish domain profiles of NGS data sets, as
+these have immense potential for supporting sorting and filtering of these
+massive datasets. They should be treated as first-class reference objects, and
+a massive expansion of these data objects may be the most effective way to
+expand into new data spaces. To this end, a follow-up hackathon is currently
+being planned, during which it is hoped that progress can be made on
+identifying a Jupyter framework that supports collaborative pipeline
+development, and which will result in an index of at least a small portion of
+the metagenomic data set available in the SRA.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Materials and Methods}
+
+  \subsection{Participant Recruitment}
+  After initial conception of this project by BB, RJ and RE, RE offered to
+  provide a venue for an international hackathon.  Participants were recruited
+  through the outreach efforts of BB, RJ, and RE.  VZ identified datasets,
+  which were then parsed by RE using PARTIE to look at any potential amplicon
+  or 16S character. The resulting set of SRRs can be found in Supplemental
+  File 1.
+
+  \subsection{Assembling contigs from metagenomic datasets (pre-Hackathon)}
+  Contigs containing putative virus sequences were assembled from metagenomic
+  SRA datasets by removing human reads and assembling putative virus sequences
+  into contigs using SKESA \cite{Souvorov2018}. All reads from an SRR archive were aligned
+  against the human genome reference sequence (GRCh38.p12) using hisat2
+  \cite{Kim2015} (--no-spliced-alignment --no-discordant guidedassembler\_graph
+  options: --extend\_ends  --word 11 --seed\_prec 6 --min\_hit\_len \$readlen
+  --fraction 0.1 --no\_filter\_by\_reads --no\_filter\_by\_pairs). Reads mapping
+  fully or partially  to the human genome were  classified as 'human'. Putative
+  virus sequences in the remaining reads were identified using a K-mer taxonomy
+  approach, using a minimum threshold of 1,000 hits at the viral species level.
+  The remaining NCBI taxonomy identifiers were used to extract sequences from
+  Refseq. Given that some viruses are overrepresented in RefSeq,  only a few
+  per species were selected at random while for viruses with segmented genomes,
+  e.g. Influenza, all sequences were selected and deduplicated by k-mer
+  distances in a later step using Mash \cite{Ondov2019}. Putative virus reads were
+  assembled using the guided\_assembler from the SKESA (-hash\_count) and these
+  contigs obtained identifiers based on the guide accessions with a sequential
+  index as a suffix, for example NC\_006883.2\_1 is based on Prochlorococcus
+  phage genome NC\_006883.2.In cases where guide selection failed to detect good
+  reference sets a default viral reference set was used based on ViralZone
+  database \cite{Hulo2011}.
+
+  Reads not classified as virus or human were de-novo assembled with SKESA. For
+  the assembled runs the de novo contigs served as a reference set to align the
+  reads with hisat2 (as above). The reads that didn't align onto either human,
+  viral or de-novo contigs were classified as unknown. As a result of the
+  workflow each run was re-aligned onto human, viral and de-novo contigs and
+  contains the same set of reads as the original run. The alignments were
+  converted into SRA format without quality scores and stored in google cloud
+  storage for later analysis. Given that most SRA metagenomic reads are
+  bacterial or of unknown origin this step was the most computationally
+  intensive with significant memory and runtime requirements. Due to the
+  limited budget a timeout was introduced on de-novo assembly step and some
+  runs failed to complete.
+
+  \subsection{GCP (Google Cloud Computing)}
+  Cloud BLAST
+  for knowns group
+  All commands for pulling contig .fasta files from Google buckets, BLASTn, and classification of output into the four classification groups are available on GitHub at: https://github.com/NCBI-Hackathons/VirusDiscoveryProject/tree/master/KnownViruses
+  for domains group
+
+  \subsection{Clustering}
+  Contigs and Refseq virus nucleotide sequences were stored in a single flat
+  file. Virus sequences were extracted from the blast database
+  NCBI\_VIV\_nucleotide\_sequences\_v5. The combined set of sequences was
+  loaded into a blast database via the makeblastdb command-line tool
+  \cite{Camacho2009}, and all sequences were compared to all sequences using
+  megablast \cite{Camacho2009} with an evalue cut-off of 1e$^{-10}$ and a
+  maximum of one contiguously-aligned region (High-scoring Segment pair, HSP)
+  per query-subject pair.
+
+
+  \subsection{Markov Clustering}
+  Markov Clustering (MCL, \cite{Enright2002}) was applied to blast results as
+  outlined in the associated documentation (\url{https://micans.org/mcl/}).
+  Briefly, tabular blast output was modified to include only qacc, sacc, and
+  evalue columns, and passed to mcxload to generate network and dictionary
+  files. Thus the set of query and subject pairs is treated as the edge set for
+  a graph, the associated evalues are treated as edge weights. The
+  stream-mirror argument was used to ensure the network is undirected, and
+  stream-neg-log10  and stream-tf 'ceil(200)' arguments were used to log
+  transform the evalues, setting a maximum value of 200 for edge weights.
+  Finally, the mcl algorithm was run on the loaded network with an inflation
+  value of 10, and 32 threads. All MCL work was performed on a GCP machine with
+  96 cores and 240 Gb RAM.
+
+  \subsection{VIGA}
+
+  Modifications were made to the standard VIGA \cite{Gonzalez-Tortuero2018}
+  protocol to enhance the overall speed of the program, removing the rRNA
+  detection step by INFERNAL \cite{Nawrocki2013}. This pipeline handled this
+  information, enhancing the identification of viral specific hidden-Markov
+  models (HMM) annotations by the utilization of the complete pVOG database
+  \cite{Grazziotin2017} (9,518 HMMs) and the addition of RVDB
+  \cite{Goodacre2018} using HMMER suite \cite{hmmer}. Modified scripts and
+  instructions to reproduce all steps are available on GitHub at
+  \url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject/tree/master/VirusGenes}.
+  All viral annotation was performed on a GCP machine with 160 cores and XX Gb
+  RAM

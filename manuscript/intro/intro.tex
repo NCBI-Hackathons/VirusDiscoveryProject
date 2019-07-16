@@ -1,0 +1,100 @@
+\section{Introduction}
+  While advances in sequencing technology have greatly reduced the cost of
+  whole genome sequencing \cite{Mardis2011}, it has given rise to new problems,
+  especially related to data analysis and management. As the number of bases in
+  the Sequence Read Archive \cite{Kodama2012} exceeds 33 petabases (June 2019),
+  the difficulty to navigate and analyze all of this data has grown as well.
+  Furthermore, as the number of data warehouses grows with the increased
+  accessibility of the technology, the need to support interoperability of data
+  types increases. To address these issues, the National Institutes of Health
+  (NIH) launched the Science and Technology Research Infrastructure for
+  Discovery, Experimentation, and Sustainability (STRIDES, \cite{StridesWeb})
+  initiative. "Through the STRIDES Initiative partnerships, NIH will test and
+  assess models of cloud infrastructure for NIH-funded datasets and
+  repositories."
+
+  As part of the initiative, the National Center for Biotechnology Information
+  (NCBI, \cite{Sayers2019}) launched a series of hackathons (see
+  \url{https://biohackathons.github.io/}), the first of which, the Virus Discovery
+  hackathon, was held in January 2019 in San Diego. These events gather
+  researchers for three days to work on projects around a topic, and provide an
+  opportunity to quickly proptype a solution or a set of tools to address a
+  community need. NCBI hackathons also facilitate networking among researchers,
+  and allow NCBI staff to identify opportunities to improve their services. As
+  part of the STRIDES Initiative the hackathons are particularly focused on
+  allowing researchers to work with large amounts of data in a cloud
+  environment, in an effort to identify the needs and challenges of this new
+  research environment. While these efforts were not specifically focused on
+  working with large volumes of data or compute intensive tasks in the cloud,
+  they provide a framework with which to engage the research community.
+  Typically topics are developed in conjunction with a host researcher and
+  assigned to different working groups. Team leaders of these working groups
+  are consulted to further refine the topics after some initial recruitment. On
+  the first day of the hackathon, the teams further brainstorm work directions,
+  and then continue to iterate on development goals over the course of the
+  three days. Additionally, one writer from each group participates in a
+  break-out session each day to help guide documentation of the work done.
+
+  While there are a number of commercial cloud providers, including Amazon,
+  Microsoft, and Google, at the time of this hackathon an agreement had been
+  reached with Google as part of STRIDES. Google's cloud platform offers
+  scalable nodes, with highly configurable access-control settings as well as
+  an SQL-like database infrastructure, BigQuery. Details on cloud
+  infrastructure can be reviewed here. Briefly, cloud compute refers to
+  remotely hosted computers, some parts of which can dynamically access a
+  single compute instance. This access to computing allows research scientists
+  and organizations to use large and scalable computing resources without
+  investing in the required infrastructure and maintenance. While this lowers
+  the barrier to access supercomputer-type resources, it does not provide a
+  comprehensive solution to the general scientific public. The main barriers to
+  adoption by researchers include 1) moderate experience in UNIX command-line
+  type environments, and 2) the ineffectiveness of most commonly used
+  bioinformatics tools to leverage the compute resources available in a
+  cloud-computing setting. STRIDES hackathons aim to identify to what extent
+  these barriers impact working researchers, and how they would like them
+  addressed.
+
+  One of the fastest growing sources of public biological data is Next
+  Generation Sequencing (NGS) data, housed in NCBI's Sequence Read Archive
+  (SRA, \cite{Leinonen2010}). SRA includes results from amplicon and whole
+  genome shot-gun studies, conducted on a variety of sequencing platforms. The
+  data is derived from research in many fields such as personalized medicine,
+  disease diagnosis, viral or bacterial evolution, sequencing efforts targeting
+  endangered animals, and sequencing of economically significant crops, among
+  others. Despite the scientific potential of these datasets, there are several
+  impediments to their usage. For one, sample metadata standards can vary
+  between studies, making it difficult to identify datasets based on a common
+  set of descriptive sample attribute terms. Moreover, while the content of
+  some datasets is explicit, this is often not the case, particularly in those
+  samples derived from complex mixtures of organisms like those from human gut
+  and environmental samples.  In these cases, actual organismal content may not
+  be known, either because it was never fully evaluated or because the content
+  includes novel organisms not described in reference sets or otherwise
+  undocumented, i.e. the so-called 'dark matter' \cite{Roux2015}.
+
+  Understanding the microbial composition of different environments is
+  necessary to support comparisons between samples and to establish
+  relationships between genetics and biological phenomena. If such information
+  was available for all SRA datasets, it would greatly improve both findability
+  of specific datasets and the quality of analysis that could be conducted.
+  However, determining the organismal content of a sample is not always an easy
+  task as it typically requires comparisons to existing genome references. This
+  can be difficult when samples include viruses because only a small portion of
+  Earth’s viral diversity has been identified and made available in reference
+  sets \cite{Carroll2018}. Even when content can be identified, the very large
+  size of SRA datasets present a significant scalability problem, and
+  strategies must be developed to support large scale organismal content
+  analysis in order to provide an index of this content for use in data search
+  and retrieval. To that end, the first STRIDES hackathon engaged researchers
+  working in this field to leverage the computational power of the Google cloud
+  environment and test the applicability of several bioinformatic approaches to
+  the identification of both known and novel viruses in.   existing, public SRA
+  datasets
+
+  Here are presented the general results of these efforts, with an emphasis on
+  challenges participants faced in conducting their work. Firstly, the
+  scientific staff involved in the hackathon is presented, including their
+  demographics and research backgrounds. Scientists were organized in teams
+  which roughly corresponds to the different research sections found in this
+  article, these include: data selection, taxonomic and cluster identification,
+  domain and gene annotation.
