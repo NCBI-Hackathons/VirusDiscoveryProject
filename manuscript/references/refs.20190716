@@ -1,0 +1,116 @@
+1.    Mardis, E.R. A decade’s perspective on DNA sequencing technology. Nature
+2011, 470, 198–203.  doi:10.1038/nature09796.
+2.    Kodama, Y.; Shumway, M.; Leinonen, R.; International Nucleotide Sequence
+Database Collaboration. The Sequence Read Archive: explosive growth of
+sequencing data. Nucleic Acids Res. 2012, 40, D54–D56.
+doi:10.1093/nar/gkr854.
+3.    NIH Office of Data Science Strategy. STRIDES. Available online:
+https://datascience.nih.gov/strides (accessed on 15-07-2019).
+
+
+
+
+4.    Sayers, E.W.; Agarwala, R.; Bolton, E.E.; Brister, J.R.; Canese, K.; Clark, K.;
+Connor, R.; Fiorini, N.; Funk, K.; Hefferon, T.; Holmes, J.B.; Kim, S.; Kimchi,
+A.; Kitts, P.A.; Lathrop, S.; Lu, Z.; Madden, T.L.; Marchler-Bauer, A.; Phan, L.;
+Schneider, V.A.; Schoch, C.L.; Pruitt, K.D.; Ostell, J. Database resources of
+the National Center for Biotechnology Information. Nucleic Acids Res. 2019,
+47, D23–D28. doi:10.1093/nar/gky1069.
+5.    Leinonen, R.; Sugawara, H.; Shumway, M.; International Nucleotide
+Sequence Database Collaboration. The Sequence Read Archive. Nucleic
+Acids Res. 2011, 39, D19–D21. doi:10.1093/nar/gkq1019.
+6.    Alves, L.d.F.; Westmann, C.A.; Lovate, G.L.; de Siqueira, G.M.V.; Borelli, T.C.;
+Guazzaroni, M.E. Metagenomic Approaches for Understanding New Concepts in Microbial Science. Int J Plant Genomics 2018, 2312987. doi:10.1155/2018/2312987.
+7.    Carroll, D.; Daszak, P.; Wolfe, N.D.; Gao, G.F.; Morel, C.M.; Morzaria, S.;
+Pablos-Méndez, A.; Tomori, O.; Mazet, J.A.K. The Global Virome Project.
+Science 2018, 359, 872–874.  doi:10.1126/science.aap7463.
+8.    Roux, S.; Hallam, S.J.; Woyke, T.; Sullivan, M.B. Viral dark matter and
+virus-host interactions resolved from publicly available microbial genomes.
+eLife 2015, 4. doi:10.7554/eLife.08490.
+9.         Souvorov, A.; Agarwala, R.; Lipman, D.J. SKESA: strategic k-mer extension
+for scrupulous assemblies. Genome Biol. 2018, 19, 153.
+doi:10.1186/s13059-018-1540-z.
+10.         Kim, D.; Langmead, B.; Salzberg, S.L. HISAT: a fast spliced aligner with low
+memory  requirements. Nat. Methods 2015, 12, 357–360.
+doi:10.1038/nmeth.3317.
+11.    Ondov, B.D.; Starrett, G.J.; Sappington, A.; Kostic, A.; Koren, S.; Buck, C.B.;
+Phillippy, A.M. Mash Screen: High-throughput sequence containment
+estimation for genome discovery. BioRxiv 2019, p. 557314.
+doi:10.1101/557314.
+12.    Hulo, C.; de Castro, E.; Masson, P.; Bougueleret, L.; Bairoch, A.; Xenarios, I.;
+Le Mercier, P. ViralZone: a knowledge resource to understand virus diversity.
+Nucleic Acids Res. 2011, 39, D576–D582. doi:10.1093/nar/gkq901.
+13.        Camacho, C.; Coulouris, G.; Avagyan, V.; Ma, N.; Papadopoulos, J.; Bealer, K.;
+Madden, T.L. BLAST+:  architecture and applications. BMC Bioinf. 2009, 10,
+421. doi:10.1186/1471-2105-10-421.
+14.         Enright, A.J.; Van Dongen, S.; Ouzounis, C.A. An efficient algorithm for
+large-scale detection of protein families. Nucleic Acids Res. 2002, 30,
+1575–1584. doi:10.1093/nar/30.7.1575.
+15.         González-Tortuero, E.; Sutton, T.D.; Velayudhan, V.; Shkoporov, A.N.; Draper,
+L.A.; Stockdale, S.R.; Ross, R.P.; Hill, C. VIGA: a sensitive, precise and
+automatic de novo VIral Genome Annotator. bioRxiv 2018, p. 277509.
+doi:10.1101/277509.
+
+
+16.         Nawrocki, E.P.; Eddy, S.R. Infernal 1.1: 100-fold faster RNA homology
+searches. Bioinformatics 2013, 29, 2933–2935.
+doi:10.1093/bioinformatics/btt509.
+17.         Grazziotin, A.L.; Koonin, E.V.; Kristensen, D.M. Prokaryotic Virus
+Orthologous Groups (pVOGs): a resource for comparative genomics and
+protein family annotation. Nucleic Acids Res. 2017, 45, D491–D498.
+doi:10.1093/nar/gkw975.
+18.         Goodacre, N.; Aljanahi, A.; Nandakumar, S.; Mikailov, M.; Khan, A.S. A
+Reference Viral Database (RVDB) To Enhance Bioinformatics Analysis of
+High-Throughput Sequencing for Novel Virus Detection. mSphere 2018, 3.
+doi:10.1128/mSphereDirect.00069-18.
+19.         SR, E. HMMER: biosequence analysis using profile hidden Markov models.
+Available online: http://hmmer.org/ (Accessed on: 15-07-2019)
+20.        Shi, M.; Lin, X.D.; Tian, J.H.; Chen, L.J.; Chen, X.; Li, C.X.; Qin, X.C.; Li, J.;
+Cao, J.P.; Eden, J.S.; Buchmann, J.; Wang, W.; Xu, J.; Holmes, E.C.; Zhang, Y.Z.
+Redefining the invertebrate RNA virosphere. Nature 2016, 540, 539–543.
+doi:10.1038/nature20167.
+21.         Torres, P.J.; Edwards, R.A.; McNair, K.A. PARTIE: a partition engine to
+separate metagenomic and amplicon projects in the Sequence Read Archive.
+Bioinformatics 2017, 33, 2389–2391. doi:10.1093/bioinformatics/btx184.
+22.         Mirdita, M.; Steinegger, M.; Söding, J. MMseqs2 desktop and local web
+server app for fast, interactive sequence searches. Bioinformatics 2019.
+doi:10.1093/bioinformatics/bty1057.
+23.         Batagelj, V.; Mrvar, A., Pajek - Analysis and Visualization of Large Networks.
+In Graph Drawing Software; Jünger, M.; Mutzel, P., Eds.; Springer Berlin
+Heidelberg: Berlin, Heidelberg, 2004; pp. 77–103.
+doi:10.1007/978-3-642-18638-7_4.
+24.         Bastian, M.; Heymann, S.; Jacomy, M. Gephi: An Open Source Software for
+Exploring and Manipulating Networks. AAAI Publications 2009.
+25.         Marchler-Bauer, A.; Bo, Y.; Han, L.; He, J.; Lanczycki, C.J.; Lu, S.; Chitsaz, F.;
+Derbyshire, M.K.; Geer, R.C.; Gonzales, N.R.; Gwadz, M.; Hurwitz, D.I.; Lu,
+F.; Marchler, G.H.; Song, J.S.; Thanki, N.; Wang, Z.; Yamashita, R.A.; Zhang,
+D.; Zheng, C.; Geer, L.Y.; Bryant, S.H. CDD/SPARCLE: functional classification of proteins via subfamily domain architectures. Nucleic Acids Res. 2017, 45, D200–D203. doi:10.1093/nar/gkw1129.
+26.         Bray, T. The JavaScript Object Notation (JSON) Data Interchange Format.
+RFC 7159, RFC Editor, 2014.
+27.         Hyatt, D.; Chen, G.L.; Locascio, P.F.; Land, M.L.; Larimer, F.W.; Hauser, L.J.
+Prodigal: prokaryotic gene recognition and translation initiation site
+identification. BMC Bioinf. 2010,11, 119. doi:10.1186/1471-2105-11-119.
+28.         Buchfink, B.; Xie, C.; Huson, D.H. Fast and sensitive protein alignment using
+DIAMOND. Nat. Methods 2015, 12, 59–60. doi:10.1038/nmeth.3176.
+29.         Hildebrand, A.; Remmert, M.; Biegert, A.; Söding, J. Fast and accurate
+automatic structure prediction with HHpred. Proteins 2009, 77 Suppl 9,
+128–132. doi:10.1002/prot.22499.
+30.         Zhu, Y.; Stephens, R.M.; Meltzer, P.S.; Davis, S.R. SRAdb: query and use
+public next-generation sequencing data from within R. BMC Bioinf. 2013,
+14, 19. doi:10.1186/1471-2105-14-19.
+31.         Le, Q.V.; Mikolov, T. Distributed Representations of Sentences and
+Documents. arXiv e-prints 2014, http://arxiv.org/abs/1405.4053v2.
+32.         van der Maaten, L.; Hinton, G. Visualizing Data using t-SNE. Journal of
+Machine Learning Research 2008, 9, 2579–2605.
+33.         Jupyter Steering Council. The Jupyter/IPython Project. Available online:
+https://jupyter.org/. (Accessed on 15-07-2019).
+34.        Brister, J.R.; Ako-Adjei, D.; Bao, Y.; Blinkova, O. NCBI viral genomes
+resource. Nucleic Acids Res. 2015, 43, D571–D577.
+doi:10.1093/nar/gku1207.
+35.         Shean, R.C.; Makhsous, N.; Stoddard, G.D.; Lin, M.J.; Greninger, A.L. VAPiD:
+a lightweight cross-platform viral annotation pipeline and identification tool
+to facilitate virus genome submissions to NCBI GenBank. BMC Bioinf. 2019,
+20, 48. doi:10.1186/s12859-019-2606-y.
+36.     Choi, I.; Ponsero, A.J.; Bomhoff, M.; Youens-Clark, K.; Hartman, J.H.; Hurwitz,
+B.L. Libra: scalable k-mer-based tool for massive all-vs-all metagenome
+Comparisons. GigaScience 2018, 8. doi:10.1093/gigascience/giy165.
