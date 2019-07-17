@@ -117,6 +117,9 @@ dump-ref-fasta ERR2227558.realign Contig_100000_4.78977
 To dump reads in fasta format:
 fastq-dump -Z --fasta ERR2227558.realign Contig_100000_4.78977 | head
 
+All reads from an SRR archive were aligned  against the human genome reference sequence (GRCh38.p12) using HISAT2 (--no-spliced-alignment --no-discordant
+guidedassembler_graph options: --extend_ends  --word 11 --seed_prec 6 --min_hit_len 1000  --fraction 0.1 --no_filter_by_reads --no_filter_by_pairs)
+
 
 ## Realign metadata
 For the duration of the hackathon additional information is available in BigQuery: coverage, contig taxonomy and summary with breakdown of host/viral/denovo/unmapped reads.
