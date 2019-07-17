@@ -1,5 +1,6 @@
 \section{Results}
   \subsection{Hackathon Planning and Preparation}
+
   The number of metagenomic datasets in the SRA database is steadily
   increasing, albeit not all the information that each SRA contains has been
   exploited to the fullest, e.g. not all species within sequencing datasets are
@@ -12,9 +13,10 @@
   far \cite{Shi2016}. Therefore, virus sequences present a suitable model for
   NGS data mining.
 
+
   Robert Edwards at San Diego State University agreed to sponsor the event and
   X participants registered for the event. Participant demographics are
-  outlined in FIG X. Participants came from a variety of academic backgrounds
+  outlined in TABLE X. Participants came from a variety of academic backgrounds
   and countries, worked at a variety of institution types and at all stages of
   their career from training to senior investigator. The wide range of
   backgrounds allowed us to get a broad perspective on the hurdles faced by
@@ -26,25 +28,24 @@
   allowed us to further refine the scope of the event and the focus for the
   various groups. At this event a data selection strategy was settled upon and
   a general approach was decided upon for most of the other groups (outlined in
-  Table \ref{tab:participants}). Unlike in a typical NCBI hackathon, the groups were
-  not working on independent projects, but were instead dependent on the work
-  of "up-stream" groups. At the time of the hackathon, an agreement for data
-  hosting had been reached only with Google, and so data was uploaded to the
-  google cloud environment; all data uploaded was already publicly available
-  via the NCBI's SRA resource (link). The data chosen to be uploaded for this
-  event, along with the selection criteria, is described in the following
-  section.
+  FIGX). Unlike in a typical NCBI hackathon, the groups were not working on
+  independent projects, but were instead dependent on the work of "up-stream"
+  groups. At the time of the hackathon, an agreement for data hosting had been
+  reached only with Google, and so data was uploaded to the google cloud
+  environment; all data uploaded was already publicly available via the NCBI's
+  SRA resource (link). The data chosen to be uploaded for this event, along
+  with the selection criteria, is described in the following section.
 
   The pre-hackathon event highlighted the need for more of an introduction to
   doing bioinformatics in the google cloud environment, as well as an
   opportunity to improve workflows by pre-installing common tools on the VMs to
   be used by hackathoners, both of which were addressed before the actual
-  event. The documentation developed can be found at <URL>, though it will
-  likely need to go through more revisions for it to adequately address the
-  needs of researchers new to working in a cloud environment. The pre-installed
-  tools are outlined in Figure~\ref{fig:preinstalled_tools}, and were chosen
-  based on REF. Jupyter \cite{jupyterNotebook} was found to be a popular
-  environment to work from, and was not preinstalled. Work to identify the best
+  event. The documentation developed can be found at the github repository
+  linked above, though it will likely need to go through more revisions for it
+  to adequately address the needs of researchers new to working in a cloud
+  environment. The pre-installed tools are outlined in Supplemental Figure 1,
+  and were chosen based on REF. Jupyter was found to be a popular environment
+  to work from, and was not preinstalled. Work to identify the best
   Jupyter-style solution to hackathon needs is ongoing, and includes
   exploration of github's Binder, Google's CoLab, and custom Jupyter and
   JupyterHub set-ups. Having a dedicated IT support person on site was
@@ -83,21 +84,19 @@
   \end{figure}
 
   \subsection{Data Selection}
-  Sequences from the Whole Gnome Sequences database (WGS) were was targeted for
-  inclusion, as we decided to focus on viruses from metagenomic studies for
-  this event, and amplicon sequencing results do not represent this target. A
-  total of 141,676 SRRs were processed using PARTIE \cite{Torres2017} to
-  determine how many of the datasets are whole genome sequences (WGS). Our
-  results showed that 85,200 SRRs were WGS and these were analyzed further as
-  part of the hackathon. However, during the hackathon, we first started with
-  2,953, a smaller test dataset consisting of samples that were randomly
-  selected (1,000), selected based on the size of the dataset (999), and then
-  based on size and the relatively large precentage of phage content (999). A
-  complete list of SRR accession numbers that were part of each category can be
-  found in our github respository
-  (\url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject/tree/master/DataSelection}
-  and REF). The data selection pipeline is outlined in
-  Figure~\ref{fig:data_selection_pipeline}.
+  Whole Genome Sequences database (WGS) were  targeted for inclusion, as we
+  decided to focus on viruses from metagenomic studies for this event, and
+  amplicon sequencing results do not represent this target. A total of 141,676
+  SRRs were processed using PARTIE \cite{Torres2017} to determine how many of the datasets
+  are whole genome sequences (WGS). Our results showed that 85,200 SRRs were
+  WGS and these were analyzed further as part of the hackathon. However, during
+  the hackathon, we first started with 2,953, a smaller test dataset consisting
+  of samples that were randomly selected (1,000), selected based on the size of
+  the dataset (999), and then based on size and the relatively large percentage
+  of phage content (999). A complete list of SRR accession numbers that were
+  part of each category can be found in our GitHub repository
+  (\url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject/tree/master/DataSelection}).
+  The data selection pipeline is outlined in FIGX.
 
   From this filtered data set, approximately 55 million contigs were assembled,
   though this represents only half of the raw reads. The participants were
@@ -111,6 +110,7 @@
   development and testing. Further, pre-selecting data-sets suitable for each
   group would have alleviated some of the issues associated with the groups
   being dependent on each other's work.
+
 
   \begin{figure}[h]
     \centering
@@ -152,15 +152,25 @@
     contigs where no hits were found. These contigs comprised the vast majority
     of processed contigs.
 
-  While salient viral information was obtained from thousands of contigs, the
+  Cellular sequences from RefSeq were not utilized to filter out non-viral
+  sequences as most cellular genomes contain one or more proviruses/prophage
+  \cite{Roux2015,Liu2011b}. While salient viral information was obtained from
+  thousands of contigs, the observation that a vast majority of the contigs
+  could not be characterized by this method underscored the need for fast
+  domain-mapping approaches to categorize this type of data. The
+  ‘unknown-unknown’ contigs from metagenomic samples that did not undergo virus
+  enrichment are likely primarily bacterial and other cellular sequences.
+  However, many novel viral sequences can be expected in this set. Some of the
+  BLAST results were pre-computed and loaded into google's BigQuery, to provide
+  a reference for initial testing during the hackathon. Many of the hackathon
+  participants were not familiar with large scale analysis from databases, and
+  better tutorials on how to leverage cloud infrastructure may be warranted.
+  Therefore, while SQL like tables may be convenient means of presenting data,
+  some additional training is necessary for them to be useful. Finally, while
+  salient viral information was obtained from thousands of contigs, the
   observation that a vast majority of the contigs could not be characterized by
   this method underscored the need for fast domain-mapping approaches to
-  categorize this type of data. The ‘unknown-unknown’ contigs from metagenomic
-  samples that did not undergo virus enrichment are likely primarily bacterial
-  and other cellular sequences. However, many novel viral sequences can be
-  expected in this set. Some of the BLAST results were pre-computed and loaded
-  into google's BigQuery, to provide a reference for initial testing during the
-  hackathon.
+  categorize this type of data.
 
   \begin{figure}[h]
     \centering
@@ -275,29 +285,26 @@
   (all virus-like sequences but not from prokaryotic viruses) using HMMER
   \cite{hmmer}.
 
-  Tackling a very large dataset computational efficiency was a concern. Despite
-  BLAST and DIAMOND can parallelize to certain degree, HMMER within VIGA
-  pipeline did not exploit the large number of computational resources (CPUs)
-  that were provided to VIGA, ie. most of the computational cores were idle. In
-  fact, there was a reduction in performance with the provision of more
-  processors to VIGA. To partially mitigate this behaviour, VIGA was parallely
-  invoked from the command line, to run as many instances as CPUs asked,
-  instead of a single instance with all CPUs
-  (\url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/VirusGenes/scripts/director.sh}
-  to consult the director script). Each VIGA process was started with only the
-  contigs from a single SRR dataset on a single processor, and later ran 160
-  such processes in parallel. Initial test runs of 4,400 contigs running on 160
-  processors showed performance of about 25 sec/contig/processor. In real-time,
-  one million contigs will take approximately 7,000 processor hours. Results
-  from the modified VIGA pipeline provide viral-specific taxonomic/functional
-  annotations to all putative viral contigs, FIGX, based on similarity search
-  by sequence alignment (BLAST and DIAMOND) and modelization (HMMer against
-  pVOG and RVDB). Virus hunting tool kit (“VHT”) contig IDs are appended to the
-  VIGA output and putative protein sequences were extracted from the GenBank
-  output. Additionally, viral quotient, the percentage of a pVOG domain created
-  from viral genes, is appended to observations with a hit against the pVOG
-  database.
-
+  Tackling a very large dataset computational efficiency was a concern. While
+  BLAST and DIAMOND can be parallelized to certain degree, HMMER cannot be
+  efficiently parallelized
+  (\url{http://eddylab.org/software/hmmer/Userguide.pdf}). To partially
+  mitigate this behaviour, VIGA was parallely invoked from the command line, to
+  run as many instances as CPUs asked, instead of a single instance with all
+  CPUs
+  (\url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/VirusGenes/scripts/director.sh}).
+  Each VIGA process was started with only the contigs from a single SRR dataset
+  on a single processor, and later ran 160 such processes in parallel. Initial
+  test runs of 4,400 contigs running on 160 processors showed performance of
+  about 25 sec/contig/processor. In real-time, one million contigs will take
+  approximately 7,000 processor hours. Results from the modified VIGA pipeline
+  provide viral-specific taxonomic/functional annotations to all putative viral
+  contigs, FIGX, based on similarity search by sequence alignment (BLAST and
+  DIAMOND) and modelization (HMMer against pVOG and RVDB). Virus hunting tool
+  kit (“VHT”) contig IDs are appended to the VIGA output and putative protein
+  sequences were extracted from the GenBank output. Additionally, viral
+  quotient, the percentage of a pVOG domain created from viral genes, is
+  appended to observations with a hit against the pVOG database.
 
   As noted above, processing such a large volume of data requires massive
   parallelization, a task which occupied a significant portion of this groups
@@ -308,7 +315,6 @@
   different search strategies increases the run time of the pipeline but, if
   run under an appropriate decision tree, increases the confidence during
   taxonomical and/or functional annotation.
-
 
   \subsection{Tackling the Unknown}
   As a large number of contigs remain uncharacterized despite the

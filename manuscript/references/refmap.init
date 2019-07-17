@@ -1,0 +1,59 @@
+\cite{Mardis2011}             \\ % 1
+    \cite{Kodama2012}             \\ % 2
+    \cite{StridesWeb}             \\ % 3
+    \cite{Sayers2019}             \\ % 4
+    \cite{Leinonen2010}           \\ % 5
+    \cite{Alves2018}              \\ % 6
+    \cite{Carroll2018}            \\ % 7
+    \cite{Roux2015}               \\ % 8
+    \cite{Souvorov2018}           \\ % 9
+    \cite{Kim2015}                \\ % 10
+    \cite{Ondov2019}              \\ % 11
+    \cite{Hulo2011}               \\ % 12
+    \cite{Camacho2009}            \\ % 13
+    \cite{Enright2002}            \\ % 14
+    \cite{Gonzalez-Tortuero2018}  \\ % 15
+    \cite{Nawrocki2013}           \\ % 16
+    \cite{Grazziotin2017}         \\ % 17
+    \cite{Goodacre2018}           \\ % 18
+    \cite{hmmer}                  \\ % 19
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+
+  \subsection{Hackathon Planning and Preparation}
+    \cite{Shi2016}                \\ % 20
+
+  \subsection{Data Selection}
+    \cite{Torres2017}             \\ % 21
+
+  \subsection{Data Segmentation}
+    \cite{Camacho2009}            \\ % 13
+
+  \subsection{Data Clustering}
+    \cite{Enright2002}            \\ % 14
+    \cite{Mirdita2019}            \\ % 22
+    \cite{Batagelj2004}           \\ % 23
+    \cite{Bastian2009}            \\ % 24
+
+  \subsection{Domain Mapping}
+    \cite{Marchler-Bauer2017}     \\ % 25
+    \cite{Camacho2009}            \\ % 13
+    \cite{rfc_json}               \\ % 26
+
+  \subsection{Gene Annotation}
+    \cite{Gonzalez-Tortuero2018}  \\ % 15
+    \cite{Hyatt2010}              \\ % 27
+    \cite{Buchfink2015}           \\ % 28
+
+  \subsection{Tackling the Unknown}
+    \cite{Camacho2009}            \\ % 13
+    \cite{Hildebrand2009}         \\ % 29
+    \cite{Gonzalez-Tortuero2018}  \\ % 15
+    \cite{Camacho2009}            \\ % 13
+
+  \subsection{Indexing and Metadata}
+    \cite{Zhu2013}                \\ % 30
+    \cite{Le2014}                 \\ % 31
+    \cite{vanDerMaaten2008}       \\ % 32
+    \cite{jupyterNotebook}        \\ % 33

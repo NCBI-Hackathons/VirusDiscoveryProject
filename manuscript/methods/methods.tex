@@ -4,34 +4,32 @@
   After initial conception of this project by BB, RJ (JRB?) and RE, RE offered
   to provide a venue for an international hackathon.  Participants were
   recruited through the outreach efforts of BB, RJ, and RE.  VZ identified
-  datasets, which were then parsed by RE using PARTIE \cite{Torres2017} to look at any potential
-  amplicon or 16S character.  The resulting set of SRRs can be found in
-  Supplemental File 1.
-
+  datasets, which were then parsed by RE using PARTIE \cite{Torres2017} to look
+  at any potential amplicon or 16S character.  The resulting set of SRRs can be
+  found in Supplemental File 1.
 
   \subsection{Assembling contigs from metagenomic datasets (pre-Hackathon)}
   Contigs containing putative virus sequences were assembled from metagenomic
   SRA datasets by removing human reads and assembling putative virus sequences
   into contigs using SKESA \cite{Souvorov2018}. All reads from an SRR archive
   were aligned against the human genome reference sequence (GRCh38.p12) using
-  HISAT \cite{Kim2015} (--no-spliced-alignment --no-discordant
-  guidedassembler\_graph options: --extend\_ends  --word 11 --seed\_prec 6
-  --min\_hit\_len 1000 --fraction 0.1 --no\_filter\_by\_reads
-  --no\_filter\_by\_pairs). Reads mapping fully or partially  to the human
-  genome were  classified as 'human'. Putative virus sequences in the remaining
-  reads were identified using a K-mer taxonomy approach, using a minimum
-  threshold of 1,000 hits at the viral species level. The remaining NCBI
+  HISAT2 \cite{Kim2015} (see the associated github repository for execution
+  details, \url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject}).
+  Reads mapping fully or partially  to the human genome were  classified as
+  'human'. Putative virus sequences in the remaining reads were identified
+  using a K-mer taxonomy approach (NCBI, unpublished). The remaining NCBI
   taxonomy identifiers were used to extract sequences from Refseq. Given that
   some viruses are overrepresented in RefSeq,  only a few per species were
   selected at random while for viruses with segmented genomes, e.g. Influenza,
   all sequences were selected and deduplicated by k-mer distances in a later
   step using MASH \cite{Ondov2019}. Putative virus reads were assembled using
-  the guided\_assembler from the SKESA (-hash\_count) and these contigs
-  obtained identifiers based on the guide accessions with a sequential index as
-  a suffix, for example NC\_006883.2\_1 is based on Prochlorococcus phage
-  genome NC\_006883.2.In cases where guide selection failed to detect good
-  reference sets a default viral reference set was used based on ViralZone
-  database \cite{Hulo2011}.
+  the guided\_assembler from the SKESA and these contigs obtained identifiers
+  based on the guide accessions with a sequential index as a suffix, for
+  example NC\_006883.2\_1 is based on Prochlorococcus phage genome
+  NC\_006883.2.In cases where guide selection failed to detect good reference
+  sets a default viral reference set was used based on the ViralZone database
+  \cite{Hulo2011}.
+
 
   Reads not classified as virus or human were de-novo assembled with SKESA. For
   the assembled runs the de novo contigs served as a reference set to align the
@@ -46,37 +44,40 @@
   limited budget a timeout was introduced on de-novo assembly step and some
   runs failed to complete.
 
-  \subsection{GCP (Google Cloud Computing)}
-  Cloud BLAST
-  for knowns group
-  All commands for pulling contig .fasta files from Google buckets, BLASTn, and classification of output into the four classification groups are available on GitHub at: https://github.com/NCBI-Hackathons/VirusDiscoveryProject/tree/master/KnownViruses
-  for domains group
+  \subsection{Domain mapping}
+  Contigs that were classified by BLASTn as unknown-unknowns, were inspected
+  for domain content using RPSTBPASTN \cite{Camacho2009}. Briefly, the protein
+  domains from the Conserved Domain Database \cite{Marchler-Bauer2017}  were
+  downloaded and split into 32 different databases, to benefit most from the
+  available threads. RPStBLASTn searches were ran with an e-value cut-off of
+  1e-3, and the output was generated in json format. A working example and the
+  commands used are available on GitHub under
+  \url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject/tree/master/DomainLabeling/example}
 
-  \subsection{Clustering}
+  \subsection{Megablast}
   Contigs and Refseq virus nucleotide sequences were stored in a single flat
-  file. Coding-complete, genomic viral sequences Virus sequences were extracted
-  from the NCBI Entrez Nucleotide database
+  file. Coding-complete, genomic viral sequences were extracted from the NCBI
+  Entrez Nucleotide database
   (\url{https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/virus?VirusLineage_ss=Viruses,%20taxid:10239&SeqType_s=Nucleotide})
-  to create a specific database using the makeblastdb command-line tool
-  \cite{Camacho2009}. And all sequences were  compared against all sequences
-  using MEGABLAST \cite{Camacho2009} with an E-value cut-off of $1e^{-10}$ and
-  a maximum of one contiguously-aligned region (High-scoring Segment pair, HSP)
+  to create a specific database  using the makeblastdb command-line tool
+  \cite{Camacho2009}. All sequences were compared against  all sequences using
+  MEGABLAST \cite{Camacho2009} with an E-value cut-off of $1e^{-10}$ and a
+  maximum of one contiguously-aligned region (High-scoring Segment pair, HSP)
   per query-subject pair.
 
-
   \subsection{Markov Clustering}
-  Markov Clustering (MCL, \cite{Enright2002}) was applied to blast results as
-  outlined in the associated documentation (\url{https://micans.org/mcl/}).
+  Markov Clustering (MCL) \cite{Enright2002} was applied to blast results as
+  outlined in the associated documentation (\url{https://micans.org/mcl}).
   Briefly, tabular blast output was modified to include only qacc, sacc, and
-  evalue columns, and passed to mcxload to generate network and dictionary
+  E-value columns, and passed to mcxload to generate network and dictionary
   files. Thus the set of query and subject pairs is treated as the edge set for
-  a graph, the associated evalues are treated as edge weights. The
+  a graph, the associated E-values are treated as edge weights. The
   stream-mirror argument was used to ensure the network is undirected, and
   stream-neg-log10  and stream-tf 'ceil(200)' arguments were used to log
-  transform the evalues, setting a maximum value of 200 for edge weights.
-  Finally, the mcl algorithm was run on the loaded network with an inflation
-  value of 10, and 32 threads. All MCL work was performed on a GCP machine with
-  96 cores and 240 Gb RAM.
+  transform E-values, setting a maximum value of 200 for edge weights. Finally,
+  the mcl algorithm was run on the loaded network with an inflation value of
+  10, and 32 threads. All MCL work was performed on a Google Cloud Platform
+  (GCP) machine with 96 cores and 240 Gb RAM.
 
   \subsection{VIGA}
   Modifications were made to the standard VIGA \cite{Gonzalez-Tortuero2018}
@@ -88,5 +89,5 @@
   \cite{Goodacre2018} using HMMER suite \cite{hmmer}. Modified scripts and
   instructions to reproduce all steps are available on GitHub at
   \url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject/tree/master/VirusGenes}.
-  All viral annotation was performed on a GCP machine with 160 cores and XX Gb
-  RAM
+  All viral annotation was performed on a GCP machine with 160 cores and XX
+  Gb RAM

@@ -1,17 +1,16 @@
 \section{Introduction}
 
 While advances in sequencing technology have greatly reduced the cost of whole
-genome sequencing \cite{Mardis2011}, it has given rise to new problems,
-especially related to data analysis and management. As the number of bases in
-the Sequence Read Archive \cite{Kodama2012} exceeds 33 petabases (June 2019),
-the difficulty to navigate and analyze all of this data has grown as well.
-Furthermore, as the number of data warehouses grows with the increased
-accessibility of the technology, the need to support interoperability of data
-types increases. To address these issues, the National Institutes of Health
-(NIH) launched the Science and Technology Research Infrastructure for
-Discovery, Experimentation, and Sustainability (STRIDES, \cite{StridesWeb})
-initiative. "Through the STRIDES Initiative partnerships, NIH will test and
-assess models of cloud infrastructure for NIH-funded datasets and
+genome sequencing \cite{Mardis2011}, it has given rise to new problems, especially related to
+data analysis and management. As the number of bases in the Sequence Read
+Archive \cite{Kodama2012} exceeds 33 petabases (June 2019), the difficulty to navigate and
+analyze all of this data has grown as well. Furthermore, as the number of data
+warehouses grows with the increased accessibility of the technology, the need
+to support interoperability of data types increases. To address these issues,
+the National Institutes of Health (NIH) launched the Science and Technology
+Research Infrastructure for Discovery, Experimentation, and Sustainability
+(STRIDES, \cite{StridesWeb}) initiative. "Through the STRIDES Initiative partnerships, NIH
+will test and assess models of cloud infrastructure for NIH-funded datasets and
 repositories."
 
 As part of the initiative, the National Center for Biotechnology Information
@@ -30,14 +29,14 @@ effort to identify the needs and challenges of this new research environment.
 Typically topics are developed in conjunction with a host researcher and
 assigned to different working groups. Team leaders of these working groups are
 consulted to further refine the topics after some initial recruitment. On the
-first day of the hackathon, the teams further brainstorm work directions, and
-then continue to iterate on development goals over the course of the three
-days. Additionally, one writer from each group participates in a break-out
-session each day to help guide documentation of the work done.
+first day of the hackathon, the teams further scope directions, and then
+continue to iterate on development goals over the course of the three days.
+Additionally, one writer from each group participates in a break-out session
+each day to help guide documentation of the work done.
 
 While there are a number of commercial cloud providers, including Amazon
-(https://aws.amazon.com), Microsoft (https://azure.microsoft.com), and Google
-(https://cloud.google.com/), at the time of this hackathon an agreement had
+(\url{https://aws.amazon.com}), Microsoft (\url{https://azure.microsoft.com}),
+ and Google (\url{https://cloud.google.com}), at the time of this hackathon an agreement had
 been reached with Google as part of STRIDES. Google's cloud platform offers
 scalable nodes, with highly configurable access-control settings as well as an
 SQL-like database infrastructure, BigQuery. Details on cloud infrastructure can
@@ -56,7 +55,7 @@ how they would like them addressed.
 
 One of the fastest growing sources of public biological data is Next Generation
 Sequencing (NGS) data, housed in NCBI's Sequence Read Archive (SRA)
-\cite{Leinonen2011}. SRA includes results from amplicon and whole genome
+\cite{Leinonen2010}. SRA includes results from amplicon and whole genome
 shot-gun studies, conducted on a variety of sequencing platforms. The data is
 derived from research in many fields such as personalized medicine, disease
 diagnosis, viral or bacterial evolution, sequencing efforts targeting
@@ -71,7 +70,6 @@ environmental samples.  In these cases, actual organismal content may not be
 known, either because it was never fully evaluated or because the content
 includes novel organisms not described in reference sets or otherwise
 undocumented, i.e. the so-called “dark matter” \cite{Roux2015}.
-
 
 Understanding the microbial composition of different environments is necessary
 to support comparisons between samples and to establish relationships between
@@ -89,8 +87,7 @@ this content for use in data search and retrieval. To that end, the first
 STRIDES hackathon engaged researchers working in this field to leverage the
 computational power of the Google cloud environment and test the applicability
 of several bioinformatic approaches to the identification of both known and
-novel viruses in already existing, public SRA datasets.
-
+novel viruses in existing, public SRA datasets
 
 Here are presented the general results of these efforts, with an emphasis on
 challenges participants faced in conducting their work. Firstly, the scientific
