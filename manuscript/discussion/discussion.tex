@@ -19,23 +19,6 @@ assembled from the runs. 4) Searching based on virus taxonomy. A user may want
 to find runs likely to contain a particular viral taxa based on an analysis of
 contigs.
 
-
-While the data was not quite ready to be indexed, some test data was used to
-evaluate the database scheme. A full interface for user access will require
-further development, but testing of particular use cases was made possible
-through Python notebooks \cite{jupyterNotebook} and a collection of API
-endpoints. Successful query examples were completed for multiple SRA metadata fields, and the information
-could be obtained in JSON \cite{rfc_json} format or returned in tabular format
-within the notebook approach. To help users who are not fluent in writing database queries
-or parsing through JSON format, we made use of a PyMongoDB library to run
-database lookups using python scripts. This requires the user to run the
-scripts on the same machine where the database is set up, but starting from
-database lookup to visualization using matplotlib or personal R scripts can all
-be run on one platform - Jupyter Notebooks \cite{jupyterNotebook}. With the
-complete SRA datasets, the tables will get much larger in terms of the number
-of entries and the number of fields to describe each dataset. As a result, the
-relationship between the tables may need to be altered.
-
 Despite generating a number of interesting insights, technical challenges
 prevented more rapid progress. That said, we feel that these represent
 opportunities for future development to enhance cloud-based bioinformatic
@@ -47,32 +30,50 @@ too large, as it represented nearly 55 million contigs. Thus, for future
 hackathon-type events, especially if the focus is on Big Data, it is
 recommended that a number of test sets be developed of various sizes, ideally
 nested such that the smaller sets are subsets of the larger sets, and that they
-capture the diversity of the full data set as much as is possible. More
-generally, developing a tool to generate subsamples from arbitrary inputs,
-relevant to bioinformatic studies, may be useful, not only for testing
-purposes, but also to allow estimation of how run times scale with sample size
-for a given computational task or set of tasks. This in turn will support
-estimating costs.
+capture the diversity of the full data set as much as is possible. Clustering
+proved to be a promising data compression approach, but further work needs to
+be done to both improve the efficiency of the algorithms when working at this
+scale, and to determine the content of the clusters generated. Of particular
+note, the large number of singletons identified are worth investigating to
+determine if they represent artifacts of either the sequencing or assembly
+strategies or if metagenomic data really contains such a large number of unique
+sequences.
 
-Jupyter was immensely popular as a framework from which to develop work-flows
-and conduct exploratory analysis. However, supporting Jupyter in the cloud is
-not straightforward. Simultaneously supporting collaboration between groups,
-controlling access to machines, and allowing access to data buckets is
-challenging. Further efforts are needed to determine which notebooks formats
-are best suited to the hackathon environment. Relatedly, it was found that,
-when working at such a large scale, I/O remains a hurdle and workflows
-developed around BigData analysis in the cloud should accommodate this. Another
-challenge, felt most acutely by those working on applying machine learning to
-SRA data is the need for clean metadata. When we spend time curating datasets
-we should work on the ones with the most metadata, and this should be
-considered when constructing test data-sets in the future. Additionally, it was
-found that not all data labeled as WGS appeared to be WGS data, emphasizing the
-need for better metadata documentation by the research community. The sharing
-and reuse of data is one of the primary drivers behind open, FAIR bioinformatic
-cyberinfrastructure \cite{Wilkinson2016}. As discussed above, many SRA entries
-have incomplete metadata, which deters researchers from performing their own
-analyses on other scientist’s data. Completing the metadata would promote the
-reusability of data archived in NCBI’s databases.
+Of the classifications made, it is worth noting that the most abundant extant
+virus in the data sets analyzed was crassphage (Figure 2C). While this may
+reflect the preselection strategy employed (WGS metagenomic studies were
+targeted), it underscores the prevalence of this recently identified virus.
+Further, as seen in Figure 2B, the majority of viruses with hits to the RefSeq
+virus data set were close matches to a refseq sequence (as seen by the majority
+of known-known classifications). This suggests that the RefSeq set is a good
+representation of extant viral sequence space. However, as seen in Figure 2A,
+the majority of contigs lacked any hits to the RefSeq virus data set. This may
+be due in part to the exclusion of non-viral RefSeq from the comparison.
+Indeed, as seen in Figure 4B, there is likely an abundance of bacterial
+sequence contained in these data sets. Still, the even larger set of sequences
+with domains of unknown function supports the claim that dark matter forms a
+large portion of all sequencing data. Thus, improved methods for classifying
+sequences without any close hits among extant sequence space are needed.
+
+Jupyter \cite{jupyterNotebook} was immensely popular as a framework from which
+to develop work-flows and conduct exploratory analysis. However, supporting
+Jupyter in the cloud is not straightforward. Simultaneously supporting
+collaboration between groups, controlling access to machines, and allowing
+access to data buckets is challenging. Further efforts are needed to determine
+which notebook formats are best suited to the hackathon environment. Relatedly,
+it was found that, when working at such a large scale, I/O remains a hurdle and
+workflows developed around BigData analysis in the cloud should accommodate
+this. Another challenge, felt most acutely by those working on applying machine
+learning to SRA data is the need for clean metadata. When we spend time
+curating datasets we should work on the ones with the most metadata, and this
+should be considered when constructing test data-sets in the future.
+Additionally, it was found that not all data labeled as WGS appeared to be WGS
+data, emphasizing the need for better metadata documentation by the research
+community. The sharing and reuse of data is one of the primary drivers behind
+open, FAIR bioinformatic cyberinfrastructure \cite{Wilkinson2016}. As discussed
+above, many SRA entries have incomplete metadata, which deters researchers from
+performing their own analyses on other scientist’s data. Completing the
+metadata would promote the reusability of data archived in NCBI’s databases.
 
 A major goal of this work was to establish domain profiles of NGS data sets, as
 these have immense potential for supporting sorting and filtering of these
@@ -83,3 +84,16 @@ being planned, during which it is hoped that progress can be made on
 identifying a Jupyter framework that supports collaborative pipeline
 development, and which will result in an index of at least a small portion of
 the metagenomic data set available in the SRA.
+
+
+\section{Conclusions}
+  \begin{itemize}
+    \item Conservatively assembled contigs support initial exploration of SRA data
+    \item Redesigning algorithms to leverage cloud infrastructure would make
+          could environments more accessible to a wider audience
+    \item Approaches to classifying, and reporting the classification of,
+          contigs can be effectively developed via collaboration between a
+          diverse group of researchers
+    \item A follow-up hackathon event is planned
+
+  \end{itemize}

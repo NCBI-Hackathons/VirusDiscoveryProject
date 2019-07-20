@@ -2,25 +2,25 @@
   \subsection{Hackathon Planning and Preparation}
 
   The number of metagenomic datasets in the SRA database is steadily
-  increasing, albeit not all the information that each SRA contains has been
-  exploited to the fullest, e.g. not all species within sequencing datasets are
-  routinely identified. A major hurdle for a detailed analysis of metagenomic
-  datasets is the lack of readily available hardware and analysis pipelines.
-  The goal of this hackathon was to identify user needs for  standard NGS data
-  analysis in a cloud environment as it can offer more computational power than
-  is available on local processors. Viruses are present in virtually all
-  organisms and environments, but only a limited number have been identified so
-  far \cite{Shi2016}. Therefore, virus sequences present a suitable model for
-  NGS data mining.
-
+  increasing, (\url{(https://www.ncbi.nlm.nih.gov/sra/docs/sragrowth)}) albeit
+  not all the information that each SRA contains has been exploited to the
+  fullest, e.g. not all species within sequencing datasets are routinely
+  identified. A major hurdle for a detailed analysis of metagenomic datasets is
+  the lack of readily available hardware and analysis pipelines. The goal of
+  this hackathon was to identify user needs for  standard NGS data analysis in
+  a cloud environment as it can offer more computational power than is
+  available on local processors. Viruses are present in virtually all organisms
+  and environments, but only a limited number have been identified so far
+  \cite{Shi2016}. Therefore, virus sequences present a suitable model for NGS
+  data mining.
 
   Robert Edwards at San Diego State University agreed to sponsor the event and
-  X participants registered for the event. Participant demographics are
-  outlined in TABLE X. Participants came from a variety of academic backgrounds
-  and countries, worked at a variety of institution types and at all stages of
-  their career from training to senior investigator. The wide range of
-  backgrounds allowed us to get a broad perspective on the hurdles faced by
-  researchers working in a cloud environment.
+  36 participants registered for the event. Participant demographics are
+  outlined in Table~\ref{tab:participants}. Participants came from a variety of
+  academic backgrounds and countries, worked at a variety of institution types
+  and at all stages of their career from training to senior investigator. The
+  wide range of backgrounds allowed us to get a broad perspective on the
+  hurdles faced by researchers working in a cloud environment.
 
   After participants had been identified, teams were developed and team leaders
   identified. The team leaders were invited to an online, pre-hackathon event
@@ -28,13 +28,14 @@
   allowed us to further refine the scope of the event and the focus for the
   various groups. At this event a data selection strategy was settled upon and
   a general approach was decided upon for most of the other groups (outlined in
-  FIGX). Unlike in a typical NCBI hackathon, the groups were not working on
-  independent projects, but were instead dependent on the work of "up-stream"
-  groups. At the time of the hackathon, an agreement for data hosting had been
-  reached only with Google, and so data was uploaded to the google cloud
-  environment; all data uploaded was already publicly available via the NCBI's
-  SRA resource (link). The data chosen to be uploaded for this event, along
-  with the selection criteria, is described in the following section.
+  Figure~\ref{fig:hack-workflow}). Unlike in a typical NCBI hackathon, the
+  groups were not working on independent projects, but were instead dependent
+  on the work of "up-stream" groups. At the time of the hackathon, an agreement
+  for data hosting had been reached only with Google, and so data was uploaded
+  to the google cloud environment; all data uploaded was already publicly
+  available via the NCBI's SRA resource (link). The data chosen to be uploaded
+  for this event, along with the selection criteria, is described in the
+  following section.
 
   The pre-hackathon event highlighted the need for more of an introduction to
   doing bioinformatics in the google cloud environment, as well as an
@@ -43,16 +44,16 @@
   event. The documentation developed can be found at the github repository
   linked above, though it will likely need to go through more revisions for it
   to adequately address the needs of researchers new to working in a cloud
-  environment. The pre-installed tools are outlined in Supplemental Figure 1,
-  and were chosen based on REF. Jupyter was found to be a popular environment
-  to work from, and was not preinstalled. Work to identify the best
-  Jupyter-style solution to hackathon needs is ongoing, and includes
-  exploration of github's Binder, Google's CoLab, and custom Jupyter and
-  JupyterHub set-ups. Having a dedicated IT support person on site was
-  immensely helpful, for the various technical issues that are bound to arise
-  at this type of event, but also to facilitate launching VMs as necessary for
-  participants and adjusting hardware specs as necessary. Of note, it was found
-  to be import to launch instances with a fixed external IP to prevent
+  environment. The pre-installed tools are outlined in Supplemental Table 1.
+  Jupyter was found to be a popular environment to work from, and was not
+  preinstalled. Work to identify the best Jupyter-style solution to hackathon
+  needs is ongoing, and includes exploration of github's Binder, Google's
+  CoLab, and custom Jupyter and JupyterHub \cite{jupyterNotebook} set-ups.
+  Having a dedicated IT support person on site was immensely helpful, for the
+  various technical issues that are bound to arise at this type of event, but
+  also to facilitate launching VMs as necessary for participants and adjusting
+  hardware specs as necessary. Of note, it was found to be import to launch
+  instances with a fixed external Internet Protocol Address (IP) to prevent
   confusion when an instance is taken down and relaunched for any number of
   reasons.
 
@@ -72,8 +73,8 @@
   \begin{figure}
     \centering
     \includegraphics{Definitions/logo-mdpi}
-    \caption{DUMMY: Preinstalled tools.
-            \label{fig:preinstalled_tools}}
+    \caption{DUMMY: hack-workflow.
+            \label{fig:hack-workflow}}
   \end{figure}
 
   \begin{figure}
@@ -87,16 +88,15 @@
   Whole Genome Sequences database (WGS) were  targeted for inclusion, as we
   decided to focus on viruses from metagenomic studies for this event, and
   amplicon sequencing results do not represent this target. A total of 141,676
-  SRRs were processed using PARTIE \cite{Torres2017} to determine how many of the datasets
-  are whole genome sequences (WGS). Our results showed that 85,200 SRRs were
-  WGS and these were analyzed further as part of the hackathon. However, during
-  the hackathon, we first started with 2,953, a smaller test dataset consisting
-  of samples that were randomly selected (1,000), selected based on the size of
+  SRRs were processed using PARTIE \cite{Torres2017} to determine how many of
+  the datasets are in WGS. Our results showed that 85,200 SRRs were WGS and
+  these were analyzed further as part of the hackathon. However, during the
+  hackathon, we first started with 2,953, a smaller test dataset consisting of
+  samples that were randomly selected (1,000), selected based on the size of
   the dataset (999), and then based on size and the relatively large percentage
   of phage content (999). A complete list of SRR accession numbers that were
   part of each category can be found in our GitHub repository
   (\url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject/tree/master/DataSelection}).
-  The data selection pipeline is outlined in FIGX.
 
   From this filtered data set, approximately 55 million contigs were assembled,
   though this represents only half of the raw reads. The participants were
@@ -111,7 +111,6 @@
   group would have alleviated some of the issues associated with the groups
   being dependent on each other's work.
 
-
   \begin{figure}[h]
     \centering
     \includegraphics{Definitions/logo-mdpi}
@@ -120,14 +119,14 @@
   \end{figure}
 
   \subsection{Data Segmentation}
-  As outlined in Figure~\ref{fig:data_selection_pipeline}, contigs were first
-  pre-filtered based on size by removing all contigs shorter than 1 kb in
-  length to increase data processing speed and leave only contigs more likely
-  to provide meaningful hits. The remaining 4,223,563 contigs were then
-  screened by BLASTn \cite{Camacho2009} against the virus RefSeq database
-  \cite{Brister2015} using a cut-off e-value of $\leq$ 0.001 and classified into
-  three categories based on the average nucleotide identity (ANI) and alignment
-  coverage (Figure ~\ref{fig:data_segmentation}):\\
+  Contiguous assemblies (contigs, hereafter) were first pre-filtered based on
+  size by removing all contigs shorter than 1 kb in length to increase data
+  processing speed and leave only contigs more likely to provide meaningful
+  hits. The remaining 4,223,563 contigs were then screened by BLASTN
+  \cite{Camacho2009} against the virus RefSeq database \cite{Brister2015} using
+  a cut-off E-value of $leq$ 0.001 and classified into three categories based
+  on the average nucleotide identity (ANI) and alignment coverage (Figure
+  ~\ref{fig:data_segmentation}):\\
 
     \textbf{Known-knowns:} 12,650 contigs with high similarity to a known RefSeq
     virus genome, with ANI $<$ 85\% and contig coverage $>$ 80\%. These contigs
@@ -154,7 +153,7 @@
 
   Cellular sequences from RefSeq were not utilized to filter out non-viral
   sequences as most cellular genomes contain one or more proviruses/prophage
-  \cite{Roux2015,Liu2011b}. While salient viral information was obtained from
+  \cite{Roux2015a,Liu2011b}. While salient viral information was obtained from
   thousands of contigs, the observation that a vast majority of the contigs
   could not be characterized by this method underscored the need for fast
   domain-mapping approaches to categorize this type of data. The
@@ -172,6 +171,7 @@
   this method underscored the need for fast domain-mapping approaches to
   categorize this type of data.
 
+
   \begin{figure}[h]
     \centering
     \includegraphics{Definitions/logo-mdpi}
@@ -183,25 +183,15 @@
   The contigs in the set ‘unknown-unknown’ were clustered to reduce the dataset
   size and facilitate their  further analysis. To this end, all virus RefSeq
   sequences and the contig sequences were aligned against each other by
-  combined them  into one Blast database. This self comparison of XXX contigs
-  yielded XXX query-subject pairs which were treated as edges of a graph with
-  edge weight equal to the log of their E-value. The graph was then clustered
-  via Markov Clustering (MCL, \cite{Enright2002}), and the resulting subgraphs
-  analyzed. The distribution of cluster sizes is seen in
-  Figure~\ref{fig:cluster_sizes}. A total of X clusters were returned,
+  combined them  into one Blast database. This self comparison of 4,223,563
+  contigs yielded 245,652,744 query-subject pairs which were treated as edges
+  of a graph with edge weight equal to the log of their E-value. The graph was
+  then clustered via Markov Clustering (MCL, \cite{Enright2002}), and the
+  resulting subgraphs analyzed. The distribution of cluster sizes is seen in
+  Figure~\ref{fig:cluster_sizes}. A total of 2,334,378 clusters were returned,
   representing an approximately 2-fold reduction in data. Of these clusters,
-  X\% were singletons, indicating that the contig was unique among those
-  contigs analyzed. The structure of a few clusters is illustrated in
-  Figure~\ref{fig:cluster_sizes}. The topology of these graphs is undoubtedly
-  associated with the choice of assembly strategy, as here we took a very
-  conservative approach and expect little to no overlap between contigs from
-  within a single SRR. Thus it is likely that clusters with more complex
-  structure Figure~\ref{fig:cluster_sizes}a, particularly in cases in which
-  RefSeq sequences aren't acting as a bridge(Figure~\ref{fig:cluster_sizes}b),
-  represent shared genomic content across samples. Similarly, "hairballs",
-  likely represent distinct regions across a single genome, present in only a
-  single SRR (or poorly represented in multiple SRRs,
-  Figure~\ref{fig:cluster_sizes}c).
+  57\% (1,331,402) were singletons, indicating that the contig was unique among
+  those contigs analyzed.
 
   Initial investigations explored the use of MMseqs2 \cite{Mirdita2019}, Pajek
   \cite{Batagelj2004}, and  Gephi \cite{Bastian2009} to construct and visualize
@@ -235,8 +225,8 @@
   the genomic content of these contigs, the Conserved Domain Database (CDD)
   \cite{Marchler-Bauer2017} was queried. The entire CDD database was split into
   32 parts in order to benefit most from the available threads, and the contigs
-  were analyzed via RPStBLASTn \citep{Camacho2009} against the fragmented
-  database. Domains with significant  hits (e-value $<$ 0.001) were subsequently
+  were analyzed via RPSTBLASTN \citep{Camacho2009} against the fragmented
+  database. Domains with significant  hits (E-value $<$ 0.001) were subsequently
   divided into five bins containing the corresponding Position-Specific Scoring
   matrices (PSSMs), based on their CDD accession number. These bins were created
   by using the ‘organism’ taxonomic information provided with CDD, resulting in
@@ -257,9 +247,9 @@
   overrepresentation of these PSSMs in the
   database, but since there is a comparable number of eukaryotic CDDs present,
   this skewness is more likely a reflection of the input data. Similar to the
-  work on clustering the contigs, RPStBLASTn requires a lot of computational
+  work on clustering the contigs, RPSTBLASTN requires a lot of computational
   resources and benefits from parallelization. Additionally, the output format
-  of RPStBLASTn also requires some more thought. In the set-up of the analysis,
+  of RPSTBLASTN also requires some more thought. In the set-up of the analysis,
   we choose JSON \cite{rfc_json} format, since this would be the easiest way to
   incorporate downstream in the index (vide infra). However,the algorithm
   itself doesn’t allow specification of what exactly is included in this
@@ -281,9 +271,10 @@
   viral contigs have their ORF predicted with Prodigal \cite{Hyatt2010} and
   annotated against RefSeq Viral Proteins with BLAST \citep{Camacho2009} and
   DIAMOND \citep{Buchfink2015}; and search for conserved motifs
-  from pVOGs [17] (prokaryotic virus) and RVDB \cite{Goodacre2018}
+  from pVOGs \citep{Grazziotin2017} (prokaryotic virus) and RVDB \cite{Goodacre2018}
   (all virus-like sequences but not from prokaryotic viruses) using HMMER
   \cite{hmmer}.
+
 
   Tackling a very large dataset computational efficiency was a concern. While
   BLAST and DIAMOND can be parallelized to certain degree, HMMER cannot be
@@ -305,6 +296,7 @@
   sequences were extracted from the GenBank output. Additionally, viral
   quotient, the percentage of a pVOG domain created from viral genes, is
   appended to observations with a hit against the pVOG database.
+  (\url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/VirusGenes/scripts/add_vq.py}).
 
   As noted above, processing such a large volume of data requires massive
   parallelization, a task which occupied a significant portion of this groups
@@ -316,67 +308,38 @@
   run under an appropriate decision tree, increases the confidence during
   taxonomical and/or functional annotation.
 
-  \subsection{Tackling the Unknown}
-  As a large number of contigs remain uncharacterized despite the
-  aforementioned approaches, we  aligned 2,527 “unknown unknown” contigs
-  (minimum length size = 1kb) against Virus RefSeq using tBLASTx
-  \cite{Camacho2009} with default parameters. This post-domain screen revealed
-  hits to phages, Cas-related nucleases and ftsZ-homologs. These results were
-  confirmed in a subsequent analysis using HHPred \cite{Hildebrand2009}
-  confirmed these. Identification of these proteins was complicated by the
-  intricate nature of phage genes, their associated bacteria hosts, and the
-  short nature of these contigs (length $<$ 7.6 kb, mean length $=$ 1.5 kb).
-
-  The analysis of 4,026 contigs from the ‘known-unknown’ using VIGA
-  \cite{Gonzalez-Tortuero2018} and BLAST \cite{Camacho2009} revealed one contig
-  of interest which was subsequently identified as a novel norovirus (see
-  Supplementary Material and Methods).
-
-  \subsection{Indexing and Metadata}
-  As missing metadata often complicates identifying NGS data sets of interest,
-  we tried to infer metadata information based on SRR contig content. SRRs were
-  clustered using MASH \cite{Ondov2019}, and six main clusters of samples were
-  identified, showing certain diversity in terms of viral content across the
-  dataset. In order to unravel the drivers of that composition-based
-  clustering, the words from the SRA study comments and abstracts were
-  extracted using \cite{Zhu2013}. A vector of word frequencies was constructed
-  across the selected samples. A PLS was performed in order to identify any
-  co-variance between the identified clusters using MASH and the word
-  frequencies associated to the samples. No strong co-variance could identified
-  using this approach, suggesting that abstracts and comments vocabularies are
-  too vague to automatically caracterize samples.
+  \subsection{Metadata Analysis} As missing metadata often complicates
+  identifying NGS data sets of interest, we tried to infer metadata information
+  based on SRR contig content. SRRs were clustered using MASH \cite{Ondov2019},
+  and six main clusters of samples were identified, showing certain diversity
+  in terms of viral content across the dataset. In order to unravel the drivers
+  of that composition-based clustering, the words from the SRA study comments
+  and abstracts were extracted using SRAdb \cite{Zhu2013}. A vector of word
+  frequencies was constructed across the selected samples. A partial least
+  square regression (PLS) was performed in order to identify any co-variance
+  between the identified clusters using MASH and the word frequencies
+  associated to the samples. No strong co-variance could identified using this
+  approach, suggesting that abstracts and comments vocabularies are too vague
+  to automatically characterize samples, Figure~\ref{fig:metadata}A.
 
   As a proof of concept, we show that natural language processing (NLP) trained
   on SRA and associated project metadata can identify SRAs from human gut
   microbiome metagenomes. Doc2vec \cite{Le2014}, an NLP algorithm that uses
-  unsupervised
-  learning to embed variable-length texts into a vector, was trained on the SRA
-  metadata of 628 samples and transformed the metadata into a 300-dimension
-  vector. t-SNE \cite{vanDerMaaten2008}, a popular dimensionality reduction tool, was trained and
-  transformed the vectors into coordinates for a 2D space. The SRA metadata was
-  labeled based on the center\_project\_name, which is typically used to identify
-  the environment from which the metagenome was sequenced from. Three
-  “center\_project\_name” classes were examined: “human gut microbiome,”
-  “NA”/“None,” and “other.” Figure X shows that all three classes are easily
-  and cleanly separable. Next, NA samples were removed from the dataset and
-  Doc2vec and t-SNE were retrained on this new dataset. In this setting, SRA
-  metadata from human gut microbiome projects can still be distinguished from
-  other projects. Some possible uses of this technique include correcting
+  unsupervised learning to embed variable-length texts into a vector, was
+  trained on the SRA metadata of 628 samples and transformed the metadata into
+  a 300-dimension vector. t-SNE \cite{vanDerMaaten2008}, a popular
+  dimensionality reduction tool, was trained and transformed the vectors into
+  coordinates for a 2D space. The SRA metadata was labeled based on the
+  "center\_project\_name, which is typically used to identify the environment
+  from which the metagenome was sequenced from. Three “center\_project\_name”
+  classes were examined: “human gut microbiome,” “NA”/“None,” and “other.”
+  Figure~\ref{fig:metadata}B. shows that all three classes are easily and
+  cleanly separable. Some possible uses of this technique include correcting
   mislabeled metadata or annotating SRA’s with missing metadata.
-
-  To organize the analyzed data we decided to use an indexing scheme
-  implemented in MongoDB. The layout of the data that will be added to the
-  database is expected to be around four tables - SRA metadata, contig
-  description metadata, known contigs information and unknown contig
-  predictions. To add more usability, taxonomy and domain tables will need to
-  be joined hierarchically to the ‘known’ and ‘unknown’ tables
-  (Figure~\ref{fig:db_design}). Some of the layout of the data was predicted to
-  do better in a relational database structure as several unrelated data sets
-  must be cross-referenced together in order to support queries.
 
   \begin{figure}
     \centering
     \includegraphics{Definitions/logo-mdpi}
     \caption{DUMMY: Database design
-            \label{fig:db_design}}
+            \label{fig:metadata}}
   \end{figure}

@@ -6,7 +6,7 @@
   recruited through the outreach efforts of BB, RJ, and RE.  VZ identified
   datasets, which were then parsed by RE using PARTIE \cite{Torres2017} to look
   at any potential amplicon or 16S character.  The resulting set of SRRs can be
-  found in Supplemental File 1.
+  found in \url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject/blob/master/DataSelection/hackathon.sets}.
 
   \subsection{Assembling contigs from metagenomic datasets (pre-Hackathon)}
   Contigs containing putative virus sequences were assembled from metagenomic
@@ -47,10 +47,10 @@
   \subsection{Domain mapping}
   Contigs that were classified by BLASTn as unknown-unknowns, were inspected
   for domain content using RPSTBPASTN \cite{Camacho2009}. Briefly, the protein
-  domains from the Conserved Domain Database \cite{Marchler-Bauer2017}  were
+  domains from the Conserved Domain Database (CDD) \cite{Marchler-Bauer2017}  were
   downloaded and split into 32 different databases, to benefit most from the
-  available threads. RPStBLASTn searches were ran with an e-value cut-off of
-  1e-3, and the output was generated in json format. A working example and the
+  available threads. RPSTBLASTN searches were ran with an E-value cut-off of
+  $1e^{-3}$, and the output was generated in JSON format. A working example and the
   commands used are available on GitHub under
   \url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject/tree/master/DomainLabeling/example}
 
@@ -89,5 +89,16 @@
   \cite{Goodacre2018} using HMMER suite \cite{hmmer}. Modified scripts and
   instructions to reproduce all steps are available on GitHub at
   \url{https://github.com/NCBI-Hackathons/VirusDiscoveryProject/tree/master/VirusGenes}.
-  All viral annotation was performed on a GCP machine with 160 cores and XX
-  Gb RAM
+  All viral annotation was performed on a GCP machine with 96 cores and 350 Gb
+  RAM
+
+  \subsection{Machine Learning}
+  Jaccard distance was estimated on the identified viral contigs using MASH
+  \cite{Ondov2019}, a technique shown to be a reliable tool to cluster amplicon
+  datasets, metagenome read datasets and contig datasets \cite{Choi2018}. A
+  kmer size of 21 bp was chosen with a sketch size of 10,000. Samples
+  containing less than two viral contigs were removed from the analysis. A
+  total of 511 samples were kept for the analyzed and clustered by ward
+  clustering. A manual cleaning of the terms was performed to remove
+  punctuation and low-informative terms. In total, 210 samples with abstract
+  and comments were analyzed.
