@@ -185,4 +185,4 @@ Some BigQuery examples:
 
 # Want to be a part of this:
 
-## https://biohackathons.github.io
+## https://ncbi-codeathons.github.io/
