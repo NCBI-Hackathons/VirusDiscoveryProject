@@ -6,6 +6,13 @@ Software, architecture, and data index design for the 2018/2019 Virus Discovery 
 
 # Publication
 
+Please find the publication resulting from this event [here](https://doi.org/10.3390/genes10090714)
+
+For information on how to access the contigs used during the event, please reference the readme [here](https://github.com/NCBI-Hackathons/VirusDiscoveryProject/edit/master/contigs_readme.md)
+
+**If publishing results which make use of these contigs please cite**: 
+  Connor R, Brister R, Buchmann JP, et al. NCBI's Virus Discovery Hackathon: Engaging Research Communities to Identify Cloud Infrastructure Requirements. Genes (Basel). 2019;10(9)
+
 The initial results and learned lessons have been compiled into a manuscript
 currently under review. The following layout indicates the directories
 containing the material related to this publication and the related
