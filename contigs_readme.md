@@ -2,7 +2,7 @@
 
 ## Description 
 
-  Approximately 3.9 billion contigs were created to support the Virus Discovery Hackathon, coordinated by NCBI and hosted by SDSU on Jan 9, 2019 (10.3390/genes10090714). SRA data selection is described in the associated publication, but, briefly, runs were selected to enrich for WGS metagenomic studies likely to contain crassphage. Contigs were then assembled using SKESA (10.1186/s13059-018-1540-z). First, human reads were filtered out via HISAT2 (10.1038/nmeth.3317). Next, viral contigs were assembled via guided assembly. Finally, the remaining reads were assembled, if possible, via de novo assembly. How to access these contigs and the naming conventions used are described below. Additionally, descriptive metadata, of the contigs, and the associated biosample records was put in tabular format, with details on how to access this information included below as well. Currently the information is hosted in both Amazon and Google’s cloud environments, as reflected in the access instructions provided here.
+  Approximately 3.9 billion contigs were created to support the Virus Discovery Hackathon, coordinated by NCBI and hosted by SDSU on Jan 9, 2019 [1](https://doi.org/10.3390/genes10090714). SRA data selection is described in the associated publication, but, briefly, runs were selected to enrich for WGS metagenomic studies likely to contain crassphage. Contigs were then assembled using SKESA [2](https://doi.org/10.1186/s13059-018-1540-z). First, human reads were filtered out via HISAT2 [3](https://doi.org/10.1038/nmeth.3317). Next, viral contigs were assembled via guided assembly. Finally, the remaining reads were assembled, if possible, via de novo assembly. How to access these contigs and the naming conventions used are described below. Additionally, descriptive metadata, of the contigs, and the associated biosample records was put in tabular format, with details on how to access this information included below as well. Currently the information is hosted in both Amazon and Google’s cloud environments, as reflected in the access instructions provided here.
 
 **If publishing results which make use of these contigs please cite**: 
   Connor R, Brister R, Buchmann JP, et al. NCBI's Virus Discovery Hackathon: Engaging Research Communities to Identify Cloud Infrastructure Requirements. Genes (Basel). 2019;10(9)
@@ -11,7 +11,7 @@
 	
   All the contigs derived from a single SRR are included in a single fasta file. The naming convention for these files is: `SRR_ACCESSSION.fa` 
   
-  Within each fasta the definition line of each contig is constructed as follows: `SRR_ACCESSION.CONTIG_NAME.NUMBER` Where CONTIG_NAME can take one of two formats. For guided assemblies `RefSeqID_NUMBER`, and for de novo assemblies `Contig_AlphaNumeric.AlphaNumberic`
+  Within each fasta the definition line of each contig is constructed as follows: `SRR_ACCESSION.CONTIG_NAME.NUMBER` Where CONTIG_NAME can take one of two formats. For guided assemblies `RefSeqID_NUMBER`, and for de novo assemblies `Contig_NUMBER_NUMBER.NUMBER`
 
 ## Getting Data
 	
@@ -19,7 +19,7 @@
 
 ### Google
 	
-  The bucket containing the data is experimental-sra-metagenome-contigs and it is located in us-east1.
+  The bucket containing the data is `experimental-sra-metagenome-contigs` and it is located in `us-east1`.
 
 **Examples of how the data might be accessed**:
 
@@ -29,13 +29,13 @@
 
 ### Amazon
 
-  The bucket containing the data is experimental-sra-metagenome-contigs and is located in us-east-1.
+  The bucket containing the data is `experimental-sra-metagenome-contigs` and is located in `us-east-1`.
 
 **Examples of how the data might be accessed**:
  
 `aws s3 cp s3://experimental-sra-metagenome-contigs.s3.amazonaws.com/DRR000019.contigs.fasta <dest>`
 
-`wget http://experimental-sra-metagenome-contigs.s3.amazonaws.com/DRR000019.contigs.fasta`
+`wget http://experimental-sra-metagenome-contigs.s3.amazonaws.com/`
 
 ## Searching Metadata
 
