@@ -19,7 +19,7 @@
 
 ### Google
 	
-  The bucket containing the data is `experimental-sra-metagenome-contigs` and it is located in `us-east1`.
+  The bucket containing the data is `experimental-sra-metagenome-contigs` and it is located in `Multi-region`.
 
 **Examples of how the data might be accessed**:
 
@@ -52,7 +52,7 @@ Metadata associated with the contigs can be found in both GCP and AWS environmen
 |contig_length | contig length in bases|
 |subject | accession for best blast hit|
 |subject_taxid | taxid for best blast hit|
-|subject_title | defline for best balst hit|
+|subject_title | defline for best blast hit|
 |pident | percent identity for best blast hit|
 |evalue | evalue for best blast hit|
 |bitscore | bitscore for best blast hit|
