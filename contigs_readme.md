@@ -64,7 +64,7 @@ Metadata associated with the contigs can be found in both GCP and AWS environmen
 
 ### Amazon
 
-  The metadata is loaded into s3 and can be accessed via the Athena web console by creating a new database. First select query data in Amazon S3, then Add a table manually, then specify the location of the input data set as `s3://experimental-sra-metagenome-contigs-us-east-1/metadata/`, then select csv as the data format, then select bulk add columns and paste the field below intot he text box
+  The metadata is loaded into s3 and can be accessed via the Athena web console by creating a new database. First select query data in Amazon S3, then Add a table manually. Next, specify the location of the input data set as `s3://experimental-sra-metagenome-contigs-us-east-1/metadata/`. Finally, select csv as the data format followed by selecting bulk add columns and pasting the field below into the text box.
 
 ```
   accession string,
